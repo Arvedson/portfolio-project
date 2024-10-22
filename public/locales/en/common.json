@@ -1,0 +1,15 @@
+{
+  "welcome": "Welcome",
+  "home": "Home",
+  "blog": "Blog",
+  "projects": "Projects",
+  "about": "About Me",
+  "contact": "Contact",
+  
+  "home_intro": "This is the home page of my portfolio website. Explore the projects, blog, and more!",
+  "blog_intro": "Welcome to my blog! Stay tuned for updates and interesting articles.",
+  "projects_intro": "Here you can find the projects I have worked on, from web applications to side projects.",
+  "about_intro": "Hi, I'm Tomas Arvedson, a passionate developer with experience in web development and design.",
+  "contact_intro": "If you'd like to get in touch, feel free to reach out via email or social media!",
+  "change-language": "Change Language"
+}
