@@ -129,7 +129,7 @@ const Navbar = () => {
             leaveTo="transform opacity-0 scale-95"
           >
             <Menu.Items className="absolute right-0 mt-2 w-32 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              <div className="py-1">
+              <div className="py-1 ">
                 <Menu.Item>
                   {({ active }) => (
                     <button
@@ -144,7 +144,7 @@ const Navbar = () => {
                   {({ active }) => (
                     <button
                       onClick={() => changeLanguage('es')}
-                      className={`${active ? 'bg-gray-100' : ''} block w-full text-left px-4 py-2 text-sm text-gray-700`}
+                      className={`${active ? 'bg-gray-100' : ''} block  text-left px-4 py-2 text-sm text-gray-700` }
                     >
                       Español
                     </button>
@@ -201,7 +201,7 @@ const Navbar = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute left-0 mt-2 w-full bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute left-0 mt-2  bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
                       <Menu.Item>
                         {({ active }) => (

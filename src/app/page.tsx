@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import Technologies from './components/Technologies';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -21,11 +22,12 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col ">
       <h1 className="text-4xl font-bold mb-4">{t('home')}</h1>
       <p className="text-lg">
         {t('home_intro')}
       </p>
+      <Technologies/>
     </div>
   );
 }

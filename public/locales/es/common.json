@@ -5,10 +5,25 @@
   "projects": "Proyectos",
   "about": "Sobre mí",
   "contact": "Contacto",
+
   "home_intro": "Esta es la página principal de mi portafolio. ¡Explora los proyectos, blog y más!",
+
   "blog_intro": "¡Bienvenido a mi blog! Mantente al tanto de las actualizaciones y artículos interesantes.",
+
   "projects_intro": "Aquí puedes encontrar los proyectos en los que he trabajado, desde aplicaciones web hasta proyectos paralelos.",
+
   "about_intro": "Hola, soy Tomas Arvedson, un desarrollador apasionado con experiencia en desarrollo web y diseño.",
+
   "contact_intro": "Si deseas ponerte en contacto, ¡no dudes en escribirme por correo electrónico o en mis redes sociales!",
-  "change-language": "Cambiar idioma"
+  
+  "change-language": "Es",
+
+
+  "quick_links": "Enlaces rápidos",
+  "contact_info": "Información de contacto",
+  "location": "Ubicación",
+  "all_rights_reserved": "Todos los derechos reservados",
+
+
+  "tecnologies": "Herramientas he utilizado"
 }

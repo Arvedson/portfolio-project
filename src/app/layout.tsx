@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import Navbar from '../../src/app/components/Navbar';
+import Footer from "./components/Footer";
 import '/src/config/i18n'; // Importamos la configuración de i18n
 
 export default function RootLayout({
@@ -14,6 +15,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Footer/>
       </body>
     </html>
   );
