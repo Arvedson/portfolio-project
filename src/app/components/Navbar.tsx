@@ -53,7 +53,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar">
+    <nav className="navbar  sticky top-0 bg-navbar-bg opacity-95 z-50">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="text-lg font-semibold">MyPortfolio</div>

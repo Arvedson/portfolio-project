@@ -6,8 +6,8 @@
   "about": "Sobre mí",
   "contact": "Contacto",
 
-  "home_intro": "Esta es la página principal de mi portafolio. ¡Explora los proyectos, blog y más!",
-
+  "home_intro": "- Desarrollador -",
+  "another_section": "Disfruto aprender mientras cumplo con mi parte, aprovechando cada oportunidad para fortalecer mis debilidades y mejorar como profesional. Me esfuerzo en cada proyecto, buscando siempre nuevas formas de superar mis límites y aportar soluciones que no solo sean efectivas, sino también innovadoras. Mi compromiso no es solo con el trabajo bien hecho, sino con el crecimiento continuo, tanto personal como profesional.",
   "blog_intro": "¡Bienvenido a mi blog! Mantente al tanto de las actualizaciones y artículos interesantes.",
 
   "projects_intro": "Aquí puedes encontrar los proyectos en los que he trabajado, desde aplicaciones web hasta proyectos paralelos.",
@@ -37,5 +37,7 @@
   "postgresql_description": "PostgreSQL es un sistema de base de datos relacional de código abierto.",
   "prisma_description": "Prisma es un ORM de próxima generación para Node.js y TypeScript.",
   "css_description": "CSS3 es la última evolución del lenguaje de hojas de estilo en cascada para el diseño web.",
-  "figma_description": "Figma es una herramienta de diseño colaborativo para la creación de interfaces de usuario."
+  "figma_description": "Figma es una herramienta de diseño colaborativo para la creación de interfaces de usuario.",
+  "typescript_description": "TypeScript es un superconjunto de JavaScript que añade tipado estático, lo que facilita la detección de errores y el desarrollo de aplicaciones más robustas."
+
 }

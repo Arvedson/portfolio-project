@@ -7,7 +7,7 @@
   /* Colores base para el modo claro */
   --background-light: #f8f9fa; /* Fondo claro */
   --foreground-light: #212529; /* Texto oscuro */
-  --primary-light: #0d6efd; /* Azul primario */
+  --primary-light: #ffadad; /* Morado elegante en modo claro */
   --secondary-light: #6c757d; /* Gris secundario */
   --accent-light: #ffc107; /* Acento amarillo */
   --navbar-bg-light: #343a40; /* Fondo del Navbar claro */
@@ -17,7 +17,7 @@
   /* Colores base para el modo oscuro */
   --background-dark: #212529; /* Fondo oscuro */
   --foreground-dark: #f8f9fa; /* Texto claro */
-  --primary-dark: #0d6efd; /* Azul primario para el modo oscuro */
+  --primary-dark: #7a4141; /* Morado profundo para el modo oscuro */
   --secondary-dark: #adb5bd; /* Gris claro */
   --accent-dark: #ffc107; /* Acento amarillo */
   --navbar-bg-dark: #0a0a0a; /* Fondo oscuro del Navbar */
@@ -63,6 +63,7 @@ body {
   background-color: var(--navbar-bg);
   color: var(--navbar-text);
   padding: 1rem;
+ 
 }
 
 .navbar a {
@@ -140,4 +141,36 @@ body {
   background: linear-gradient(to right, var(--foreground), var(--background));
   -webkit-background-clip: text;
   color: transparent;
+}
+
+
+/* borrar para restaurar default -body-*/
+
+
+
+body {
+  background: repeating-linear-gradient(45deg, var(--background) 0%, var(--primary) 3%, transparent 7%, transparent 50%),
+  repeating-linear-gradient(45deg, var(--primary) 0%, var(--background) 10%, transparent 5%, transparent 50%);
+  
+             
+  background-size: 90em 90em;
+  background-color: var(--background); /* Usar la variable de fondo según el tema */
+  opacity: 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Estilos de la barra de lvl */
+.progress-bar {
+  height: 8px; /* Ajusta la altura de la barra */
+  background-color: var(--primary); /* Color de la barra (dependerá del tema) */
+  border-radius: 999px; /* Borde redondeado */
+  transition: width 1s ease-in-out; /* Animación suave para cambiar el ancho */
+}
+
+.progress-container {
+  width: 100%;
+  background-color: var(--secondary); /* Color de fondo de la barra */
+  border-radius: 999px;
+  overflow: hidden; /* Para que la barra no se salga de los bordes redondeados */
 }

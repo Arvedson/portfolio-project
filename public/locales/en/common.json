@@ -7,7 +7,9 @@
   "about": "About Me",
   "contact": "Contact",
   
-  "home_intro": "This is the home page of my portfolio website. Explore the projects, blog, and more!",
+  "home_intro": "Developer",
+
+  "another_section": "I enjoy learning while fulfilling my role, taking advantage of every opportunity to strengthen my weaknesses and improve as a professional. I strive in every project, always seeking new ways to overcome my limits and provide solutions that are not only effective but also innovative. My commitment is not only to well-done work but to continuous growth, both personally and professionally.",
 
   "blog_intro": "Welcome to my blog! Stay tuned for updates and interesting articles.",
 
@@ -39,7 +41,9 @@
   "postgresql_description": "PostgreSQL is an open-source relational database system.",
   "prisma_description": "Prisma is a next-generation ORM for Node.js and TypeScript.",
   "css_description": "CSS3 is the latest evolution of the Cascading Style Sheets language for web design.",
-   "figma_description": "Figma is a collaborative design tool for creating user interfaces."
+   "figma_description": "Figma is a collaborative design tool for creating user interfaces.",
+   "typescript_description": "TypeScript is a superset of JavaScript that adds static typing, making it easier to catch errors and develop more robust applications."
+
 
 
   
