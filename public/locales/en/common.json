@@ -1,7 +1,7 @@
 {
 
   "welcome": "Welcome",
-  "home": "Home",
+  "home": "Tomas Arvedson",
   "blog": "Blog",
   "projects": "Projects",
   "about": "About Me",
@@ -27,7 +27,19 @@
   "all_rights_reserved": "All rights reserved",
 
 
-  "tecnologies": "Tecnologies I have used"
+  "tecnologies": "These are some of the tools I have worked with",
+  "react_description": "React is a JavaScript library for building user interfaces.",
+  "nextjs_description": "Next.js is a React framework for server-side rendering.",
+  "nodejs_description": "Node.js is a JavaScript runtime built on Chrome's V8 engine.",
+  "tailwindcss_description": "Tailwind CSS is a utility-first CSS framework for styling.",
+  "github_description": "GitHub is a platform for hosting and reviewing code.",
+  "javascript_description": "JavaScript is a programming language used for web development.",
+  "python_description": "Python is a high-level programming language for general-purpose coding.",
+  "mongodb_description": "MongoDB is a NoSQL database used for scalable applications.",
+  "postgresql_description": "PostgreSQL is an open-source relational database system.",
+  "prisma_description": "Prisma is a next-generation ORM for Node.js and TypeScript.",
+  "css_description": "CSS3 is the latest evolution of the Cascading Style Sheets language for web design.",
+   "figma_description": "Figma is a collaborative design tool for creating user interfaces."
 
 
   

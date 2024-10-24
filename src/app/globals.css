@@ -110,3 +110,34 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.selected-tech {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  border-radius: 8px;
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.description-box {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--secondary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.shadow-text {
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--foreground), var(--background));
+  -webkit-background-clip: text;
+  color: transparent;
+}

@@ -3,14 +3,14 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/navigation';
 import i18next from 'i18next';
 import { Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'; // Importamos los íconos de sol y luna para el cambio de tema
+import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'; 
 
 const Navbar = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Estado para el menú hamburguesa
-  const [theme, setTheme] = useState('light'); // Estado del tema
+  const [isOpen, setIsOpen] = useState(false); 
+  const [theme, setTheme] = useState('light'); 
 
   // Nos aseguramos de que el componente esté montado antes de cambiar el idioma
   useEffect(() => {
