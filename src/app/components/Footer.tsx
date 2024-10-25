@@ -18,7 +18,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="py-8">
+    <footer className="py-16 mt-16 ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         {/* Enlaces rápidos */}
         <div className="mb-4 md:mb-0">
@@ -108,14 +108,16 @@ const Footer = () => {
           </div>
 
           {/* Enlaces para pantallas grandes */}
-          <div className="hidden md:block">
-            <h3 className="font-semibold text-lg mb-2">{t('quick_links')}</h3>
-            <ul className="space-y-2">
-              <li><a href="/" className="hover:text-primary">{t('home')}</a></li>
+          <div className=" flex-col hidden md:block mt-14">
+            <h3 className="font-semibold text-lg mb-2 ">{t('quick_links')}</h3>
+            <ul className=" grid grid-cols-2 gap-4 justify-center">
+             
               <li><a href="/blog" className="hover:text-primary">{t('blog')}</a></li>
+              <li><a href="/contact" className="hover:text-primary">{t('contact')}</a></li>
               <li><a href="/projects" className="hover:text-primary">{t('projects')}</a></li>
               <li><a href="/about" className="hover:text-primary">{t('about')}</a></li>
-              <li><a href="/contact" className="hover:text-primary">{t('contact')}</a></li>
+         
+              <li><a href="/" className="hover:text-primary text-right">{t('home')}</a></li>
             </ul>
           </div>
         </div>

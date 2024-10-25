@@ -9,6 +9,7 @@
   --foreground-light: #212529; /* Texto oscuro */
   --primary-light: #ffadad; /* Morado elegante en modo claro */
   --secondary-light: #6c757d; /* Gris secundario */
+  --tertiary-light: #e2e6ea;
   --accent-light: #ffc107; /* Acento amarillo */
   --navbar-bg-light: #343a40; /* Fondo del Navbar claro */
   --navbar-text-light: #ffffff; /* Texto claro del Navbar */
@@ -19,6 +20,7 @@
   --foreground-dark: #f8f9fa; /* Texto claro */
   --primary-dark: #7a4141; /* Morado profundo para el modo oscuro */
   --secondary-dark: #adb5bd; /* Gris claro */
+  --tertiary-dark: #5a6268;
   --accent-dark: #ffc107; /* Acento amarillo */
   --navbar-bg-dark: #0a0a0a; /* Fondo oscuro del Navbar */
   --navbar-text-dark: #ffffff; /* Texto claro del Navbar */
