@@ -12,6 +12,21 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); 
   const [theme, setTheme] = useState('light'); 
 
+
+  useEffect(() => {
+    setMounted(true);
+    const storedLang = localStorage.getItem('language');
+    if (storedLang) {
+      i18next.changeLanguage(storedLang);
+    }
+  
+    // Aseguramos que el tema "light" se aplique si no hay tema almacenado
+    const storedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(storedTheme);
+    document.documentElement.setAttribute('data-theme', storedTheme);
+  }, []);
+  
+
   // Nos aseguramos de que el componente esté montado antes de cambiar el idioma
   useEffect(() => {
     setMounted(true);
