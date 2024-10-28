@@ -15,6 +15,43 @@ export default function TutorialPage() {
     }
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 500); // Ajusta el tiempo según sea necesario
+  }, []);
+  useEffect(() => {
+    const hash = window.location.hash;
+  
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        observer.disconnect();
+      }
+    }, {
+      rootMargin: '0px',
+      threshold: 1
+    });
+  
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        observer.observe(element);
+      }
+    }
+  
+    return () => observer.disconnect();
+  }, []);
+
   if (!mounted) {
     return null;
   }
@@ -99,7 +136,7 @@ export default function TutorialPage() {
           </pre>
         </div>
 
-        <p>{t('section_5_step_2')}</p>
+        <p id="section_5_step_2route">{t('section_5_step_2')}</p>
         <p>{t('section_5_instruction_2')}</p>
 
         {/* Bloque de código: Configurar Tailwind en Next.js */}
@@ -136,7 +173,7 @@ export default function TutorialPage() {
 
       {/* Creación de una API */}
       <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-        <h2 className="font-bold">{t('section_7_title')}</h2>
+        <h2 id="section_7_titleroute" className="font-bold">{t('section_7_title')}</h2>
         <p>{t('section_7_intro')}</p>
         <p>{t('section_7_step_1')}</p>
         <p>{t('section_7_instruction_1')}</p>

@@ -15,9 +15,49 @@ export default function Post2Page() {
     }
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 500); // Ajusta el tiempo según sea necesario
+  }, []);
+  useEffect(() => {
+    const hash = window.location.hash;
+  
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        observer.disconnect();
+      }
+    }, {
+      rootMargin: '0px',
+      threshold: 1.0
+    });
+  
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        observer.observe(element);
+      }
+    }
+  
+    return () => observer.disconnect();
+  }, []);
+  
+
   if (!mounted) {
     return null;
   }
+
+
 
   return (
     <div className="container mx-auto px-4 py-12 space-y-12">
@@ -30,7 +70,7 @@ export default function Post2Page() {
         <h2 className="font-bold">{t('functionalVsClass_title')}</h2>
         <p>{t('functionalVsClass_intro')}</p>
         <h3>{t('functionalVsClass_class.title')}</h3>
-        <p>{t('functionalVsClass_class.description')}</p>
+        <p id="functional-vs-class">{t('functionalVsClass_class.description')}</p>
         <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)', border: '1px solid var(--secondary)' }}>
           <pre className="whitespace-pre-wrap overflow-x-auto"><code>{t('functionalVsClass_class.inefficiency_example')}</code></pre>
         </div>
@@ -40,9 +80,9 @@ export default function Post2Page() {
           <pre className="whitespace-pre-wrap overflow-x-auto"><code>{t('functionalVsClass_functional.efficiency_example')}</code></pre>
         </div>
       </section>
-
+ 
       <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-        <h2 className="font-bold">{t('reactMemo_usage.title')}</h2>
+        <h2 id="reactMemo_usage" className="font-bold">{t('reactMemo_usage.title')}</h2>
         <p>{t('reactMemo_usage.description')}</p>
         <h3>{t('reactMemo_without_title')}</h3>
         <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)', border: '1px solid var(--secondary)' }}>
@@ -82,7 +122,7 @@ export default function Post2Page() {
         {/* New section for Efficient State Management */}
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
         <h2 className="font-bold">{t('stateManagement_title')}</h2>
-        <p>{t('stateManagement_goal')}</p>
+        <p id="stateManagement_goalroute">{t('stateManagement_goal')}</p>
 
         <h3>{t('stateInefficiency_title')}</h3>
         <p>{t('stateInefficiency_problem')}</p>
@@ -128,7 +168,7 @@ export default function Post2Page() {
 
        {/* New section for Using Fragments to Reduce the DOM */}
        <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-        <h2 className="font-bold">{t('fragmentsUsage_title')}</h2>
+        <h2 id="fragmentsUsage_titleroute" className="font-bold">{t('fragmentsUsage_title')}</h2>
         <p>{t('fragmentsConcept_description')}</p>
         <p>{t('fragmentsImportance_description')}</p>
         <p>{t('fragmentsFunctionality_description')}</p>
