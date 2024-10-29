@@ -74,6 +74,13 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.footer {
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  padding: 1rem;
+ 
+}
+
 .navbar a:hover {
   background-color: var(--navbar-hover);
   border-radius: 4px;

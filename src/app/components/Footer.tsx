@@ -18,8 +18,8 @@ const Footer = () => {
   }
 
   return (
-    <footer className="py-16 mt-16 ">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+    <footer className="py-5 mt-16 footer opacity-80">
+      <div className="  px-4 flex flex-col md:flex-row justify-evenly items-center pt-12 lg:max-h-[100px] ">
         {/* Enlaces rápidos */}
         <div className="mb-4 md:mb-0">
           {/* Solo mostrar el menú desplegable en pantallas pequeñas */}
@@ -108,9 +108,9 @@ const Footer = () => {
           </div>
 
           {/* Enlaces para pantallas grandes */}
-          <div className=" flex-col hidden md:block mt-14">
-            <h3 className="font-semibold text-lg mb-2 ">{t('quick_links')}</h3>
-            <ul className=" grid grid-cols-2 gap-4 justify-center">
+          <div className="flex-col hidden md:block ">
+            <h3 className="font-semibold text-lg mb-2 ">{t('')}</h3>
+            <ul className=" grid grid-cols-3 gap-4 justify-center ">
              
               <li><a href="/blog" className="hover:text-primary">{t('blog')}</a></li>
               <li><a href="/contact" className="hover:text-primary">{t('contact')}</a></li>
@@ -123,14 +123,14 @@ const Footer = () => {
         </div>
 
         {/* Información de contacto */}
-        <div className="mb-4 md:mb-0">
+        <div className="mb-4 md:mb-0 ">
           <h3 className="font-semibold text-lg mb-2">{t('contact_info')}</h3>
           <p>Email: <a href="mailto:contact@arvedson.com" className="hover:text-primary">contact@arvedson.com</a></p>
           <p>{t('location')}: México</p>
         </div>
 
         {/* Redes sociales */}
-        <div className="flex space-x-4">
+        <div className="flex space-x-4  ">
           <a href="https://github.com/Arvedson" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
             {/* Icono de GitHub SVG */}
             <svg
@@ -157,7 +157,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="mt-8 text-center text-sm text-gray-400">
+      <div className="text-center text-sm text-gray-400 pt-12">
         <p>&copy; {new Date().getFullYear()} Tomas Arvedson. {t('all_rights_reserved')}</p>
       </div>
     </footer>

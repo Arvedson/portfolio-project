@@ -69,7 +69,7 @@
     "categories_list": [
       {
         "name": "React",
-        "link": "blog",
+    
         "sublinks": [
           {
             "name": "Hooks",
