@@ -183,3 +183,189 @@ body {
   border-radius: 999px;
   overflow: hidden; /* Para que la barra no se salga de los bordes redondeados */
 }
+
+
+
+/* Estilos globales para el card */
+.card {
+  
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  background-color: var(--background);
+  color: var(--foreground);
+  margin-top: 10rem;
+  
+
+  /* Fondo por defecto (tema claro) */
+  background-image: url('/backgroundlight.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Fondo para el tema oscuro */
+[data-theme='dark'] .card {
+  background-image: url('/backgrounddark.png');
+}
+
+/* Efecto hover en el card */
+.card:hover {
+  transform: scale(1.05);
+}
+
+
+.card-content {
+  background-color: rgba(236, 236, 236, 0.8); /* Fondo blanco semitransparente para el tema claro */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  
+}
+
+/* Fondo semitransparente en el tema oscuro */
+[data-theme='dark'] .card-content {
+  background-color: rgba(33, 37, 41, 0.8); /* Fondo oscuro semitransparente */
+}
+
+/* Estilos para el título */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+/* Color del título en temas claro y oscuro */
+[data-theme='light'] .card-title {
+  color: var(--background-dark); /* Texto oscuro en tema claro */
+}
+
+[data-theme='dark'] .card-title {
+  color: var(--background-light); /* Texto claro en tema oscuro */
+}
+
+/* Estilos para el texto del párrafo */
+.card-text {
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+[data-theme='dark'] .card-text {
+  color: var(--foreground); /* Texto claro en tema oscuro */
+}
+/* Contenedor de los botones */
+.button-container {
+  display: flex;
+  gap: 2rem; /* Espacio entre los botones */
+  justify-content: center; /* Centrar los botones */
+  margin-top: 1.5rem;
+}
+/* Estilos para el botón */
+.card-button {
+  display: inline-flex;    /* Cambia a inline flex para que `align-items` funcione */
+  padding: 0.75rem 1.5rem;
+  border-radius: 11px; 
+  font-weight: 600;
+  text-decoration: none;
+  justify-content: center; /* Centrado de contenido interno del botón */
+  align-items: center;     /* Centrado vertical del contenido interno */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary);
+  color: var(--foreground);
+}
+
+/* Hover del botón en tema claro */
+[data-theme='light'] .card-button:hover {
+  background-color: var(--secondary); /* Fondo secundario en hover */
+  color: white; /* Texto blanco en hover */
+}
+
+/* Hover del botón en tema oscuro */
+[data-theme='dark'] .card-button:hover {
+  background-color: var(--secondary-light); /* Fondo oscuro en hover */
+  color: var(--tertiary-light); /* Texto de acento en hover */
+}
+
+
+
+
+
+
+
+
+/* Estilos para la sección de introducción */
+.introduction-section {
+  max-width: 800px; 
+  margin: 0 auto; 
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 6rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fondo para el tema claro */
+[data-theme='light'] .introduction-section {
+  background-image: url('/backgroundlight.png');
+}
+
+/* Fondo para el tema oscuro */
+[data-theme='dark'] .introduction-section {
+  background-image: url('/backgrounddark.png');
+}
+
+
+.introduction-content {
+  
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Fondo semitransparente en el tema oscuro */
+[data-theme='dark'] .introduction-content {
+  background-color: rgb(50, 90, 131, 0.6); /* Fondo oscuro semitransparente */
+}
+
+/* Fondo semitransparente en el tema claro */
+[data-theme='light'] .introduction-content {
+  background-color: rgba(211, 197, 197, 0.7); /* Fondo oscuro semitransparente */
+}
+
+/* Estilos para el título */
+.introduction-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--foreground); 
+}
+
+/* Estilos para el texto */
+.introduction-text {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--secondary); 
+}
+
+/* Color específico para tema claro */
+[data-theme='light'] .introduction-title,
+[data-theme='light'] .introduction-text {
+  color: var(--foreground-light); 
+}
+
+/* Color específico para tema oscuro */
+[data-theme='dark'] .introduction-title,
+[data-theme='dark'] .introduction-text {
+  color: var(--foreground-dark); 
+}

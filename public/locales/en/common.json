@@ -747,7 +747,264 @@
   "Logical":"Logical",
   "Control-Structures":"Control Structures",
   "Functionss":"Functions and ES6+",
-  "Beyond":"ES6 and Beyond"
+  "Beyond":"ES6 and Beyond",
+
+
+
+
+  
+
+  "todo_app_title":"Simple Task Management MVP",
+  "todo_app_short_description":"TaskTrack showcases streamlined task management through a minimalist MVP designed with modern web technologies. Perfect for demonstrating clean coding practices, responsive design and more.",
+
+
+
+
+  
+    "todoapp": {
+      "introduction": {
+        "titulo": "Introduction Title",
+        "subtitulo": "Introduction Description"
+      },
+      "database_connection": {
+        "title": "1.- Database Connection with Neon Tech",
+        "description": "The first step in developing the application was establishing a robust and efficient connection to the database using Neon Tech. Neon Tech provides modern, scalable database solutions, which allowed for effective handling of task and user data. The initial configuration included defining the necessary environment variables and integrating with Prisma to facilitate database operations."
+      },
+      "crud_operations": {
+        "title": "2.- CRUD Operations Implementation",
+        "description": "Once the database connection was established, we proceeded to develop the CRUD (Create, Read, Update, Delete) operations. These operations are fundamental for managing tasks within the application. API endpoints were implemented to interact with the database, ensuring the server could correctly handle requests to create, read, update, and delete tasks."
+      },
+      "nextauth_integration": {
+        "title": "3.- Integration of NextAuth for Authentication",
+        "description": "To securely and efficiently handle user authentication, NextAuth was installed. NextAuth is a complete authentication library for Next.js applications that simplifies session and provider management. In this project, NextAuth was configured to use Google as the authentication provider, allowing users to log in using their Google accounts."
+      },
+      "google_cloud_local": {
+        "title": "4.- Google Cloud Configuration for Local Development",
+        "description": "Google Cloud was configured to facilitate local development. This configuration included creating the necessary credentials for Google authentication and setting environment variables (GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET) so the application could securely communicate with Google services during development."
+      },
+      "prisma_adapter_nextauth": {
+        "title": "5.- Prisma Adapter for NextAuth",
+        "description": "To synchronize data models with the database, a Prisma adapter was connected to NextAuth. Prisma is an ORM (Object-Relational Mapping) that simplifies database interaction through typed models. The Prisma adapter allows NextAuth to manage accounts, sessions, and users directly in the database, ensuring a smooth and efficient integration."
+      },
+      "api_development": {
+        "title": "6.- API Development",
+        "description": "With authentication and CRUD operations in place, the application's API was developed. The API handles frontend requests, interacts with the database via Prisma, and manages user sessions through NextAuth. Specific endpoints were implemented to handle retrieving, creating, updating, and deleting tasks, ensuring each operation was secured and properly validated."
+      },
+      "app_styling": {
+        "title": "7.- Application Styling",
+        "description": "Parallel to API development, light styling was applied to the application to enhance the user experience. Using CSS and React, intuitive and responsive visual components were designed, enabling smooth interaction with the application. The user interface focused on simplicity and functionality, ensuring users could efficiently manage their tasks."
+      },
+      "auth_structure_nextauth": {
+        "title": "8.- Authentication Structure with NextAuth",
+        "description": "Authentication configuration and management in Next.js using NextAuth with Google as the provider and Prisma as the database adapter.",
+        "files": {
+          "authOptions": {
+            "description": "Configures NextAuth options, including the Google provider, Prisma adapter, and session strategies.",
+            "code": "import { NextAuthOptions } from \"next-auth\";\nimport GoogleProvider from \"next-auth/providers/google\";\nimport { PrismaAdapter } from \"@next-auth/prisma-adapter\";\nimport prisma from \"../../../../lib/prisma\";\n\nconst authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_CLIENT_ID!,\n      clientSecret: process.env.GOOGLE_CLIENT_SECRET!\n    })\n  ],\n  adapter: PrismaAdapter(prisma),\n  session: {\n    strategy: \"database\"\n  },\n  callbacks: {\n    async session({ session, user }) {\n      if (session.user && user) {\n        session.user.id = user.id;\n      }\n      return session;\n    },\n    async redirect({ url, baseUrl }) {\n      if (url.includes(\"/api/auth/callback/google\")) {\n        return `${baseUrl}/dashboard`;\n      }\n      return baseUrl;\n    }\n  }\n};\n\nexport default authOptions;"
+          },
+          "authHandler": {
+            "description": "authHandler.ts file: Exports authentication handlers for GET and POST routes, allowing NextAuth to manage authentication requests.",
+            "code": "import NextAuth from \"next-auth\";\nimport authOptions from \"../authOptions\";\n\nconst handler = NextAuth(authOptions);\n\nexport { handler as GET, handler as POST };"
+          }
+        }
+      },
+      "session_management_protection": {
+        "title": "9.- Session Management and Route Protection",
+        "description": "Mechanisms were implemented to manage user sessions and protect routes that require authentication. Using the useSession hook from NextAuth on the frontend, the existence of an active session was verified before allowing access to certain parts of the application, such as the task dashboard."
+      },
+      "frontend_components": {
+        "title": "10.- Frontend Components Development",
+        "description": "Several key frontend components were developed for the application's functionality.",
+        "components": {
+          "SessionWrapper": {
+            "description": "SessionWrapper: Provides session context to all child components, allowing any component to access user session information.",
+            "code": "'use client';\n import { SessionProvider } from \"next-auth/react\";\n\nexport default function SessionWrapper({ children }: { children: React.ReactNode }) {\n  return <SessionProvider>{children}</SessionProvider>;\n}"
+          },
+          "DashboardPage": {
+            "description": "DashboardPage: The main page for authenticated users, displaying a personalized greeting, the user's profile picture, a form to create new tasks, and a list of existing tasks.",
+            "code": "\"use client\";\nimport React, { useState } from 'react';\nimport { useSession } from 'next-auth/react';\nimport TaskList from './../components/TaskList';\nimport NewTaskForm from './../components/NewTaskForm';\nimport Image from 'next/image';\n\nconst DashboardPage: React.FC = () => {\n  const { data: session } = useSession();\n  const [refreshTasks, setRefreshTasks] = useState(false);\n\n  const handleTaskCreated = () => {\n    setRefreshTasks(!refreshTasks);\n  };\n\n  if (!session) {\n    return (\n      <div className=\"min-h-screen flex items-center justify-center\">\n        <p className=\"text-xl text-gray-500\">Loading...</p>\n      </div>\n    );\n  }\n\n  return (\n    <main className=\"flex flex-col items-center justify-center mt-6 mx-6 mb-6\">\n      <div className=\"flex flex-col bg-[rgba(var(--color-bg),0.7)] backdrop-blur-md p-2 sm:p-4 md:p-6 rounded-lg\">\n        <div className=\"flex flex-col items-center justify-center \">\n          <h1 className=\"self-center\">\n            Welcome, {session.user?.name}\n          </h1>\n          {session.user?.image && (\n            <Image\n              width={150}\n              height={150}\n              src={session.user.image}\n              alt=\"Profile picture\"\n              className=\"rounded-full shadow-lg items-center\"\n            />\n          )}\n        </div>\n\n        <NewTaskForm onTaskCreated={handleTaskCreated} />\n        <TaskList key={`${refreshTasks}`} />\n      </div>\n    </main>\n  );\n};\n\nexport default DashboardPage;"
+          }
+        }
+      },
+      "task_operations_api": {
+        "title": "11.- Task Operations Handling in the API",
+        "description": "Functions were developed to handle task deletion and updating through the API.",
+
+  "operations": {
+    "deleteTask": {
+      "description": "Deletes a task by verifying the task ID validity. If valid, it removes it from the database and properly handles errors.",
+      "code": "import { NextResponse } from 'next/server';\nimport prisma from '../../../../../lib/prisma';\n\nexport async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {\n  const resolvedParams = await params;\n  const taskId = Number(resolvedParams.id);\n  if (isNaN(taskId)) {\n    return NextResponse.json({ error: \"Invalid task ID\" }, { status: 400 });\n  }\n\n  try {\n    await prisma.task.delete({ where: { id: taskId } });\n    return new NextResponse(null, { status: 204 });\n  } catch (error) {\n    console.error('Error deleting task:', error);\n    return NextResponse.json(\n      { error: 'Error deleting task', details: error instanceof Error ? error.message : String(error) },\n      { status: 500 }\n    );\n  }\n}"
+    },
+    "updateTask": {
+      "description": "Updates a task after validating the task ID and provided data. Handles errors and ensures appropriate response.",
+      "code": "export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {\n  const resolvedParams = await params;\n  const taskId = Number(resolvedParams.id);\n  if (isNaN(taskId)) {\n    return NextResponse.json({ error: \"Invalid task ID\" }, { status: 400 });\n  }\n\n  try {\n    const { title, completed } = await request.json();\n\n    if (title === undefined || completed === undefined) {\n      return NextResponse.json({ error: \"Title and completed status are required\" }, { status: 400 });\n    }\n\n    const updatedTask = await prisma.task.update({\n      where: { id: taskId },\n      data: { title, completed }\n    });\n\n    return NextResponse.json(updatedTask, { status: 200 });\n  } catch (error) {\n    console.error('Error updating task:', error);\n    return NextResponse.json(\n      { error: 'Error updating task', details: error instanceof Error ? error.message : String(error) },\n      { status: 500 }\n    );\n  }\n}"
+    }
+  }
+},
+"prisma_models_definition": {
+  "title": "12.- Models Definition with Prisma",
+  "description": "Data models were defined using Prisma, which facilitated interaction with the database and ensured data integrity.",
+  "models": {
+    "Task": {
+      "description": "Represents a task with fields for ID, title, completion status, and an optional relation to the user who created it.",
+      "code": "model Task {\n  id         Int      @id @default(autoincrement())\n  title      String\n  completed  Boolean  @default(false)\n  user       User?    @relation(fields: [userId], references: [id])\n  userId     String?\n}"
+    },
+    "User": {
+      "description": "Represents a user with fields for ID, name, email, image, and relationships to tasks, accounts, and sessions.",
+      "code": "model User {\n  id            String   @id @default(cuid())\n  name          String?\n  email         String?  @unique\n  emailVerified DateTime?\n  image         String?\n  tasks         Task[]\n  accounts      Account[]\n  sessions      Session[]\n}"
+    }
+  }
+},
+"prisma_configuration_client": {
+  "title": "13.- Prisma Configuration and Client",
+  "description": "Prisma was configured with an automatically generated client that facilitates interactions with the database. The configuration includes the database provider (PostgreSQL) and the connection URL, which is obtained from environment variables.",
+  "configuration": {
+    "client": {
+      "description": "Generates the Prisma client using the 'prisma-client-js' provider.",
+      "code": "generator client {\n  provider = \"prisma-client-js\"\n}"
+    },
+    "datasource": {
+      "description": "Defines the data source, configuring PostgreSQL as the provider and the connection URL from environment variables.",
+      "code": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}"
+    }
+  }
+},
+"frontend_session_management": {
+  "title": "14.- Frontend Session Management",
+  "description": "A session provider was implemented on the frontend using NextAuth's SessionProvider. This ensures that all child components have access to session information, allowing consistent authentication state management across the application.",
+  "session_provider": {
+    "description": "Provides session context to all child components through NextAuth's SessionProvider.",
+    "code": "'use client';\nimport { SessionProvider } from \"next-auth/react\";\n\nexport default function SessionWrapper({ children }: { children: React.ReactNode }) {\n  return <SessionProvider>{children}</SessionProvider>;\n}"
+  }
+},
+"ui_ux": {
+  "title": "15.- User Interface and Experience",
+  "description": "The user interface was designed with simplicity and efficiency in mind. Upon logging in, the user is greeted with a personalized welcome and profile picture. A form is provided to create new tasks, along with a dynamic list displaying existing tasks. The application is responsive, ensuring an optimal experience across devices."
+},
+"error_handling_validation": {
+  "title": "16.- Error Handling and Validation",
+  "description": "Robust mechanisms were implemented to handle errors and validate data on both the frontend and backend. Validations ensure that user-entered data is correct and complete before being processed. Additionally, database operation errors are handled appropriately, providing clear feedback to the user in case of failures. You can find more details in the repository!"
+},
+"deployment_testing": {
+  "title": "17.- Deployment and Final Testing",
+  "description": "Finally, thorough testing was conducted to ensure all functionalities operated correctly. Frontend-backend interactions, session management, and data integrity in the database were verified. After confirming the application's stability, the final deployment was carried out, making it ready for user access."
+},
+"technologies": {
+  "title": "18.- Technologies",
+  "description": "List of technologies used in the project, along with their description and specific use.",
+  "items": {
+    "Next.js": {
+      "description": "Next.js is a React framework that allows for the generation of static websites and server-rendered web applications.",
+      "usage": "Used to structure the application, manage routing, handle API routes, and facilitate both server-side and client-side rendering.",
+      "icon": "nextjs-icon"
+    },
+    "React.js": {
+      "description": "React is a JavaScript library for building interactive and reusable user interfaces.",
+      "usage": "Employed to develop user interface components, such as new task forms, task lists, and navigation elements.",
+      "icon": "react-icon"
+    },
+    "TypeScript": {
+      "description": "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript, providing static typing and better development tools.",
+      "usage": "Used to write more robust and maintainable code, improving early error detection and facilitating development with autocomplete and type checking.",
+      "icon": "typescript-icon"
+    },
+    "NextAuth.js": {
+      "description": "NextAuth.js is a complete authentication solution for Next.js applications, supporting multiple authentication providers.",
+      "usage": "Implemented to manage user authentication, allowing login via Google and secure session management.",
+      "icon": "nextauth-icon"
+    },
+    "Prisma ORM": {
+      "description": "Prisma is a modern Object-Relational Mapping (ORM) that facilitates interaction with databases through typed models.",
+      "usage": "Used to define and manage data models (such as users and tasks), perform database migrations, and simplify CRUD operations.",
+      "icon": "prisma-icon"
+    },
+    "Prisma Adapter for NextAuth": {
+      "description": "An adapter that integrates Prisma ORM with NextAuth.js, allowing user account and session management directly in the database.",
+      "usage": "Facilitated synchronization between NextAuth's authentication models and the database, ensuring efficient user and session management.",
+      "icon": "prisma-nextauth-icon"
+    },
+    "Neon Tech (Neon)": {
+      "description": "Neon is a modern serverless database platform offering scalable, managed PostgreSQL databases.",
+      "usage": "Used to host the PostgreSQL database, providing a scalable, high-performance solution for storing user and task data.",
+      "icon": "neon-icon"
+    },
+    "PostgreSQL": {
+      "description": "PostgreSQL is an open-source relational database management system known for its robustness and support for advanced features.",
+      "usage": "Served as the main database to store information on users, tasks, and sessions, managed through Neon and Prisma.",
+      "icon": "postgresql-icon"
+    },
+    "Google Cloud": {
+      "description": "Google Cloud is a suite of cloud computing services offering infrastructure, platforms, and development tools.",
+      "usage": "Configured to manage Google authentication credentials, allowing users to log in via their Google accounts.",
+      "icon": "google-cloud-icon"
+    },
+    "Tailwind CSS": {
+      "description": "Tailwind CSS is a utility-first CSS framework that allows for fast and consistent user interface design through pre-defined classes.",
+      "usage": "Used to style application components, providing a clean, responsive appearance without the need to write custom CSS from scratch.",
+      "icon": "tailwind-icon"
+    },
+    "Next.js API Routes": {
+      "description": "Next.js API routes allow for the creation of serverless API endpoints directly within a Next.js application.",
+      "usage": "Used to implement CRUD operations (Create, Read, Update, Delete) for tasks, handling backend logic and database interaction.",
+      "icon": "api-routes-icon"
+    },
+    "Next.js Image Component": {
+      "description": "The Next.js next/image component automatically optimizes images, improving image loading performance.",
+      "usage": "Used to display user profile photos in an optimized and responsive manner.",
+      "icon": "image-component-icon"
+    },
+    "Environment Variables": {
+      "description": "Environment variables allow for the secure management of sensitive and environment-specific configurations.",
+      "usage": "Employed to store sensitive credentials like GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and DATABASE_URL, ensuring they are not exposed in the source code.",
+      "icon": "env-variables-icon"
+    },
+    "Prisma Client": {
+      "description": "Prisma Client is an automatically generated library that enables database interaction using a query-builder-like API.",
+      "usage": "Facilitated database operations from the backend, allowing for easy, typed creation, reading, updating, and deletion of records.",
+      "icon": "prisma-client-icon"
+    },
+    "GitHub": {
+      "description": "GitHub is a Git repository hosting platform that facilitates collaboration and version control.",
+      "usage": "Used to manage the project's source code, maintain a change history through commits, and collaborate on development.",
+      "icon": "github-icon"
+    },
+    "Vercel": {
+      "description": "Vercel is a deployment platform optimized for Next.js applications, offering serverless hosting and CDN.",
+      "usage": "Commonly used to deploy Next.js applications on Vercel due to its native integration and optimization for this framework.",
+      "icon": "vercel-icon"
+    },
+    "Git (Version Control)": {
+      "description": "Git is a distributed version control system that allows tracking changes in source code and collaborating with other developers.",
+      "usage": "Essential for managing development history, branching for new features, and maintaining an organized workflow.",
+      "icon": "git-icon"
+    },
+    "Node.js": {
+      "description": "Node.js is a JavaScript runtime environment for server-side execution.",
+      "usage": "Fundamental for running the application's backend, handling API routes, and managing dependencies via npm or yarn.",
+      "icon": "nodejs-icon"
+    },
+    "npm or Yarn": {
+      "description": "Package managers for JavaScript that allow for the installation and management of project dependencies.",
+      "usage": "Used to install and manage required dependencies such as Next.js, React, Prisma, NextAuth.js, among others.",
+      "icon": "npm-yarn-icon"
+    }
+  }
+},
+
+"conclusion": {
+  "title": "Conclusion",
+  "description": "The development of the todo-app involved a combination of modern technologies and tools that facilitated the creation of a robust, scalable, and maintainable application. From efficient database management with Prisma and Neon Tech, to secure authentication with NextAuth.js and Google Cloud, each technology played a crucial role. Additionally, the use of Next.js and React ensured a smooth and responsive user experience, while Tailwind CSS enabled quick and consistent styling of interface components."
+},
+"card": {
+  "title": "🌟 Discover the Magic Behind the Code 🌟",
+  "description": "If you're intrigued by how this application was built, or simply want to dive into the code, you're just a click away! Exploring the repository, you can see every line that brings this small task app to life and learn about the technical details behind its functionality.",
+  "githubButton": "Visit the GitHub Repository",
+  "testButton": "Try me"
+}
+},
+"use":"Usage"
+
+  
 }
 
       

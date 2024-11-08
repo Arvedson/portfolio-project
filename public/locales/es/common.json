@@ -785,8 +785,274 @@
       "Logical": "Lógica",
       "Control-Structures": "Estructuras de Control",
       "Functionss": "Funciones y ES6+",
-      "Beyond": "ES6 y más allá"
-    }
+      "Beyond": "ES6 y más allá",
+
+
+      "todo_app_short_description":"TaskTrack demuestra la gestión de tareas simplificada a través de un MVP minimalista diseñado con tecnologías web modernas. Perfecto para demostrar prácticas de codificación limpia, diseño responsivo y más.",
+      "todo_app_title":"MVP de Gestión de Tareas ",
+
+      
+        "todoapp": {
+          "introduction": {
+           "titulo":"titulo de introduccion",
+           "subtitulo":"descripcion de introduccion"
+          },
+          "database_connection": {
+            "title": "1.- Conexión a la Base de Datos con Neon Tech",
+            "description": "El primer paso en el desarrollo de la aplicación fue establecer una conexión robusta y eficiente con la base de datos utilizando Neon Tech. Neon Tech ofrece soluciones de base de datos modernas y escalables, lo que permitió manejar de manera efectiva los datos de las tareas y usuarios. La configuración inicial incluyó la definición de las variables de entorno necesarias y la integración con Prisma para facilitar las operaciones de la base de datos."
+          },
+          "crud_operations": {
+            "title": "2.- Implementación de Operaciones CRUD",
+            "description": "Una vez establecida la conexión con la base de datos, se procedió a desarrollar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Estas operaciones son fundamentales para gestionar las tareas dentro de la aplicación. Se implementaron endpoints API que permitieron interactuar con la base de datos, asegurando que el servidor pudiera manejar correctamente las solicitudes de creación, lectura, actualización y eliminación de tareas."
+          },
+          "nextauth_integration": {
+            "title": "3. Integración de NextAuth para Autenticación",
+            "description": "Para manejar la autenticación de usuarios de manera segura y eficiente, se instaló NextAuth. NextAuth es una biblioteca de autenticación completa para aplicaciones Next.js que simplifica la gestión de sesiones y proveedores de autenticación. En este proyecto, se configuró NextAuth para utilizar Google como proveedor de autenticación, permitiendo a los usuarios iniciar sesión utilizando sus cuentas de Google."
+          },
+          "google_cloud_local": {
+            "title": "4.- Configuración de Google Cloud para Desarrollo Local",
+            "description": "Se configuró Google Cloud para facilitar el desarrollo local. Esta configuración incluyó la creación de credenciales necesarias para la autenticación con Google, así como la configuración de las variables de entorno (GOOGLE_CLIENT_ID y GOOGLE_CLIENT_SECRET) para que la aplicación pudiera comunicarse con los servicios de Google de manera segura durante el desarrollo."
+          },
+          "prisma_adapter_nextauth": {
+            "title": "5.- Adaptador Prisma para NextAuth",
+            "description": "Para sincronizar los modelos de datos con la base de datos, se conectó un adaptador de Prisma a NextAuth. Prisma es un ORM (Object-Relational Mapping) que facilita la interacción con la base de datos mediante modelos tipados. El adaptador Prisma permite que NextAuth gestione las cuentas, sesiones y usuarios directamente en la base de datos, asegurando una integración fluida y eficiente."
+          },
+          "api_development": {
+            "title": "6.- Desarrollo de la API",
+            "description": "Con la autenticación y las operaciones CRUD en su lugar, se desarrolló la API de la aplicación. La API se encargó de manejar las solicitudes del frontend, interactuar con la base de datos a través de Prisma y gestionar las sesiones de usuario mediante NextAuth. Se implementaron endpoints específicos para manejar la obtención, creación, actualización y eliminación de tareas, asegurando que cada operación estuviera protegida y validada adecuadamente."
+          },
+          "app_styling": {
+            "title": "7.- Estilización de la Aplicación",
+            "description": "Paralelamente al desarrollo de la API, se realizó una estilización leve de la aplicación para mejorar la experiencia del usuario. Utilizando CSS y React, se diseñaron componentes visuales intuitivos y responsivos que permitieron una interacción fluida con la aplicación. La interfaz de usuario se enfocó en la simplicidad y funcionalidad, garantizando que los usuarios pudieran gestionar sus tareas de manera eficiente."
+          },
+          "auth_structure_nextauth": {
+            "title": "8.- Estructura de Autenticación con NextAuth",
+            "description": "Configuración y manejo de autenticación en Next.js utilizando NextAuth con Google como proveedor y Prisma como adaptador de base de datos.",
+            "files": {
+              "authOptions": {
+                "description": "Configura las opciones de NextAuth, incluyendo el proveedor de Google, el adaptador Prisma y las estrategias de sesión.",
+                "code": "import { NextAuthOptions } from \"next-auth\";\nimport GoogleProvider from \"next-auth/providers/google\";\nimport { PrismaAdapter } from \"@next-auth/prisma-adapter\";\nimport prisma from \"../../../../lib/prisma\";\n\nconst authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_CLIENT_ID!,\n      clientSecret: process.env.GOOGLE_CLIENT_SECRET!\n    })\n  ],\n  adapter: PrismaAdapter(prisma),\n  session: {\n    strategy: \"database\"\n  },\n  callbacks: {\n    async session({ session, user }) {\n      if (session.user && user) {\n        session.user.id = user.id;\n      }\n      return session;\n    },\n    async redirect({ url, baseUrl }) {\n      if (url.includes(\"/api/auth/callback/google\")) {\n        return `${baseUrl}/dashboard`;\n      }\n      return baseUrl;\n    }\n  }\n};\n\nexport default authOptions;"
+              },
+              "authHandler": {
+                "description": "Archivo authHandler.ts: Exporta los manejadores de autenticación para las rutas GET y POST, permitiendo que NextAuth gestione las solicitudes de autenticación.",
+                "code": "import NextAuth from \"next-auth\";\nimport authOptions from \"../authOptions\";\n\nconst handler = NextAuth(authOptions);\n\nexport { handler as GET, handler as POST };"
+              }
+            }
+          },
+          "session_management_protection": {
+            "title": "9.- Gestión de Sesiones y Protección de Rutas",
+            "description": "Se implementaron mecanismos para gestionar las sesiones de usuario y proteger las rutas que requieren autenticación. Utilizando el hook useSession de NextAuth en el frontend, se verificó la existencia de una sesión activa antes de permitir el acceso a ciertas partes de la aplicación, como el panel de control de tareas."
+          },
+          "frontend_components": {
+            "title": "10.- Desarrollo de Componentes Frontend",
+            "description": "Se desarrollaron varios componentes frontend clave para la funcionalidad de la aplicación.",
+            "components": {
+              "SessionWrapper": {
+                "description": "SessionWrapper: Provee el contexto de sesión a todos los componentes hijos, permitiendo que cualquier componente acceda a la información de la sesión del usuario.",
+                "code": "'use client';\n import { SessionProvider } from \"next-auth/react\";\n\nexport default function SessionWrapper({ children }: { children: React.ReactNode }) {\n  return <SessionProvider>{children}</SessionProvider>;\n}"
+              },
+              "DashboardPage": {
+                "description": "DashboardPage: La página principal del usuario autenticado, que muestra un saludo personalizado, la foto de perfil del usuario, un formulario para crear nuevas tareas y una lista de tareas existentes.",
+                "code": "\"use client\";\nimport React, { useState } from 'react';\nimport { useSession } from 'next-auth/react';\nimport TaskList from './../components/TaskList';\nimport NewTaskForm from './../components/NewTaskForm';\nimport Image from 'next/image';\n\nconst DashboardPage: React.FC = () => {\n  const { data: session } = useSession();\n  const [refreshTasks, setRefreshTasks] = useState(false);\n\n  const handleTaskCreated = () => {\n    setRefreshTasks(!refreshTasks);\n  };\n\n  if (!session) {\n    return (\n      <div className=\"min-h-screen flex items-center justify-center\">\n        <p className=\"text-xl text-gray-500\">Cargando...</p>\n      </div>\n    );\n  }\n\n  return (\n    <main className=\"flex flex-col items-center justify-center mt-6 mx-6 mb-6\">\n      <div className=\"flex flex-col bg-[rgba(var(--color-bg),0.7)] backdrop-blur-md p-2 sm:p-4 md:p-6 rounded-lg\">\n        <div className=\"flex flex-col items-center justify-center \">\n          <h1 className=\"self-center\">\n            Bienvenido, {session.user?.name}\n          </h1>\n          {session.user?.image && (\n            <Image\n              width={150}\n              height={150}\n              src={session.user.image}\n              alt=\"Foto de perfil\"\n              className=\"rounded-full shadow-lg items-center\"\n            />\n          )}\n        </div>\n\n        <NewTaskForm onTaskCreated={handleTaskCreated} />\n        <TaskList key={`${refreshTasks}`} />\n      </div>\n    </main>\n  );\n};\n\nexport default DashboardPage;"
+              }
+            }
+          },
+          "task_operations_api": {
+            "title": "11.- Manejo de Operaciones de Tareas en la API",
+            "description": "Se desarrollaron funciones para manejar la eliminación y actualización de tareas a través de la API.",
+            "operations": {
+              "deleteTask": {
+                "description": "Elimina una tarea verificando la validez del ID de la tarea. Si es válido, la elimina de la base de datos y maneja los errores adecuadamente.",
+                "code": "import { NextResponse } from 'next/server';\nimport prisma from '../../../../../lib/prisma';\n\nexport async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {\n  const resolvedParams = await params;\n  const taskId = Number(resolvedParams.id);\n  if (isNaN(taskId)) {\n    return NextResponse.json({ error: \"Invalid task ID\" }, { status: 400 });\n  }\n\n  try {\n    await prisma.task.delete({ where: { id: taskId } });\n    return new NextResponse(null, { status: 204 });\n  } catch (error) {\n    console.error('Error al eliminar la tarea:', error);\n    return NextResponse.json(\n      { error: 'Error deleting task', details: error instanceof Error ? error.message : String(error) },\n      { status: 500 }\n    );\n  }\n}"
+              },
+              "updateTask": {
+                "description": "Actualiza una tarea después de validar el ID de la tarea y los datos proporcionados. Maneja errores y asegura una respuesta adecuada.",
+                "code": "export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {\n  const resolvedParams = await params;\n  const taskId = Number(resolvedParams.id);\n  if (isNaN(taskId)) {\n    console.error(\"ID de tarea no válido:\", resolvedParams.id);\n    return NextResponse.json({ error: \"Invalid task ID\" }, { status: 400 });\n  }\n\n  try {\n    const { title, completed } = await request.json();\n\n    if (title === undefined || completed === undefined) {\n      return NextResponse.json({ error: \"Title and completed status are required\" }, { status: 400 });\n    }\n\n    const updatedTask = await prisma.task.update({\n      where: { id: taskId },\n      data: { title, completed }\n    });\n\n    return NextResponse.json(updatedTask, { status: 200 });\n  } catch (error) {\n    console.error('Error al actualizar la tarea:', error);\n    return NextResponse.json(\n      { error: 'Error updating task', details: error instanceof Error ? error.message : String(error) },\n      { status: 500 }\n    );\n  }\n}"
+              }
+            }
+          },
+          "prisma_models_definition": {
+            "title": "12.- Definición de Modelos con Prisma",
+            "description": "Se definieron los modelos de datos utilizando Prisma, lo que facilitó la interacción con la base de datos y garantizó la integridad de los datos.",
+            "models": {
+              "Task": {
+                "description": "Representa una tarea con campos para el ID, título, estado de completado y una relación opcional con el usuario que la creó.",
+                "code": "model Task {\n  id         Int      @id @default(autoincrement())\n  title      String\n  completed  Boolean  @default(false)\n  user       User?    @relation(fields: [userId], references: [id])\n  userId     String?\n}"
+              },
+              "User": {
+                "description": "Representa un usuario con campos para el ID, nombre, correo electrónico, imagen y relaciones con tareas, cuentas y sesiones.",
+                "code": "model User {\n  id            String   @id @default(cuid())\n  name          String?\n  email         String?  @unique\n  emailVerified DateTime?\n  image         String?\n  tasks         Task[]\n  accounts      Account[]\n  sessions      Session[]\n}"
+              },
+              "Account": {
+                "description": "Maneja las cuentas de autenticación de los usuarios, permitiendo múltiples proveedores y gestionando tokens de acceso.",
+                "code": "model Account {\n  id                String  @id @default(cuid())\n  userId            String\n  type              String\n  provider          String\n  providerAccountId String\n  refresh_token     String?\n  access_token      String?\n  expires_at        Int?\n  token_type        String?\n  scope             String?\n  id_token          String?\n  session_state     String?\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n  @@unique([provider, providerAccountId])\n}"
+              },
+              "Session": {
+                "description": "Gestiona las sesiones de los usuarios, permitiendo el seguimiento de la validez de cada sesión.",
+                "code": "model Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n}"
+              }
+            }
+          },
+          "prisma_configuration_client": {
+            "title": "13.- Configuración de Prisma y el Cliente",
+            "description": "Se configuró Prisma con un cliente generado automáticamente que facilita las interacciones con la base de datos. La configuración incluye el proveedor de la base de datos (PostgreSQL) y la URL de conexión, que se obtiene de las variables de entorno.",
+            "configuration": {
+              "client": {
+                "description": "Genera el cliente de Prisma utilizando el proveedor 'prisma-client-js'.",
+                "code": "generator client {\n  provider = \"prisma-client-js\"\n}"
+              },
+              "datasource": {
+                "description": "Define la fuente de datos, configurando PostgreSQL como proveedor y la URL de conexión desde las variables de entorno.",
+                "code": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}"
+              }
+            }
+          },
+          "frontend_session_management": {
+            "title": "14.- Manejo de Sesiones en el Frontend",
+            "description": "Se implementó un proveedor de sesión en el frontend utilizando SessionProvider de NextAuth. Esto asegura que todos los componentes hijos tengan acceso a la información de la sesión, permitiendo una gestión coherente del estado de autenticación en toda la aplicación.",
+            "session_provider": {
+              "description": "Proporciona el contexto de sesión a todos los componentes hijos mediante SessionProvider de NextAuth.",
+              "code": "'use client';\nimport { SessionProvider } from \"next-auth/react\";\n\nexport default function SessionWrapper({ children }: { children: React.ReactNode }) {\n  return <SessionProvider>{children}</SessionProvider>;\n}"
+            }
+          },
+          "ui_ux": {
+            "title": "15.- Interfaz de Usuario y Experiencia",
+            "description": "La interfaz de usuario se diseñó pensando en la simplicidad y la eficiencia. Al iniciar sesión, el usuario es recibido con un saludo personalizado y su foto de perfil. Se proporciona un formulario para crear nuevas tareas y una lista dinámica que muestra las tareas existentes. La aplicación es responsiva, asegurando una experiencia óptima en diferentes dispositivos."
+          },
+          "error_handling_validation": {
+            "title": "16.- Manejo de Errores y Validaciones",
+            "description": "Se implementaron mecanismos robustos para manejar errores y validar datos tanto en el frontend como en el backend. Las validaciones aseguran que los datos ingresados por el usuario sean correctos y completos antes de ser procesados. Además, se manejan adecuadamente los errores en las operaciones de la base de datos y se proporciona retroalimentación clara al usuario en caso de fallos. Puedes encontrar mas detalles en el repositorio!"
+          },
+          "deployment_testing": {
+            "title": "17.- Despliegue y Pruebas Finales",
+            "description": "Finalmente, se realizaron pruebas exhaustivas para asegurar que todas las funcionalidades operan correctamente. Se verificó la interacción entre el frontend y el backend, la correcta gestión de sesiones y la integridad de los datos en la base de datos. Una vez confirmada la estabilidad de la aplicación, se procedió al despliegue final, asegurando que la aplicación esté lista para ser utilizada por los usuarios."
+          },
+          "technologies": {
+            "title": "18.- Tecnologías",
+            "description": "Lista de tecnologías utilizadas en el proyecto, junto con su descripción y uso específico.",
+            "items": {
+              "Next.js": {
+                "description": "Next.js es un framework de React que permite la generación de sitios web estáticos y aplicaciones web renderizadas en el servidor.",
+                "usage": "Se utilizó para estructurar la aplicación, gestionar el enrutamiento, manejar las API routes y facilitar la renderización tanto del lado del servidor como del cliente.",
+                "icon": "nextjs-icon"
+              },
+              "React.js": {
+                "description": "React es una biblioteca de JavaScript para construir interfaces de usuario interactivas y reutilizables.",
+                "usage": "Se empleó para desarrollar los componentes de la interfaz de usuario, como formularios de nuevas tareas, listas de tareas y elementos de navegación.",
+                "icon": "react-icon"
+              },
+              "TypeScript": {
+                "description": "TypeScript es un superset tipado de JavaScript que compila a JavaScript puro, proporcionando tipado estático y mejores herramientas de desarrollo.",
+                "usage": "Se utilizó para escribir código más robusto y mantenible, mejorando la detección temprana de errores y facilitando el desarrollo con autocompletado y verificación de tipos.",
+                "icon": "typescript-icon"
+              },
+              "NextAuth.js": {
+                "description": "NextAuth.js es una solución de autenticación completa para aplicaciones Next.js, que soporta múltiples proveedores de autenticación.",
+                "usage": "Se implementó para gestionar la autenticación de usuarios, permitiendo iniciar sesión a través de Google y gestionar sesiones de usuario de manera segura.",
+                "icon": "nextauth-icon"
+              },
+              "Prisma ORM": {
+                "description": "Prisma es un ORM (Object-Relational Mapping) moderno que facilita la interacción con bases de datos mediante modelos tipados.",
+                "usage": "Se utilizó para definir y gestionar los modelos de datos (como usuarios y tareas), realizar migraciones de base de datos y simplificar las operaciones CRUD.",
+                "icon": "prisma-icon"
+              },
+              "Prisma Adapter para NextAuth": {
+                "description": "Un adaptador que integra Prisma ORM con NextAuth.js, permitiendo gestionar cuentas de usuarios y sesiones directamente en la base de datos.",
+                "usage": "Facilitó la sincronización entre los modelos de autenticación de NextAuth y la base de datos, asegurando una gestión eficiente de usuarios y sesiones.",
+                "icon": "prisma-nextauth-icon"
+              },
+              "Neon Tech (Neon)": {
+                "description": "Neon es una plataforma de bases de datos serverless moderna que ofrece bases de datos PostgreSQL escalables y gestionadas.",
+                "usage": "Se utilizó para alojar la base de datos PostgreSQL, proporcionando una solución escalable y de alto rendimiento para almacenar datos de usuarios y tareas.",
+                "icon": "neon-icon"
+              },
+              "PostgreSQL": {
+                "description": "PostgreSQL es un sistema de gestión de bases de datos relacional de código abierto, conocido por su robustez y soporte de características avanzadas.",
+                "usage": "Actuó como la base de datos principal para almacenar información sobre usuarios, tareas y sesiones, gestionada a través de Neon y Prisma.",
+                "icon": "postgresql-icon"
+              },
+              "Google Cloud": {
+                "description": "Google Cloud es una suite de servicios de computación en la nube que ofrece infraestructura, plataformas y servicios de desarrollo.",
+                "usage": "Se configuró para gestionar las credenciales de autenticación con Google, permitiendo a los usuarios iniciar sesión mediante sus cuentas de Google.",
+                "icon": "google-cloud-icon"
+              },
+              "Tailwind CSS": {
+                "description": "Tailwind CSS es un framework CSS de utilidad que permite diseñar interfaces de usuario de manera rápida y consistente mediante clases predefinidas.",
+                "usage": "Se empleó para estilizar los componentes de la aplicación, proporcionando una apariencia limpia y responsiva sin necesidad de escribir CSS personalizado desde cero.",
+                "icon": "tailwind-icon"
+              },
+              "Next.js API Routes": {
+                "description": "Las API routes de Next.js permiten crear endpoints de API serverless directamente dentro de una aplicación Next.js.",
+                "usage": "Se utilizaron para implementar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de las tareas, manejando la lógica del backend y la interacción con la base de datos.",
+                "icon": "api-routes-icon"
+              },
+              "Next.js Image Component": {
+                "description": "El componente next/image de Next.js optimiza las imágenes automáticamente, mejorando el rendimiento de la carga de imágenes.",
+                "usage": "Se utilizó para mostrar las fotos de perfil de los usuarios de manera optimizada y responsiva.",
+                "icon": "image-component-icon"
+              },
+              "Environment Variables": {
+                "description": "Las variables de entorno permiten gestionar configuraciones sensibles y específicas del entorno de manera segura.",
+                "usage": "Se emplearon para almacenar credenciales sensibles como GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET y DATABASE_URL, asegurando que no se expongan en el código fuente.",
+                "icon": "env-variables-icon"
+              },
+              "Prisma Client": {
+                "description": "Prisma Client es una biblioteca generada automáticamente que permite interactuar con la base de datos utilizando un API tipo query builder.",
+                "usage": "Facilitó las operaciones de base de datos desde el backend, permitiendo crear, leer, actualizar y eliminar registros de manera sencilla y tipada.",
+                "icon": "prisma-client-icon"
+              },
+              "GitHub": {
+                "description": "GitHub es una plataforma de alojamiento de repositorios Git que facilita la colaboración y el control de versiones.",
+                "usage": "Se utilizó para gestionar el código fuente del proyecto, llevar un historial de cambios a través de commits y colaborar en el desarrollo del proyecto.",
+                "icon": "github-icon"
+              },
+              "Vercel": {
+                "description": "Vercel es una plataforma de despliegue optimizada para aplicaciones Next.js, ofreciendo hosting serverless y CDN.",
+                "usage": "Es común desplegar aplicaciones Next.js en Vercel debido a su integración nativa y optimización para este framework.",
+                "icon": "vercel-icon"
+              },
+
+              "Git (Control de Versiones)": {
+                "description": "Git es un sistema de control de versiones distribuido que permite rastrear cambios en el código fuente y colaborar con otros desarrolladores.",
+                "usage": "Fundamental para gestionar el historial de desarrollo, realizar ramas para nuevas funcionalidades y mantener un flujo de trabajo organizado.",
+                "icon": "git-icon"
+              },
+
+              "Node.js": {
+                "description": "Node.js es un entorno de ejecución para JavaScript del lado del servidor.",
+                "usage": "Fundamental para ejecutar el backend de la aplicación, manejar las API routes y gestionar dependencias a través de npm o yarn.",
+                "icon": "nodejs-icon"
+              },
+              "npm o Yarn": {
+                "description": "Gestores de paquetes para JavaScript que permiten instalar y gestionar dependencias de proyectos.",
+                "usage": "Se utilizaron para instalar y gestionar las dependencias necesarias como Next.js, React, Prisma, NextAuth.js, entre otras.",
+                "icon": "npm-yarn-icon"
+              }
+            }
+          },
+
+          "conclusion": {
+            "title": "Conclusión",
+            "description": "El desarrollo de la todo-app involucró una combinación de tecnologías modernas y herramientas que facilitaron la creación de una aplicación robusta, escalable y fácil de mantener. Desde la gestión eficiente de la base de datos con Prisma y Neon Tech, hasta la implementación de autenticación segura con NextAuth.js y Google Cloud, cada tecnología desempeñó un papel crucial. Además, el uso de Next.js y React aseguró una experiencia de usuario fluida y responsiva, mientras que Tailwind CSS permitió una estilización rápida y coherente de los componentes de la interfaz."
+          },
+          "card": {
+            "title": "🌟 Descubre el Código Detrás de la Magia 🌟",
+            "description": "Si te intriga cómo se construyó esta aplicación, o simplemente quieres sumergirte en el código, ¡estás a un clic de distancia! Explorando el repositorio, puedes ver cada línea que da vida a esta pequeña app de tareas y conocer los detalles técnicos detrás de su funcionamiento.",
+            "githubButton": "Visita el Repositorio en GitHub",
+            "testButton": "Pruébame"
+          }
+        },
+
+        "use":"Uso"
+
+
+
+
+      }
+      
+
+      
+    
     
 
           
