@@ -1046,16 +1046,258 @@
           }
         },
 
-        "use":"Uso"
+        "use":"Uso",
+
+
+        "ququlkan_title": "Ququlkan Solar - Aplicación Web",
+        "ququlkan_desc": "Ququlkan Solar es una aplicación web que te permite cotizar un sistema solar basado en tu consumo eléctrico. Ofrece una amplia variedad de componentes y materiales interesantes para desarrolladores web, incluyendo la construcción del backend.",
+
+        "ququlkan_introduction_titulo":"Ququlkan Solar Web App",
+        "ququlkan_introduction_subtitulo":"Calculadora personalizada de sistemas solares y gestión integral de inventario basada en el consumo eléctrico.",
+
+         "titulo descripcion": "Ququlkan Solar Web App: Calculadora Personalizada de Sistemas Solares",
+        "descripcion del webapp": "Ququlkan Solar es una aplicación web diseñada para calcular sistemas solares personalizados basados en el consumo eléctrico de los clientes. Transforma el consumo eléctrico ingresado en una proyección financiera detallada del retorno de inversión, considerando los esquemas tarifarios de la CFE en México. Además, cuenta con herramientas avanzadas para la gestión de inventario, permitiendo un control eficiente de los componentes solares.",
+        
+        "introququlkan": {
+            "funcionalidad1": {
+              "titulo": "Ingreso de Consumo Eléctrico",
+              "descripcion": "Los usuarios pueden ingresar su consumo eléctrico actual. La aplicación procesa estos datos para generar una solución personalizada.",
+              "imagen": "/cotizarququlkan.png"
+            },
+            "funcionalidad2": {
+              "titulo": "Generación de Cotización Personalizada",
+              "descripcion": "Basado en el consumo ingresado, se genera una cotización detallada. Incluye información sobre los componentes necesarios y costos estimados.",
+              "imagen": "/resultsququlkan.png"
+            },
+            "funcionalidad3": {
+              "titulo": "Proyección Financiera",
+              "descripcion": "Proyección del retorno de inversión y ahorros a largo plazo. Considera los esquemas tarifarios actuales y futuros de la CFE.",
+              "imagen": "/analisisququlkan.png",
+              "imagen2": "/analisis2ququlkan.png"
+            }
+
+          },
+
+          "verWebApp": "Visitar la Aplicación Web",
+          "invitarVisita": "¡Explora esta seccion de la aplicación web y cotiza tu sistema solar personalizado!",
+
+
+
+          "desafio": {
+            "titulo": "Desafío: Identificar Patrones Consistentes en Texto OCR",
+            "descripcion": "Al trabajar con texto extraído de imágenes de recibos mediante OCR (Reconocimiento Óptico de Caracteres), me encontré con varios obstáculos:"
+          },
+          "obstaculos": [
+            {
+              "titulo": "Inconsistencias en el Texto",
+              "descripcion": "El OCR puede introducir errores debido a la calidad de la imagen, variaciones en la tipografía y otros factores."
+            },
+            {
+              "titulo": "Estructura No Estandarizada",
+              "descripcion": "Los recibos pueden tener diferentes formatos, lo que dificulta la localización de información específica."
+            },
+            {
+              "titulo": "Errores Crecientes",
+              "descripcion": "Métodos simples para identificar patrones resultaban en un margen de error creciente."
+            }
+          ],
+          "intentos_iniciales": {
+            "titulo": "Intentos Iniciales",
+            "metodos": [
+              {
+                "nombre": "Ubicar Caracteres Consecutivos Distintos",
+                "enfoque": "Buscar patrones simples, como dos caracteres específicos seguidos.",
+                "problema": "Generaba muchos falsos positivos debido a la naturaleza variada del texto OCR."
+              },
+              {
+                "nombre": "Seccionar el Texto en Tablas",
+                "enfoque": "Dividir el texto en estructuras similares a tablas para aislar la información.",
+                "problema": "La falta de consistencia en el formato del texto dificultaba este método, aumentando el margen de error."
+              }
+            ]
+          },
+          "solucion": {
+            "titulo": "Solución: Desarrollo de una Expresión Regular Efectiva",
+            "descripcion": "Para superar estos desafíos, necesitaba una forma de identificar de manera confiable los montos en pesos mexicanos dentro del texto extraído. Así nació la expresión regular:",
+            "expresion_regular": "const dollarSignRegex = /\\$(\\d{1,3}(?:,\\d{3})*\\.\\d{2})/;",
+            "analisis_detallado": [
+              {
+                "patron": "\\$",
+                "significado": "Escapa el carácter $ para buscar literalmente el signo de pesos.",
+                "funcion": "Asegura que la búsqueda comience donde aparece el signo de pesos, un identificador clave para los montos."
+              },
+              {
+                "patron": "( y )",
+                "significado": "Define un grupo de captura para extraer el valor numérico del monto.",
+                "funcion": "Permite aislar el número para su posterior procesamiento."
+              },
+              {
+                "patron": "\\d{1,3}",
+                "significado": "Busca entre 1 y 3 dígitos numéricos.",
+                "funcion": "Captura las centenas, decenas y unidades del monto, cubriendo montos desde $0 hasta $999."
+              },
+              {
+                "patron": "(?:,\\d{3})*",
+                "significado": "Un grupo no capturante que busca cero o más repeticiones de una coma seguida de tres dígitos.",
+                "detalle": [
+                  "?: indica que el grupo es no capturante.",
+                  ",\\d{3} busca una coma seguida de exactamente tres dígitos.",
+                  "* permite que este patrón aparezca cero o más veces."
+                ],
+                "funcion": "Captura los separadores de miles, permitiendo reconocer montos como $1,000, $10,000, $100,000, etc."
+              },
+              {
+                "patron": "\\.\\d{2}",
+                "significado": "Busca un punto seguido de exactamente dos dígitos.",
+                "funcion": "Captura los centavos, asegurando que el monto tenga dos decimales como es estándar en monedas."
+              }
+            ],
+            "ejemplos_capturados": [
+              "$100.00",
+              "$1,234.56",
+              "$12,345.67",
+              "$123,456.78"
+            ],
+            "razones_por_que_funciona": [
+              {
+                "titulo": "Especificidad",
+                "descripcion": "Al buscar el signo de pesos seguido de un patrón numérico específico, reduce la probabilidad de falsos positivos."
+              },
+              {
+                "titulo": "Flexibilidad",
+                "descripcion": "Maneja montos con y sin separadores de miles, adaptándose a diferentes formatos de cifras."
+              },
+              {
+                "titulo": "Precisión en Decimales",
+                "descripcion": "Al requerir dos decimales después del punto, asegura que se capturen montos monetarios válidos."
+              }
+            ]
+          },
+          "proceso_de_desarrollo": {
+            "titulo": "Proceso de Desarrollo y Lógica Detrás de la Solución",
+            "pasos": [
+              {
+                "titulo": "Identificación del Punto de Referencia",
+                "descripcion": [
+                  "El signo de pesos $ es un carácter distintivo que precede a los montos monetarios en los recibos.",
+                  "Usarlo como punto de partida ayuda a anclar la búsqueda en el lugar correcto."
+                ]
+              },
+              {
+                "titulo": "Consideración de Formatos Numéricos",
+                "descripcion": [
+                  "Los montos pueden variar en longitud y formato, por lo que necesitaba una expresión que:",
+                  "Aceptara montos pequeños y grandes: Desde $1.00 hasta $1,000,000.00.",
+                  "Manejara separadores de miles: Comas que separan grupos de tres dígitos.",
+                  "Incluyera los centavos: Dos dígitos después del punto decimal."
+                ]
+              },
+              {
+                "titulo": "Mitigación de Errores del OCR",
+                "descripcion": [
+                  "Al enfocarse en patrones numéricos específicos, la expresión regular es más resistente a errores comunes del OCR, como confundir letras con números.",
+                  "Sin embargo, es importante reconocer que algunos errores podrían escapar, por lo que es útil combinar este método con validaciones adicionales."
+                ]
+              }
+            ]
+          },
+          "implementacion_en_codigo": {
+            "titulo": "Implementación en el Código",
+            "codigo": "function extractKwhUsingDollarSign(text) {\n  const lines = text.split('\\n');\n  const results = [];\n  const dollarSignRegex = /\\$(\\d{1,3}(?:,\\d{3})*\\.\\d{2})/;\n\n  for (const line of lines) {\n    const dollarMatch = dollarSignRegex.exec(line);\n    if (dollarMatch) {\n      const cost = dollarMatch[1];\n      const parts = line.split('$');\n      const kwhMatch = parts[0].match(/\\d+/g);\n      if (kwhMatch) {\n        const kwh = kwhMatch[kwhMatch.length - 1];\n        const periodMatch = line.match(/del\\s+\\d+\\s+[A-Z]+\\s+\\d+\\s+al\\s+\\d+\\s+[A-Z]+\\s+\\d+/);\n        const period = periodMatch ? periodMatch[0] : '';\n        results.push({ period, kwh, cost });\n      }\n    }\n  }\n\n  return results;\n}",
+            "pasos_clave": [
+              {
+                "titulo": "Recorrer las Líneas del Texto",
+                "descripcion": "Divido el texto en líneas para analizar cada una individualmente."
+              },
+              {
+                "titulo": "Aplicar la Expresión Regular",
+                "descripcion": "Busco en cada línea si hay un monto que coincida con el patrón definido."
+              },
+              {
+                "titulo": "Extraer Datos Asociados",
+                "descripcion": [
+                  "Costo (cost): Capturado por el grupo en la expresión regular.",
+                  "Consumo en kWh (kwh):",
+                  "  - Divido la línea en partes alrededor del signo de pesos.",
+                  "  - Busco el último número antes del signo de pesos, asumiendo que representa el consumo.",
+                  "Periodo (period):",
+                  "  - Utilizo otra expresión regular para capturar el periodo de facturación."
+                ]
+              },
+              {
+                "titulo": "Agregar los Datos al Resultado",
+                "descripcion": "Si todos los datos están presentes, los agrego a un array de resultados para su posterior procesamiento."
+              }
+            ]
+          },
+          "desafios_encontrados": {
+            "titulo": "Desafíos Encontrados y Soluciones Aplicadas",
+            "desafios": [
+              {
+                "desafio": "Variabilidad en el Formato de los Recibos",
+                "problema": "Los recibos pueden presentar montos y consumos en diferentes posiciones o formatos.",
+                "solucion": "Diseñar una expresión regular flexible y lógica de análisis que pueda adaptarse a diferentes estructuras de líneas."
+              },
+              {
+                "desafio": "Errores del OCR",
+                "problema": "Caracteres mal reconocidos pueden afectar la precisión del análisis.",
+                "solucion": "Implementar validaciones adicionales y, si es necesario, preprocesamiento de imágenes para mejorar la calidad del OCR."
+              },
+              {
+                "desafio": "Datos Faltantes o Incompletos",
+                "problema": "No todas las líneas contendrán toda la información necesaria.",
+                "solucion": "Incluir comprobaciones y manejar casos en los que ciertos datos no estén disponibles, evitando que el programa falle."
+              }
+            ]
+          },
+          "impacto_y_valor": {
+            "titulo": "Impacto y Valor Agregado de Esta Solución",
+            "puntos": [
+              {
+                "titulo": "Precisión Mejorada",
+                "descripcion": "Al extraer datos de manera más confiable, se mejora la exactitud del cálculo del consumo anual y, por ende, la calidad de las proyecciones financieras ofrecidas al usuario."
+              },
+              {
+                "titulo": "Experiencia de Usuario Optimizada",
+                "descripcion": "Los usuarios no tienen que ingresar manualmente su consumo, lo que facilita el proceso y reduce la posibilidad de errores humanos."
+              },
+              {
+                "titulo": "Escalabilidad",
+                "descripcion": "La solución puede adaptarse para reconocer otros patrones o extraer información adicional si es necesario."
+              }
+            ]
+          },
+
+
+          "Obstáculos":"Obstáculos",
+          "Enfoque:":"Enfoque:",
+          "Problema":"Problema",
+          "Análisis":"Análisis Detallado de la Expresión Regular",
+          "Patrón":"Patrón",
+          "Significado":"Significado",
+          "Función:":"Función:",
+          "Ejemplos":"Ejemplos de Montos que Captura",
+          "Expresión":"Por Qué Esta Expresión Regular Funciona",
+          "Pasos":"Pasos Clave",
+          "Problema2":"Problema",
+          "Solución:":"Solución",
+          "imgreader":"/imgreader.png"
+
+
+
+
+
+
+
+
 
 
 
 
       }
       
-
       
-    
+
     
 
           

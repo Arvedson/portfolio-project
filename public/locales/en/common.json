@@ -1007,10 +1007,247 @@
   "testButton": "Try me"
 }
 },
-"use":"Usage"
+"use":"Usage",
+
+
+"ququlkan_title": "Ququlkan Solar - Web Application",
+"ququlkan_desc": "Ququlkan Solar is a web application that allows you to estimate a solar system based on your electricity consumption. It offers a wide variety of components and interesting materials for web developers, including parts of the backend.",
+"ququlkan_introduction_titulo": "Ququlkan Solar Web App",
+"ququlkan_introduction_subtitulo": "Custom solar system calculator and comprehensive inventory management based on electrical consumption.",
+
+  "titulo descripcion": "Ququlkan Solar Web App: Custom Solar System Calculator",
+  "descripcion del webapp": "Ququlkan Solar is a web application designed to calculate custom solar systems based on customers' electrical consumption. It transforms the entered electrical consumption into a detailed financial projection of the return on investment, considering the tariff schemes of the CFE in Mexico. Additionally, it features advanced tools for inventory management, allowing efficient control of solar components.",
+ 
+  "introququlkan": {
+    "funcionalidad1": {
+      "titulo": "Entry of Electrical Consumption",
+      "descripcion": "Users can enter their current electrical consumption. The application processes this data to generate a personalized solution.",
+      "imagen": "/cotizarququlkan.png"
+    },
+    "funcionalidad2": {
+      "titulo": "Generation of Personalized Quote",
+      "descripcion": "Based on the entered consumption, a detailed quote is generated. It includes information about the necessary components and estimated costs.",
+      "imagen": "/resultsququlkan.png"
+    },
+    "funcionalidad3": {
+      "titulo": "Financial Projection",
+      "descripcion": "Projection of return on investment and long-term savings. It considers the current and future tariff schemes of the CFE.",
+      "imagen": "/analisisququlkan.png",
+      "imagen2": "/analisis2ququlkan.png"
+    }
+  },
+
+
+   "verWebApp": "Visit Section",
+  "invitarVisita": "Explore this section of the web application and quote your personalized solar system!",
+
+
+  "desafio": {
+    "titulo": "Challenge: Identifying Consistent Patterns in OCR Text",
+    "descripcion": "When working with text extracted from receipt images using OCR (Optical Character Recognition), I encountered several obstacles:"
+  },
+  "obstaculos": [
+    {
+      "titulo": "Inconsistencies in the Text",
+      "descripcion": "OCR can introduce errors due to image quality, font variations, and other factors."
+    },
+    {
+      "titulo": "Non-Standardized Structure",
+      "descripcion": "Receipts may have different formats, making it difficult to locate specific information."
+    },
+    {
+      "titulo": "Increasing Errors",
+      "descripcion": "Simple methods to identify patterns resulted in an increasing margin of error."
+    }
+  ],
+  "intentos_iniciales": {
+    "titulo": "Initial Attempts",
+    "metodos": [
+      {
+        "nombre": "Locate Distinct Consecutive Characters",
+        "enfoque": "Search for simple patterns, such as two specific characters in a row.",
+        "problema": "Generated many false positives due to the varied nature of OCR text."
+      },
+      {
+        "nombre": "Section the Text into Tables",
+        "enfoque": "Divide the text into table-like structures to isolate information.",
+        "problema": "The lack of consistency in text format made this method difficult, increasing the margin of error."
+      }
+    ]
+  },
+  "solucion": {
+    "titulo": "Solution: Developing an Effective Regular Expression",
+    "descripcion": "To overcome these challenges, I needed a way to reliably identify amounts in Mexican pesos within the extracted text. This led to the creation of the regular expression:",
+    "expresion_regular": "const dollarSignRegex = /\\$(\\d{1,3}(?:,\\d{3})*\\.\\d{2})/;",
+    "analisis_detallado": [
+      {
+        "patron": "\\$",
+        "significado": "Escapes the $ character to literally search for the peso sign.",
+        "funcion": "Ensures that the search starts where the peso sign appears, a key identifier for amounts."
+      },
+      {
+        "patron": "( and )",
+        "significado": "Defines a capture group to extract the numeric value of the amount.",
+        "funcion": "Allows isolating the number for further processing."
+      },
+      {
+        "patron": "\\d{1,3}",
+        "significado": "Searches for 1 to 3 numeric digits.",
+        "funcion": "Captures the hundreds, tens, and units of the amount, covering amounts from $0 to $999."
+      },
+      {
+        "patron": "(?:,\\d{3})*",
+        "significado": "A non-capturing group that searches for zero or more repetitions of a comma followed by three digits.",
+        "detalle": [
+          "?: indicates that the group is non-capturing.",
+          ",\\d{3} searches for a comma followed by exactly three digits.",
+          "* allows this pattern to appear zero or more times."
+        ],
+        "funcion": "Captures thousand separators, allowing recognition of amounts like $1,000, $10,000, $100,000, etc."
+      },
+      {
+        "patron": "\\.\\d{2}",
+        "significado": "Searches for a dot followed by exactly two digits.",
+        "funcion": "Captures the cents, ensuring that the amount has two decimals as standard in currencies."
+      }
+    ],
+    "ejemplos_capturados": [
+      "$100.00",
+      "$1,234.56",
+      "$12,345.67",
+      "$123,456.78"
+    ],
+    "razones_por_que_funciona": [
+      {
+        "titulo": "Specificity",
+        "descripcion": "By searching for the peso sign followed by a specific numeric pattern, it reduces the likelihood of false positives."
+      },
+      {
+        "titulo": "Flexibility",
+        "descripcion": "Handles amounts with and without thousand separators, adapting to different number formats."
+      },
+      {
+        "titulo": "Precision in Decimals",
+        "descripcion": "By requiring two decimals after the dot, it ensures that valid monetary amounts are captured."
+      }
+    ]
+  },
+  "proceso_de_desarrollo": {
+    "titulo": "Development Process and Logic Behind the Solution",
+    "pasos": [
+      {
+        "titulo": "Identifying the Reference Point",
+        "descripcion": [
+          "The peso sign $ is a distinctive character that precedes monetary amounts on receipts.",
+          "Using it as a starting point helps anchor the search in the correct place."
+        ]
+      },
+      {
+        "titulo": "Considering Numeric Formats",
+        "descripcion": [
+          "Amounts can vary in length and format, so I needed an expression that:",
+          "Accepted small and large amounts: From $1.00 to $1,000,000.00.",
+          "Handled thousand separators: Commas that separate groups of three digits.",
+          "Included cents: Two digits after the decimal point."
+        ]
+      },
+      {
+        "titulo": "Mitigating OCR Errors",
+        "descripcion": [
+          "By focusing on specific numeric patterns, the regular expression is more resistant to common OCR errors, such as confusing letters with numbers.",
+          "However, it's important to recognize that some errors might escape, so it's useful to combine this method with additional validations."
+        ]
+      }
+    ]
+  },
+  "implementacion_en_codigo": {
+    "titulo": "Implementation in Code",
+    "codigo": "function extractKwhUsingDollarSign(text) {\n  const lines = text.split('\\n');\n  const results = [];\n  const dollarSignRegex = /\\$(\\d{1,3}(?:,\\d{3})*\\.\\d{2})/;\n\n  for (const line of lines) {\n    const dollarMatch = dollarSignRegex.exec(line);\n    if (dollarMatch) {\n      const cost = dollarMatch[1];\n      const parts = line.split('$');\n      const kwhMatch = parts[0].match(/\\d+/g);\n      if (kwhMatch) {\n        const kwh = kwhMatch[kwhMatch.length - 1];\n        const periodMatch = line.match(/del\\s+\\d+\\s+[A-Z]+\\s+\\d+\\s+al\\s+\\d+\\s+[A-Z]+\\s+\\d+/);\n        const period = periodMatch ? periodMatch[0] : '';\n        results.push({ period, kwh, cost });\n      }\n    }\n  }\n\n  return results;\n}",
+    "pasos_clave": [
+      {
+        "titulo": "Iterate Over Text Lines",
+        "descripcion": "I split the text into lines to analyze each one individually."
+      },
+      {
+        "titulo": "Apply the Regular Expression",
+        "descripcion": "I search in each line for an amount that matches the defined pattern."
+      },
+      {
+        "titulo": "Extract Associated Data",
+        "descripcion": [
+          "Cost (cost): Captured by the group in the regular expression.",
+          "Consumption in kWh (kwh):",
+          "  - I split the line into parts around the peso sign.",
+          "  - I look for the last number before the peso sign, assuming it represents the consumption.",
+     
+          "  - I use another regular expression to capture the billing period."
+        ]
+      },
+      {
+        "titulo": "Add Data to the Result",
+        "descripcion": "If all data is present, I add it to a results array for further processing."
+      }
+    ]
+  },
+  "desafios_encontrados": {
+    "titulo": "Challenges Encountered and Solutions Applied",
+    "desafios": [
+      {
+        "desafio": "Variability in Receipt Formats",
+        "problema": "Receipts may present amounts and consumptions in different positions or formats.",
+        "solucion": "Design a flexible regular expression and analysis logic that can adapt to different line structures."
+      },
+      {
+        "desafio": "OCR Errors",
+        "problema": "Misrecognized characters can affect the accuracy of the analysis.",
+        "solucion": "Implement additional validations and, if necessary, image preprocessing to improve OCR quality."
+      },
+      {
+        "desafio": "Missing or Incomplete Data",
+        "problema": "Not all lines will contain all the necessary information.",
+        "solucion": "Include checks and handle cases where certain data is not available, preventing the program from failing."
+      }
+    ]
+  },
+  "impacto_y_valor": {
+    "titulo": "Impact and Added Value of This Solution",
+    "puntos": [
+      {
+        "titulo": "Improved Accuracy",
+        "descripcion": "By extracting data more reliably, the accuracy of the annual consumption calculation is improved, and thus, the quality of financial projections offered to the user."
+      },
+      {
+        "titulo": "Optimized User Experience",
+        "descripcion": "Users don't have to manually enter their consumption, which facilitates the process and reduces the possibility of human errors."
+      },
+      {
+        "titulo": "Scalability",
+        "descripcion": "The solution can be adapted to recognize other patterns or extract additional information if necessary."
+      }
+    ]
+  },
+
+
+  "Obstáculos": "Obstacles",
+  "Enfoque:": "Approach:",
+  "Problema": "Problem",
+  "Análisis": "Detailed Analysis of the Regular Expression",
+  "Patrón": "Pattern",
+  "Significado": "Meaning",
+  "Función:": "Function:",
+  "Ejemplos": "Examples of Amounts Captured",
+  "Expresión": "Why This Regular Expression Works",
+  "Pasos": "Key Steps",
+  "Problema2": "Problem",
+  "Solución:": "Solution:"
+}
+
+
+
+
 
   
-}
+
 
       
      

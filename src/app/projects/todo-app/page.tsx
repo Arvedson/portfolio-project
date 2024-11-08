@@ -43,7 +43,7 @@ export default function TutorialPage() {
     return null;
   }
     return(
-    <div className="container mx-auto px-4 py-12 space-y-12" >
+    <div className="container mx-auto px-4 py-12 space-y-12 " >
       
       {/* introducción */}
       <section className="introduction-section">

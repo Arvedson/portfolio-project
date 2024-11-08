@@ -14,6 +14,7 @@
   --navbar-bg-light: #343a40; /* Fondo del Navbar claro */
   --navbar-text-light: #ffffff; /* Texto claro del Navbar */
   --navbar-hover-light: #495057; /* Hover claro del Navbar */
+  --box-shadow-light: rgba(0, 0, 0, 0.1); /* Sombra en modo claro */
   
   /* Colores base para el modo oscuro */
   --background-dark: #212529; /* Fondo oscuro */
@@ -25,6 +26,7 @@
   --navbar-bg-dark: #0a0a0a; /* Fondo oscuro del Navbar */
   --navbar-text-dark: #ffffff; /* Texto claro del Navbar */
   --navbar-hover-dark: #495057; /* Hover en modo oscuro */
+  --box-shadow-dark: rgba(255, 255, 255, 0.2); /* Sombra en modo oscuro */
 }
 
 /* Modo claro por defecto */
@@ -37,6 +39,7 @@
   --navbar-bg: var(--navbar-bg-light);
   --navbar-text: var(--navbar-text-light);
   --navbar-hover: var(--navbar-hover-light);
+  --box-shadow-color: var(--box-shadow-light);
 }
 
 /* Modo oscuro */
@@ -49,6 +52,7 @@
   --navbar-bg: var(--navbar-bg-dark);
   --navbar-text: var(--navbar-text-dark);
   --navbar-hover: var(--navbar-hover-dark);
+  --box-shadow-color: var(--box-shadow-dark);
 }
 
 /* Estilos globales */
@@ -290,12 +294,6 @@ body {
 }
 
 
-
-
-
-
-
-
 /* Estilos para la sección de introducción */
 .introduction-section {
   max-width: 800px; 
@@ -368,4 +366,46 @@ body {
 [data-theme='dark'] .introduction-title,
 [data-theme='dark'] .introduction-text {
   color: var(--foreground-dark); 
+}
+
+
+
+
+
+
+/* Estilos personalizados para la introducción */
+.introduction-section-ququlkan {
+  margin: 0 auto; 
+  max-width: 800px; 
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 4px var(--box-shadow-color);
+ 
+}
+
+.introduction-title-ququlkan {
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.introduction-text-ququlkan {
+  color: var(--secondary);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+/* Responsividad */
+@media (min-width: 768px) {
+  .introduction-title-ququlkan {
+    font-size: 3rem;
+  }
+
+  .introduction-text-ququlkan {
+    font-size: 1.5rem;
+  }
 }

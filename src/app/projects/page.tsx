@@ -33,10 +33,19 @@ export default function Projects() {
       url: '/projects/todo-app'
     },
 
+    {
+      id: 'ququlkan',
+      title: t('ququlkan_title'),
+      description: t('ququlkan_desc'),
+      imageLight: '/ququlkanimage.png', // Imagen para el tema claro
+      imageDark: '/ququlkanimage.png',   // Imagen para el tema oscuro
+      url: '/projects/ququlkan-webapp'
+    },
+
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 min-h-screen">
       <h1 className="text-4xl font-bold mb-4">{t('projects')}</h1>
       <p className="text-lg mb-8">{t('projects_intro')}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
