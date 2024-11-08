@@ -334,12 +334,12 @@ body {
 
 /* Fondo semitransparente en el tema oscuro */
 [data-theme='dark'] .introduction-content {
-  background-color: rgb(50, 90, 131, 0.6); /* Fondo oscuro semitransparente */
+  background-color: rgba(100, 100, 100, 0.8); /* Fondo oscuro semitransparente */
 }
 
 /* Fondo semitransparente en el tema claro */
 [data-theme='light'] .introduction-content {
-  background-color: rgba(211, 197, 197, 0.7); /* Fondo oscuro semitransparente */
+  background-color: rgba(211, 211, 211, 0.8); /* Fondo oscuro semitransparente */
 }
 
 /* Estilos para el título */

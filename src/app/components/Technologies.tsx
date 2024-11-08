@@ -4,7 +4,22 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { FaReact, FaNodeJs, FaGithub } from 'react-icons/fa'; 
-import { SiNextdotjs, SiTailwindcss, SiJavascript, SiPython, SiMongodb, SiPostgresql, SiPrisma, SiCss3, SiFigma, SiTypescript } from 'react-icons/si'; // Añadimos SiFigma
+import { 
+  SiNextdotjs, 
+  SiTailwindcss, 
+  SiJavascript, 
+  SiPython, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiPrisma, 
+  SiCss3, 
+  SiFigma, 
+  SiTypescript,
+  SiGooglecloud,
+  SiVercel
+} from 'react-icons/si'; // Añadimos SiGooglecloud y SiVercel
+
+import { Icon } from '@iconify/react'; // Importación de Iconify para NextAuth.js
 
 const Technologies = () => {
     const { t } = useTranslation('common');
@@ -37,7 +52,31 @@ const Technologies = () => {
       { name: 'Prisma', icon: <SiPrisma style={{ color: 'var(--foreground)' }} />, description: t('prisma_description'), level: 80 },
       { name: 'CSS3', icon: <SiCss3 className="text-blue-500" />, description: t('css_description'), level: 90 },
       { name: 'Figma', icon: <SiFigma className="text-pink-600" />, description: t('figma_description'), level: 80 },
-      { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" />, description: t('typescript_description'), level: 80 }
+      { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" />, description: t('typescript_description'), level: 80 },
+      { 
+        name: 'Google Cloud', 
+        icon: <SiGooglecloud className="text-yellow-500" />, 
+        description: t('googlecloud_description'), 
+        level: 70 
+      },
+      { 
+        name: 'Vercel', 
+        icon: <SiVercel style={{ color: 'var(--foreground)' }} />, 
+        description: t('vercel_description'), 
+        level: 80 
+      },
+      { 
+        name: 'NextAuth.js', 
+        icon: <Icon icon="mdi:shield-lock" width="48" height="48" className="text-purple-500 transition-transform duration-300 group-hover:scale-110" aria-label="NextAuth.js icon" />, 
+        description: t('nextauth_description'), 
+        level: 75 
+      },
+      { 
+        name: 'Neon Tech', 
+        icon: <Icon icon="mdi:database" width="48" height="48" className="text-green-500 transition-transform duration-300 group-hover:scale-110" aria-label="Neon Tech icon" />, 
+        description: t('neontech_description'), 
+        level: 70 
+      }
     ];
     
 

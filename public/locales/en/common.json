@@ -27,8 +27,12 @@
   "mongodb_description": "MongoDB is a NoSQL database used for scalable applications.",
   "postgresql_description": "PostgreSQL is an open-source relational database system.",
   "prisma_description": "Prisma is a next-generation ORM for Node.js and TypeScript.",
+  "neontech_description": "Neon Tech offers scalable database solutions for modern applications.",
   "css_description": "CSS3 is the latest evolution of the Cascading Style Sheets language for web design.",
   "figma_description": "Figma is a collaborative design tool for creating user interfaces.",
+  "vercel_description": "Vercel is a cloud platform for frontend developers that facilitates deployments and optimizes performance of static and server-rendered applications.",
+  "nextauth_description": "NextAuth.js is a flexible authentication solution for Next.js applications, supporting multiple providers and secure session management.",
+  "googlecloud_description": "Google Cloud Platform offers robust and scalable cloud services, enabling developers to build and manage applications easily.",
   "typescript_description": "TypeScript is a superset of JavaScript that adds static typing, making it easier to catch errors and develop more robust applications.",
   "SECCION DEL BLOG": "APARTIR DE AQUI ESTO PERTENECE A LA SECCION DEL BLOG Y TODOS LOS POSTS QUE ABARCA",
   "blog_title": "Blog",
@@ -36,6 +40,7 @@
   "featured_posts": "Featured Posts",
   "categories": "Categories",
   "recent_posts": "Recent Posts",
+  "language_short":"EN",
   "posts": [
     {
       "title": "Personal Development & Learning Journey",
@@ -763,8 +768,8 @@
   
     "todoapp": {
       "introduction": {
-        "titulo": "Introduction Title",
-        "subtitulo": "Introduction Description"
+        "titulo": "Task Management MVP",
+        "subtitulo": "Simplified task management through a minimalist MVP designed with modern web technologies. Perfect for demonstrating clean coding practices, responsive design, and more."
       },
       "database_connection": {
         "title": "1.- Database Connection with Neon Tech",

@@ -21,14 +21,17 @@
 "contact_intro": "Si deseas ponerte en contacto, ¡no dudes en escribirme por correo electrónico o en mis redes sociales!",
 
 "change-language": "Es",
+"language_short":"Es",
 
 
 "quick_links": "Enlaces rápidos",
 "contact_info": "Información de contacto",
 "location": "Ubicación",
 "all_rights_reserved": "Todos los derechos reservados",
-
-
+"neontech_description": "Neon Tech ofrece soluciones de bases de datos escalables para aplicaciones modernas.",
+"vercel_description": "Vercel es una plataforma en la nube para desarrolladores frontend que facilita despliegues y optimiza el rendimiento de aplicaciones estáticas y renderizadas en el servidor.",
+"nextauth_description": "NextAuth.js es una solución flexible de autenticación para aplicaciones Next.js, soportando múltiples proveedores y gestión segura de sesiones.",
+"googlecloud_description": "Google Cloud Platform ofrece servicios en la nube robustos y escalables, permitiendo a los desarrolladores construir y gestionar aplicaciones fácilmente.",
 "tecnologies": "Estas son algunas de las herramientas con las que he podido trabajar",
 "react_description": "React es una biblioteca de JavaScript para construir interfaces de usuario.",
 "nextjs_description": "Next.js es un framework de React para renderización del lado del servidor.",
@@ -794,8 +797,8 @@
       
         "todoapp": {
           "introduction": {
-           "titulo":"titulo de introduccion",
-           "subtitulo":"descripcion de introduccion"
+           "titulo":"MVP de gestion de tareas",
+           "subtitulo":"Gestión de tareas simplificada a través de un MVP minimalista diseñado con tecnologías web modernas. Perfecto para demostrar prácticas de codificación limpia, diseño responsivo y más."
           },
           "database_connection": {
             "title": "1.- Conexión a la Base de Datos con Neon Tech",
