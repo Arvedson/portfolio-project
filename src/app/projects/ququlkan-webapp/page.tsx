@@ -5,6 +5,68 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Image from 'next/image';
 
+
+// Interfaces de TypeScript basadas en las secciones del JSON
+interface KeyConcept {
+  abstractData: string;
+  crudOperations: string;
+  responseStandardization: string;
+}
+
+interface MethodImplementation {
+  [key: string]: string;
+}
+
+interface MethodConsiderations {
+  [key: string]: string;
+}
+
+interface ImplementationMethod {
+  title: string;
+  purpose: string;
+  implementation?: MethodImplementation;
+  note?: string;
+  considerations?: MethodConsiderations;
+}
+
+interface ImplementationDetails {
+  summary: string;
+  methods: Record<string, ImplementationMethod>;
+  integration?: string;
+}
+
+
+
+interface HighlightedAspect {
+  modularityAndCodeReuse: string;
+  typescriptUsage: string;
+  queryHandling: string;
+  errorManagementAndValidation: string;
+  reactAdminToolsIntegration: string;
+  scalabilityPreparation: string;
+}
+
+interface CustomDataProviderImportance {
+  nonRestfulApi: string;
+  additionalFunctionality: string;
+  performanceOptimization: string;
+}
+
+interface Conclusion {
+  skillsDemonstrated: string[];
+  impact: string;
+}
+
+interface DataProviderDocumentation {
+  title1: string;
+  introduction: string;
+  keyConcepts: KeyConcept;
+  implementationDetails: ImplementationDetails;
+  highlightedAspectsAndSkills: HighlightedAspect;
+  importanceOfCustomDataProvider: CustomDataProviderImportance;
+  conclusion2: Conclusion;
+  codeExamples: Record<string, string>;
+}
 // Definimos las interfaces de TypeScript para los datos
 interface Obstaculo {
   titulo: string;
@@ -62,6 +124,7 @@ export default function TutorialPage() {
   }
 
   // Obtenemos los datos desde el archivo de traducciones
+  const dataProviderDocumentation = t('dataProviderDocumentation', { returnObjects: true }) as unknown as DataProviderDocumentation;
   const obstaculos = t('obstaculos', { returnObjects: true }) as Obstaculo[];
   const intentosIniciales = t('intentos_iniciales', { returnObjects: true }) as {
     titulo: string;
@@ -185,9 +248,9 @@ export default function TutorialPage() {
         </section>
 
 
-      {/* Sección del Desafío */}
+     
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-8">
-      {/* Título del Desafío */}
+
       <h2 className="font-bold text-2xl">{t('desafio.titulo')}</h2>
       <Image
                 src={t('imgreader')}
@@ -288,7 +351,7 @@ export default function TutorialPage() {
         {procesoDeDesarrollo.pasos.map((paso, index) => (
           <li key={index}>
             <h4 className="font-semibold text-xl">{paso.titulo}</h4>
-            {/* Si la descripción es un array, la mapeamos */}
+            
             {Array.isArray(paso.descripcion) ? (
               <ul className="list-disc pl-5">
                 {paso.descripcion.map((desc, idx) => (
@@ -317,7 +380,7 @@ export default function TutorialPage() {
         {implementacionEnCodigo.pasos_clave.map((paso, index) => (
           <li key={index}>
             <h5 className="font-semibold">{paso.titulo}</h5>
-            {/* Si la descripción es un array, la mapeamos */}
+          
             {Array.isArray(paso.descripcion) ? (
               <ul className="list-disc pl-5">
                 {paso.descripcion.map((desc, idx) => (
@@ -358,13 +421,149 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
+      </section>
+
+        {/* Invitación a Revisar el Código */}
+      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
+        <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
+        
+        <div className="flex flex-row gap-5 ">
+          <a
+            href="https://github.com/Arvedson/Solar/blob/main/src/app/api/ocr/route.tsx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto "
+          >
+            {t('ocrApiLinkText')}
+          </a>
+          <a
+            href="https://github.com/Arvedson/Solar/blob/main/src/components/app/ImageReader.tsx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="overflow-x-auto border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300"
+          >
+            {t('imageReaderLinkText')}
+          </a>
+        </div>
+      </section>
+
+     
+
+      {/* Sección del DataProvider */}
+      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-8">
+        <h3 className="font-semibold text-2xl">{t('dataProviderTitle')}</h3>
+        <p>{t('dataProviderDescription')}</p>
+
+      </section>
+
+    
+      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12">
+      <h4 className="font-bold text-2xl">{dataProviderDocumentation.title1}</h4>
+      <p>{dataProviderDocumentation.introduction}</p>
+
+      <h3 className="font-bold text-2xl">Key Concepts</h3>
+      <ul className="list-disc pl-5 space-y-4">
+        <li>
+          <h4 className="font-semibold text-xl">Abstract Data</h4>
+          <p>{dataProviderDocumentation.keyConcepts.abstractData}</p>
+        </li>
+        <li>
+          <h4 className="font-semibold text-xl">CRUD Operations</h4>
+          <p>{dataProviderDocumentation.keyConcepts.crudOperations}</p>
+        </li>
+        <li>
+          <h4 className="font-semibold text-xl">Response Standardization</h4>
+          <p>{dataProviderDocumentation.keyConcepts.responseStandardization}</p>
+        </li>
+      </ul>
+
+      <h3 className="font-bold text-2xl">Implementation Details</h3>
+      <p>{dataProviderDocumentation.implementationDetails.summary}</p>
+
+      <ul className="list-disc pl-5 space-y-5">
+      {Object.entries(dataProviderDocumentation.implementationDetails.methods).map(([key, method]) => (
+        <div key={key}>
+         
+          <li className="space-y-2">
+            <h4 className="font-semibold text-xl">{method.title}</h4>
+            {method.purpose && <p>{method.purpose}</p>}
+            {method.implementation && (
+              <ul className="list-disc pl-5 space-y-2">
+                {Object.entries(method.implementation).map(([stepKey, stepValue]) => (
+                  <li key={stepKey}>
+                    <strong>{stepKey}:</strong> {stepValue}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {method.note && <p><strong>Note:</strong> {method.note}</p>}
+            {method.considerations && (
+              <ul className="list-disc pl-5 space-y-2">
+                {Object.entries(method.considerations).map(([considerationKey, considerationValue]) => (
+                  <li key={considerationKey}>
+                    <strong>{considerationKey}:</strong> {considerationValue}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+
+          {dataProviderDocumentation.codeExamples?.[key] && (
+            <div className="bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)] my-4">
+              <pre className="whitespace-pre-wrap overflow-x-auto">
+                <code>
+                  {t(`dataProviderDocumentation.codeExamples.${key}`)}
+                </code>
+              </pre>
+            </div>
+          )}
+        </div>
+      ))}
+    </ul>
+
+      <h3 className="font-bold text-2xl">Highlighted Aspects and Skills</h3>
+      <ul className="list-disc pl-5 space-y-4">
+        {Object.entries(dataProviderDocumentation.highlightedAspectsAndSkills).map(([key, value]) => (
+          <li key={key}>
+            <strong>{key}:</strong> {value}
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="font-bold text-2xl">Importance of Custom Data Provider</h3>
+      <ul className="list-disc pl-5 space-y-4">
+        {Object.entries(dataProviderDocumentation.importanceOfCustomDataProvider).map(([key, value]) => (
+          <li key={key}>
+            <strong>{key}:</strong> {value}
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="font-bold text-2xl">Conclusion</h3>
+      <ul className="list-disc pl-5 space-y-4">
+        <li>
+          <strong>Skills Demonstrated:</strong>
+          <ul className="list-disc pl-5 space-y-2">
+            {dataProviderDocumentation.conclusion2.skillsDemonstrated.map((skill, index) => (
+              <li key={index}>{skill}</li>
+            ))}
+          </ul>
+        </li>
+        <li>
+          <strong>Impact:</strong> {dataProviderDocumentation.conclusion2.impact}
+        </li>
+      </ul>
     </section>
+
+
+
+
 
 
         
 
 
-    </div>
+  </div>
 
-  )
+)
 }

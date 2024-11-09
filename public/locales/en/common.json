@@ -1239,7 +1239,10 @@
   "Expresión": "Why This Regular Expression Works",
   "Pasos": "Key Steps",
   "Problema2": "Problem",
-  "Solución:": "Solution:"
+  "Solución:": "Solution:",
+  "exploreCodeTitle":"Explore Code",
+  "ocrApiLinkText":"ORC Api Link",
+  "imageReaderLinkText":"ImageReader.tsx Link"
 }
 
 

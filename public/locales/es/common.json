@@ -1084,8 +1084,8 @@
 
 
           "desafio": {
-            "titulo": "Desafío: Identificar Patrones Consistentes en Texto OCR",
-            "descripcion": "Al trabajar con texto extraído de imágenes de recibos mediante OCR (Reconocimiento Óptico de Caracteres), me encontré con varios obstáculos:"
+            "titulo": "Lector de Imagenes",
+            "descripcion": "Al trabajar con texto extraído de imágenes de recibos mediante OCR (Reconocimiento Óptico de Caracteres), me encontré con varios problemas:"
           },
           "obstaculos": [
             {
@@ -1098,7 +1098,7 @@
             },
             {
               "titulo": "Errores Crecientes",
-              "descripcion": "Métodos simples para identificar patrones resultaban en un margen de error creciente."
+              "descripcion": "Métodos simples para identificar patrones resultaban en un margen de error exponencial."
             }
           ],
           "intentos_iniciales": {
@@ -1111,8 +1111,8 @@
               },
               {
                 "nombre": "Seccionar el Texto en Tablas",
-                "enfoque": "Dividir el texto en estructuras similares a tablas para aislar la información.",
-                "problema": "La falta de consistencia en el formato del texto dificultaba este método, aumentando el margen de error."
+                "enfoque": "Dividir el texto en estructuras similares a tablas verticales para aislar la información.",
+                "problema": "La falta de consistencia en el formato del recibo dificultaba este método, aumentando el margen de error."
               }
             ]
           },
@@ -1281,20 +1281,191 @@
           "Pasos":"Pasos Clave",
           "Problema2":"Problema",
           "Solución:":"Solución",
-          "imgreader":"/imgreader.png"
+          "imgreader":"/imgreader.png",
+          "exploreCodeTitle":"Explora el codigo",
+          "ocrApiLinkText":"ORC Api Link",
+          "imageReaderLinkText":"ImageReader.tsx",
 
 
-
-
-
-
-
-
-
-
-
-
+          "title1": "Desarrollo de un DataProvider Personalizado para React Admin",
+  "introduction": "Al trabajar en el proyecto, uno de los componentes clave fue la implementación de un DataProvider personalizado para integrar React Admin con nuestro backend. El DataProvider es esencial en React Admin, ya que actúa como una capa de abstracción entre la interfaz de usuario y la API, manejando las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de manera eficiente y coherente.",
+  
+"dataProviderDocumentation":{
+  "keyConcepts": {
+    "abstractData": "El DataProvider permite a React Admin interactuar con cualquier API RESTful sin preocuparse por los detalles de implementación.",
+    "crudOperations": "Debe implementar métodos para manejar las operaciones básicas: getList, getOne, create, update, delete, getMany, getManyReference, updateMany y deleteMany.",
+    "responseStandardization": "Cada método debe retornar los datos en un formato que React Admin pueda entender y procesar."
+  },
+  "implementationDetails": {
+    "summary": "A continuación, se presenta un resumen detallado de cómo se implementó cada método del DataProvider, destacando los aspectos más importantes y las decisiones de diseño tomadas.",
+    "methods": {
+      "1": {
+        "title": "Configuración Inicial",
+        "purpose": "",
+        "implementation": {
+          "apiUrl": "Se definió una constante apiUrl que apunta a la URL base de la API, permitiendo flexibilidad para cambiar entre entornos (desarrollo, producción).",
+          "httpClient": "Se utilizó fetchUtils.fetchJson de React Admin como cliente HTTP, que facilita las peticiones y maneja automáticamente las cabeceras necesarias."
+        },
+        "considerations": ""
+      },
+      "2": {
+        "title": "Método getList",
+        "purpose": "Obtener una lista de registros de un recurso específico, con soporte para paginación, filtrado y ordenamiento.",
+        "implementation": {
+          "step1": "Se extrajeron los parámetros de paginación (page, perPage), ordenamiento (field, order) y filtrado (filter) de params.",
+          "step2": "Se construyó una consulta con estos parámetros utilizando query-string para serializar el objeto a una cadena de consulta.",
+          "step3": "Se manejó la respuesta para extraer los datos y el total de registros, utilizando la cabecera content-range."
+        },
+        "considerations": {
+          "errorHandling": "Se verificó la presencia de la cabecera content-range para asegurar que el servidor proporciona la información necesaria.",
+          "responseFormat": "Se retornó un objeto con las propiedades data y total, donde data es un array de registros y total es el número total de registros disponibles."
+        }
+      },
+      "3": {
+        "title": "Método getOne",
+        "purpose": "Obtener un solo registro basado en su id.",
+        "implementation": {
+          "step1": "Se construyó la URL utilizando el resource y params.id.",
+          "step2": "Se realizó una petición GET y se retornaron los datos obtenidos."
+        },
+        "considerations": {
+          "efficiency": "Este método es esencial para visualizar detalles de un registro sin sobrecargar la API."
+        }
+      },
+      "4": {
+        "title": "Método create",
+        "purpose": "Crear un nuevo registro en el servidor.",
+        "implementation": {
+          "step1": "Se realizó una petición POST al resource correspondiente, enviando params.data en el cuerpo de la petición.",
+          "step2": "Se incluyeron las cabeceras necesarias, como Content-Type: application/json.",
+          "step3": "Se manejó la respuesta para incluir el id generado por el servidor en el objeto de datos retornado."
+        },
+        "considerations": {
+          "dataValidation": "Antes de enviar los datos, es importante asegurarse de que cumplen con los requisitos del servidor.",
+          "activityLogging": "Se incluyó un console.log para verificar los datos enviados durante el desarrollo."
+        }
+      },
+      "5": {
+        "title": "Método update",
+        "purpose": "Actualizar un registro existente.",
+        "implementation": {
+          "step1": "Se construyó la URL incluyendo el params.id.",
+          "step2": "Se realizó una petición PUT con los datos actualizados en params.data.",
+          "step3": "Se retornaron los datos actualizados al cliente."
+        },
+        "considerations": {
+          "idempotency": "El uso de PUT asegura que la operación es idempotente, reemplazando el registro existente con los nuevos datos."
+        }
+      },
+      "6": {
+        "title": "Método delete",
+        "purpose": "Eliminar un registro específico.",
+        "implementation": {
+          "step1": "Se realizó una petición DELETE a la URL del recurso con el params.id.",
+          "step2": "Se manejó la respuesta para confirmar que el registro fue eliminado."
+        },
+        "considerations": {
+          "deletionConfirmation": "Es buena práctica manejar posibles errores si el registro no existe o no se puede eliminar."
+        }
+      },
+      "7": {
+        "title": "Método getMany",
+        "purpose": "Obtener múltiples registros basados en un array de IDs.",
+        "implementation": {
+          "step1": "Se construyó una consulta filtrando por id utilizando params.ids.",
+          "step2": "Se realizó una petición GET y se retornaron los registros correspondientes."
+        },
+        "considerations": {
+          "efficiency": "Útil para obtener referencias o relaciones entre registros sin hacer múltiples peticiones individuales."
+        }
+      },
+      "8": {
+        "title": "Método getManyReference",
+        "purpose": "Obtener registros que están relacionados con otro registro específico.",
+        "implementation": {
+          "step1": "Similar a getList, pero se incluyó un filtro adicional basado en params.target y params.id.",
+          "step2": "Soporta paginación, filtrado y ordenamiento."
+        },
+        "considerations": {
+          "dataRelationships": "Facilita la visualización y manejo de datos relacionados, como comentarios de una publicación."
+        }
+      },
+      "9": {
+        "title": "Métodos updateMany y deleteMany",
+        "purpose": "Actualizar o eliminar múltiples registros a la vez.",
+        "implementation": {
+          "step1": "Se implementaron como funciones asíncronas que retornan una promesa resuelta con un array vacío.",
+          "note": "Esta es una implementación dummy para cumplir con la interfaz, y se puede mejorar para soportar estas operaciones según las capacidades del backend."
+        },
+        "considerations": {
+          "futureImprovements": "Dependiendo de las necesidades, se pueden implementar estas operaciones para optimizar el rendimiento al manejar lotes de datos."
+        }
+      },
+      "10": {
+        "title": "Integración en el DataProvider Principal",
+        "implementation": {
+          "composition": "Se importaron todos los métodos y se incluyeron en un objeto dataProvider que cumple con la interfaz esperada por React Admin.",
+          "exportation": "Se exportó el dataProvider para ser utilizado en la configuración de React Admin.",
+          "flexibility": "Esta modularidad permite mantener y actualizar cada método de manera independiente."
+        }
       }
+    },
+    "integration": ""
+  },
+  "highlightedAspectsAndSkills": {
+    "modularityAndCodeReuse": "Cada operación CRUD se implementó en módulos separados, facilitando la mantenibilidad y escalabilidad del código.",
+    "typescriptUsage": "Se definieron interfaces personalizadas para tipar correctamente los parámetros y las respuestas, aumentando la seguridad y reduciendo errores.",
+    "queryHandling": "Se utilizó query-string para serializar objetos de consulta, asegurando que los parámetros se envíen correctamente en las peticiones GET.",
+    "errorManagementAndValidation": "Se incluyeron comprobaciones para manejar posibles errores, como la ausencia de la cabecera content-range en las respuestas.",
+    "reactAdminToolsIntegration": "Se aprovechó fetchUtils de React Admin para simplificar las peticiones HTTP y garantizar compatibilidad.",
+    "scalabilityPreparation": "Aunque algunos métodos como updateMany y deleteMany se implementaron de manera básica, la estructura permite ampliarlos según las necesidades futuras."
+  },
+  "importanceOfCustomDataProvider": {
+    "nonRestfulApi": "Permite adaptar las peticiones y respuestas al formato esperado por React Admin cuando la API no sigue estrictamente los estándares de REST.",
+    "additionalFunctionality": "Es crucial cuando se requieren funcionalidades adicionales o personalizadas, como autenticación, manejo de tokens, o transformación de datos.",
+    "performanceOptimization": "Controlar cómo y cuándo se realizan las peticiones puede mejorar la eficiencia de la aplicación."
+  },
+  "conclusion2": {
+    "skillsDemonstrated": [
+      "Desarrollo Frontend con React y TypeScript.",
+      "Integración de aplicaciones con APIs RESTful.",
+      "Diseño de software modular y escalable.",
+      "Comprensión profunda de React Admin y sus requerimientos."
+    ],
+    "impact": "Esta implementación no solo mejora la comunicación entre el frontend y el backend, sino que también establece una base sólida para futuras expansiones y optimizaciones de la aplicación."
+  },
+  "codeExamples": {
+    "1": "const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';\nconst httpClient = fetchUtils.fetchJson;\n\nconst create = (resource: string, params: CreateParams) => {\n  console.log('Data to be sent:', params.data); // Log para verificar los datos\n  return httpClient(`${apiUrl}/${resource}`, {\n    method: 'POST',\n    headers: new Headers({ 'Content-Type': 'application/json' }),\n    body: JSON.stringify(params.data),\n  }).then(({ json }) => ({\n    data: { ...params.data, id: json.id },\n  }));\n};\n\nexport default create;",
+    "2": "const getList = (resource: string, params: GetListParams): Promise<{ data: any; total: number }> => {\n  const { page, perPage } = params.pagination;\n  const { field, order } = params.sort;\n  const query = {\n    sort: JSON.stringify([field, order]),\n    range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),\n    filter: JSON.stringify(params.filter),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ headers, json }) => {\n    const contentRange = headers.get('content-range');\n    if (!contentRange) {\n      throw new Error('Missing content-range header');\n    }\n    const total = parseInt(contentRange.split('/').pop() as string, 10);\n\n    return {\n      data: json,\n      total,\n    };\n  });\n};",
+    "3": "const getOne = (resource: string, params: GetOneParams) =>\n  httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({\n    data: json,\n  }));\n\nexport default getOne;",
+    "4": "import { fetchUtils } from 'react-admin';\nimport { CreateParams } from '../../types/dataProvider';\n\nconst apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';\nconst httpClient = fetchUtils.fetchJson;\n\nconst create = (resource: string, params: CreateParams) => {\n  console.log('Data to be sent:', params.data); // Log para verificar los datos\n  return httpClient(`${apiUrl}/${resource}`, {\n    method: 'POST',\n    headers: new Headers({ 'Content-Type': 'application/json' }),\n    body: JSON.stringify(params.data),\n  }).then(({ json }) => ({\n    data: { ...params.data, id: json.id },\n  }));\n};\n\nexport default create;",
+    "5": "const update = (resource: string, params: UpdateParams): Promise<{ data: any }> => {\n  const url = `${apiUrl}/${resource}/${params.id}`;\n\n  return httpClient(url, {\n    method: 'PUT',\n    headers: new Headers({ 'Content-Type': 'application/json' }),\n    body: JSON.stringify(params.data),\n  }).then(({ json }) => ({ data: json }));\n};\n\nexport default update;",
+    "6": "const deleteResource = (resource: string, params: DeleteParams): Promise<{ data: any }> => {\n  const url = `${apiUrl}/${resource}/${params.id}`;\n\n  return httpClient(url, {\n    method: 'DELETE',\n  }).then(({ json }) => ({ data: json }));\n};\n\nexport default deleteResource;",
+    "7": "const getMany = (resource: string, params: GetManyParams): Promise<{ data: any[] }> => {\n  const query = {\n    filter: JSON.stringify({ id: params.ids }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ json }) => ({ data: json }));\n};\n\nexport default getMany;",
+    "8": "const getManyReference = (resource: string, params: GetManyReferenceParams): Promise<{ data: any[]; total: number }> => {\n  const { page, perPage } = params.pagination;\n  const { field, order } = params.sort;\n  const query = {\n    sort: JSON.stringify([field, order]),\n    range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),\n    filter: JSON.stringify({\n      ...params.filter,\n      [params.target]: params.id,\n    }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ headers, json }) => {\n    const contentRange = headers.get('content-range');\n    if (!contentRange) {\n      throw new Error('Missing content-range header');\n    }\n    const total = parseInt(contentRange.split('/').pop() as string, 10);\n\n    return {\n      data: json,\n      total,\n    };\n  });\n};\n\nexport default getManyReference;"
+  }
+}
+
+
+
+}
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+      
       
       
 
