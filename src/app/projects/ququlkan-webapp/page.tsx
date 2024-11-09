@@ -5,8 +5,6 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Image from 'next/image';
 
-
-// Interfaces de TypeScript basadas en las secciones del JSON
 interface KeyConcept {
   abstractData: string;
   crudOperations: string;
@@ -34,8 +32,6 @@ interface ImplementationDetails {
   methods: Record<string, ImplementationMethod>;
   integration?: string;
 }
-
-
 
 interface HighlightedAspect {
   modularityAndCodeReuse: string;
@@ -67,7 +63,7 @@ interface DataProviderDocumentation {
   conclusion2: Conclusion;
   codeExamples: Record<string, string>;
 }
-// Definimos las interfaces de TypeScript para los datos
+
 interface Obstaculo {
   titulo: string;
   descripcion: string;
@@ -122,8 +118,7 @@ export default function TutorialPage() {
   if (!mounted) {
     return null;
   }
-
-  // Obtenemos los datos desde el archivo de traducciones
+ 
   const dataProviderDocumentation = t('dataProviderDocumentation', { returnObjects: true }) as unknown as DataProviderDocumentation;
   const obstaculos = t('obstaculos', { returnObjects: true }) as Obstaculo[];
   const intentosIniciales = t('intentos_iniciales', { returnObjects: true }) as {
@@ -157,22 +152,17 @@ export default function TutorialPage() {
   };
   return (
     <div className="container mx-auto px-4 py-12 space-y-12 min-h-screen">
-
         <section className="introduction-section-ququlkan">
             <div className="introduction-content-ququlkan">
             <h1 className="introduction-title-ququlkan">{t('ququlkan_introduction_titulo')}</h1>
             <p className="introduction-text-ququlkan">{t('ququlkan_introduction_subtitulo')}</p>
             </div>
          </section>
-
-
        {/* Descripción General*/}
          <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
             <h2 className="text-2xl font-bold">{t('titulo descripcion')}</h2>
             <p>{t('descripcion del webapp')}</p>
          </section>
-
-
        {/* Sección de Funcionalidades */}
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12 ">
             {/* Funcionalidad 1 */}
@@ -185,11 +175,9 @@ export default function TutorialPage() {
                 layout="responsive"
                 width={700}
                 height={475}
-                className="border border-gray-300 rounded-lg"
-                
+                className="border border-gray-300 rounded-lg"           
                 />
             </div>
-
             {/* Funcionalidad 2 */}
             <div className="space-y-6">
                 <h3 className="font-bold text-2xl">{t('introququlkan.funcionalidad2.titulo')}</h3>
@@ -203,12 +191,10 @@ export default function TutorialPage() {
                  className="border border-gray-300 rounded-lg"
                 />
             </div>
-
             {/* Funcionalidad 3 */}
             <div className="space-y-6">
             <h3 className="font-bold text-2xl">{t('introququlkan.funcionalidad3.titulo')}</h3>
-            <p>{t('introququlkan.funcionalidad3.descripcion')}</p>
-            
+            <p>{t('introququlkan.funcionalidad3.descripcion')}</p>        
             {/* Contenedor para las imágenes */}
             <div className="space-y-4">
                 <Image
@@ -229,7 +215,6 @@ export default function TutorialPage() {
                 />
             </div>
             </div>
-      
                 {/* Llamado a la acción */}
                 <div className="text-center mt-12 space-y-4">
                 <p className="text-xl font-medium mb-6">
@@ -244,13 +229,8 @@ export default function TutorialPage() {
                     {t('verWebApp')}
                 </a>
             </div>
-
-        </section>
-
-
-     
+        </section>  
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-8">
-
       <h2 className="font-bold text-2xl">{t('desafio.titulo')}</h2>
       <Image
                 src={t('imgreader')}
@@ -261,7 +241,6 @@ export default function TutorialPage() {
                  className="border border-gray-300 rounded-lg"
                 />
       <p>{t('desafio.descripcion')}</p>
-
       {/* Obstáculos */}
       <h3 className="font-semibold text-2xl">{t("Obstáculos")}</h3>
       <ul className="list-disc pl-5 space-y-4">
@@ -272,7 +251,6 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
       {/* Intentos Iniciales */}
       <h3 className="font-semibold text-2xl">{intentosIniciales.titulo}</h3>
       {intentosIniciales.metodos.map((metodo, index) => (
@@ -286,20 +264,15 @@ export default function TutorialPage() {
           </p>
         </div>
       ))}
-
       {/* Solución */}
       <h3 className="font-semibold text-2xl">{solucion.titulo}</h3>
       <p>{solucion.descripcion}</p>
-
-      {/* Expresión Regular */}
-    
+      {/* Expresión Regular */} 
       <div className="bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)]">
         <pre className="whitespace-pre-wrap overflow-x-auto">
           <code >{solucion.expresion_regular}</code>
         </pre>
         </div>
-    
-
       {/* Análisis Detallado de la Expresión Regular */}
       <h4 className="font-semibold text-xl">{t("Análisis")}</h4>
       <ul className="list-disc pl-5 space-y-4">
@@ -325,7 +298,6 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
       {/* Ejemplos de Montos que Captura */}
       <h4 className="font-semibold text-xl">{t("Ejemplos")}</h4>
       <ul className="list-disc pl-5">
@@ -333,7 +305,6 @@ export default function TutorialPage() {
           <li key={index}>{ejemplo}</li>
         ))}
       </ul>
-
       {/* Razones por las que Funciona */}
       <h4 className="font-semibold text-xl">{t("Expresión")}</h4>
       <ul className="list-disc pl-5 space-y-2">
@@ -344,14 +315,12 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
       {/* Proceso de Desarrollo y Lógica Detrás de la Solución */}
       <h3 className="font-semibold text-2xl">{procesoDeDesarrollo.titulo}</h3>
       <ul className="list-decimal pl-5 space-y-4">
         {procesoDeDesarrollo.pasos.map((paso, index) => (
           <li key={index}>
-            <h4 className="font-semibold text-xl">{paso.titulo}</h4>
-            
+            <h4 className="font-semibold text-xl">{paso.titulo}</h4>         
             {Array.isArray(paso.descripcion) ? (
               <ul className="list-disc pl-5">
                 {paso.descripcion.map((desc, idx) => (
@@ -363,9 +332,7 @@ export default function TutorialPage() {
             )}
           </li>
         ))}
-      </ul>
-
-      
+      </ul>   
       <h3 className="font-semibold text-2xl">{implementacionEnCodigo.titulo}</h3>
       {/* Código */}
       <div className="bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)]">
@@ -373,14 +340,12 @@ export default function TutorialPage() {
           <code>{implementacionEnCodigo.codigo}</code>
         </pre>
       </div>
-
       {/* Pasos Clave */}
       <h4 className="font-semibold text-xl">{t("Pasos")}</h4>
       <ul className="list-decimal pl-5 space-y-4">
         {implementacionEnCodigo.pasos_clave.map((paso, index) => (
           <li key={index}>
-            <h5 className="font-semibold">{paso.titulo}</h5>
-          
+            <h5 className="font-semibold">{paso.titulo}</h5>       
             {Array.isArray(paso.descripcion) ? (
               <ul className="list-disc pl-5">
                 {paso.descripcion.map((desc, idx) => (
@@ -393,10 +358,8 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
       {/* Desafíos Encontrados y Soluciones Aplicadas */}
-      <h3 className="font-semibold text-2xl">{desafiosEncontrados.titulo}</h3>
-      
+      <h3 className="font-semibold text-2xl">{desafiosEncontrados.titulo}</h3>   
       <ul className="list-disc pl-5 space-y-4">
         {desafiosEncontrados.desafios.map((desafio, index) => (
           <li key={index}>
@@ -410,7 +373,6 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
       {/* Impacto y Valor Agregado de Esta Solución */}
       <h3 className="font-semibold text-2xl">{impactoYValor.titulo}</h3>
       <ul className="list-disc pl-5 space-y-4">
@@ -422,11 +384,9 @@ export default function TutorialPage() {
         ))}
       </ul>
       </section>
-
         {/* Invitación a Revisar el Código */}
       <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-        <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
-        
+        <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>    
         <div className="flex flex-row gap-5 ">
           <a
             href="https://github.com/Arvedson/Solar/blob/main/src/app/api/ocr/route.tsx"
@@ -446,44 +406,31 @@ export default function TutorialPage() {
           </a>
         </div>
       </section>
-
-     
-
       {/* Sección del DataProvider */}
-      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-8">
-        <h3 className="font-semibold text-2xl">{t('dataProviderTitle')}</h3>
-        <p>{t('dataProviderDescription')}</p>
+      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-8 space-y-6">
+      <h3 className="font-bold text-2xl">{t('title1')}</h3>
+      <p>{t('introduction')}</p>
 
-      </section>
-
-    
-      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12">
-      <h4 className="font-bold text-2xl">{dataProviderDocumentation.title1}</h4>
-      <p>{dataProviderDocumentation.introduction}</p>
-
-      <h3 className="font-bold text-2xl">Key Concepts</h3>
+      <h3 className="font-bold text-2xl">{t('keyConcepts')}</h3>
       <ul className="list-disc pl-5 space-y-4">
         <li>
-          <h4 className="font-semibold text-xl">Abstract Data</h4>
+          <h4 className="font-semibold text-xl">{t('abstractData')}</h4>
           <p>{dataProviderDocumentation.keyConcepts.abstractData}</p>
         </li>
         <li>
-          <h4 className="font-semibold text-xl">CRUD Operations</h4>
+          <h4 className="font-semibold text-xl">{t('crudOperations')}</h4>
           <p>{dataProviderDocumentation.keyConcepts.crudOperations}</p>
         </li>
         <li>
-          <h4 className="font-semibold text-xl">Response Standardization</h4>
+          <h4 className="font-semibold text-xl">{t('responseStandardization')}</h4>
           <p>{dataProviderDocumentation.keyConcepts.responseStandardization}</p>
         </li>
       </ul>
-
-      <h3 className="font-bold text-2xl">Implementation Details</h3>
+      <h3 className="font-bold text-2xl">{t('implementationDetails')}</h3>
       <p>{dataProviderDocumentation.implementationDetails.summary}</p>
-
       <ul className="list-disc pl-5 space-y-5">
       {Object.entries(dataProviderDocumentation.implementationDetails.methods).map(([key, method]) => (
-        <div key={key}>
-         
+        <div key={key}>      
           <li className="space-y-2">
             <h4 className="font-semibold text-xl">{method.title}</h4>
             {method.purpose && <p>{method.purpose}</p>}
@@ -496,7 +443,7 @@ export default function TutorialPage() {
                 ))}
               </ul>
             )}
-            {method.note && <p><strong>Note:</strong> {method.note}</p>}
+            {method.note && <p><strong>{t('note')}</strong> {method.note}</p>}
             {method.considerations && (
               <ul className="list-disc pl-5 space-y-2">
                 {Object.entries(method.considerations).map(([considerationKey, considerationValue]) => (
@@ -507,7 +454,6 @@ export default function TutorialPage() {
               </ul>
             )}
           </li>
-
           {dataProviderDocumentation.codeExamples?.[key] && (
             <div className="bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)] my-4">
               <pre className="whitespace-pre-wrap overflow-x-auto">
@@ -520,8 +466,7 @@ export default function TutorialPage() {
         </div>
       ))}
     </ul>
-
-      <h3 className="font-bold text-2xl">Highlighted Aspects and Skills</h3>
+      <h3 className="font-bold text-2xl">{t('highlightedAspects')}</h3>
       <ul className="list-disc pl-5 space-y-4">
         {Object.entries(dataProviderDocumentation.highlightedAspectsAndSkills).map(([key, value]) => (
           <li key={key}>
@@ -529,8 +474,7 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
-      <h3 className="font-bold text-2xl">Importance of Custom Data Provider</h3>
+      <h3 className="font-bold text-2xl">{t('customDataProviderImportance')}</h3>
       <ul className="list-disc pl-5 space-y-4">
         {Object.entries(dataProviderDocumentation.importanceOfCustomDataProvider).map(([key, value]) => (
           <li key={key}>
@@ -538,32 +482,32 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-
-      <h3 className="font-bold text-2xl">Conclusion</h3>
-      <ul className="list-disc pl-5 space-y-4">
-        <li>
-          <strong>Skills Demonstrated:</strong>
+      <h3 className="font-bold text-2xl">{t('Conclusionn')}</h3>
+      <ul className="list-disc pl-5 space-y-4">   
           <ul className="list-disc pl-5 space-y-2">
             {dataProviderDocumentation.conclusion2.skillsDemonstrated.map((skill, index) => (
               <li key={index}>{skill}</li>
             ))}
-          </ul>
-        </li>
+          </ul>  
         <li>
           <strong>Impact:</strong> {dataProviderDocumentation.conclusion2.impact}
         </li>
       </ul>
     </section>
-
-
-
-
-
-
-        
-
-
+            {/* Invitación a Revisar el Código */}
+            <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
+        <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
+        <div className="flex flex-row gap-5 ">
+          <a
+            href="https://github.com/Arvedson/Solar/tree/main/src/dataProvider"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto "
+          >
+            {t('dataProvider')}
+          </a>
+        </div>
+      </section>
   </div>
-
 )
 }

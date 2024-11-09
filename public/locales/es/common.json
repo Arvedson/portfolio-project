@@ -1078,7 +1078,7 @@
 
           },
 
-          "verWebApp": "Visitar la Aplicación Web",
+          "verWebApp": "Visitar Seccion",
           "invitarVisita": "¡Explora esta seccion de la aplicación web y cotiza tu sistema solar personalizado!",
 
 
@@ -1312,118 +1312,118 @@
         "title": "Método getList",
         "purpose": "Obtener una lista de registros de un recurso específico, con soporte para paginación, filtrado y ordenamiento.",
         "implementation": {
-          "step1": "Se extrajeron los parámetros de paginación (page, perPage), ordenamiento (field, order) y filtrado (filter) de params.",
-          "step2": "Se construyó una consulta con estos parámetros utilizando query-string para serializar el objeto a una cadena de consulta.",
-          "step3": "Se manejó la respuesta para extraer los datos y el total de registros, utilizando la cabecera content-range."
+          "Paso 1": "Se extrajeron los parámetros de paginación (page, perPage), ordenamiento (field, order) y filtrado (filter) de params.",
+          "Paso 2": "Se construyó una consulta con estos parámetros utilizando query-string para serializar el objeto a una cadena de consulta.",
+          "Paso 3": "Se manejó la respuesta para extraer los datos y el total de registros, utilizando la cabecera content-range."
         },
         "considerations": {
-          "errorHandling": "Se verificó la presencia de la cabecera content-range para asegurar que el servidor proporciona la información necesaria.",
-          "responseFormat": "Se retornó un objeto con las propiedades data y total, donde data es un array de registros y total es el número total de registros disponibles."
+          "Manejo de errores": "Se verificó la presencia de la cabecera content-range para asegurar que el servidor proporciona la información necesaria.",
+          "Formato de respuesta": "Se retornó un objeto con las propiedades data y total, donde data es un array de registros y total es el número total de registros disponibles."
         }
       },
       "3": {
         "title": "Método getOne",
         "purpose": "Obtener un solo registro basado en su id.",
         "implementation": {
-          "step1": "Se construyó la URL utilizando el resource y params.id.",
-          "step2": "Se realizó una petición GET y se retornaron los datos obtenidos."
+          "Paso 1": "Se construyó la URL utilizando el resource y params.id.",
+          "Paso 2": "Se realizó una petición GET y se retornaron los datos obtenidos."
         },
         "considerations": {
-          "efficiency": "Este método es esencial para visualizar detalles de un registro sin sobrecargar la API."
+          "Eficiencia": "Este método es esencial para visualizar detalles de un registro sin sobrecargar la API."
         }
       },
       "4": {
         "title": "Método create",
         "purpose": "Crear un nuevo registro en el servidor.",
         "implementation": {
-          "step1": "Se realizó una petición POST al resource correspondiente, enviando params.data en el cuerpo de la petición.",
-          "step2": "Se incluyeron las cabeceras necesarias, como Content-Type: application/json.",
-          "step3": "Se manejó la respuesta para incluir el id generado por el servidor en el objeto de datos retornado."
+          "Paso 1": "Se realizó una petición POST al resource correspondiente, enviando params.data en el cuerpo de la petición.",
+          "Paso 2": "Se incluyeron las cabeceras necesarias, como Content-Type: application/json.",
+          "Paso 3": "Se manejó la respuesta para incluir el id generado por el servidor en el objeto de datos retornado."
         },
         "considerations": {
-          "dataValidation": "Antes de enviar los datos, es importante asegurarse de que cumplen con los requisitos del servidor.",
-          "activityLogging": "Se incluyó un console.log para verificar los datos enviados durante el desarrollo."
+          "Validacion de datos": "Antes de enviar los datos, es importante asegurarse de que cumplen con los requisitos del servidor.",
+          "Regristro de logs": "Se incluyeron console.logs de depuracion para verificar los datos enviados durante el desarrollo."
         }
       },
       "5": {
         "title": "Método update",
         "purpose": "Actualizar un registro existente.",
         "implementation": {
-          "step1": "Se construyó la URL incluyendo el params.id.",
-          "step2": "Se realizó una petición PUT con los datos actualizados en params.data.",
-          "step3": "Se retornaron los datos actualizados al cliente."
+          "Paso 1": "Se construyó la URL incluyendo el params.id.",
+          "Paso 2": "Se realizó una petición PUT con los datos actualizados en params.data.",
+          "Paso 3": "Se retornaron los datos actualizados al cliente."
         },
         "considerations": {
-          "idempotency": "El uso de PUT asegura que la operación es idempotente, reemplazando el registro existente con los nuevos datos."
+          "Idempotencia": "El uso de PUT asegura que la operación es idempotente, reemplazando el registro existente con los nuevos datos."
         }
       },
       "6": {
         "title": "Método delete",
         "purpose": "Eliminar un registro específico.",
         "implementation": {
-          "step1": "Se realizó una petición DELETE a la URL del recurso con el params.id.",
-          "step2": "Se manejó la respuesta para confirmar que el registro fue eliminado."
+          "Paso 1": "Se realizó una petición DELETE a la URL del recurso con el params.id.",
+          "Paso 2": "Se manejó la respuesta para confirmar que el registro fue eliminado."
         },
         "considerations": {
-          "deletionConfirmation": "Es buena práctica manejar posibles errores si el registro no existe o no se puede eliminar."
+          "Confirmacion de eliminacion": "Es buena práctica manejar posibles errores si el registro no existe o no se puede eliminar."
         }
       },
       "7": {
         "title": "Método getMany",
         "purpose": "Obtener múltiples registros basados en un array de IDs.",
         "implementation": {
-          "step1": "Se construyó una consulta filtrando por id utilizando params.ids.",
-          "step2": "Se realizó una petición GET y se retornaron los registros correspondientes."
+          "Paso 1": "Se construyó una consulta filtrando por id utilizando params.ids.",
+          "Paso 2": "Se realizó una petición GET y se retornaron los registros correspondientes."
         },
         "considerations": {
-          "efficiency": "Útil para obtener referencias o relaciones entre registros sin hacer múltiples peticiones individuales."
+          "Eficiencia": "Útil para obtener referencias o relaciones entre registros sin hacer múltiples peticiones individuales."
         }
       },
       "8": {
         "title": "Método getManyReference",
         "purpose": "Obtener registros que están relacionados con otro registro específico.",
         "implementation": {
-          "step1": "Similar a getList, pero se incluyó un filtro adicional basado en params.target y params.id.",
-          "step2": "Soporta paginación, filtrado y ordenamiento."
+          "Paso 1": "Similar a getList, pero se incluyó un filtro adicional basado en params.target y params.id.",
+          "Paso 2": "Soporta paginación, filtrado y ordenamiento."
         },
         "considerations": {
-          "dataRelationships": "Facilita la visualización y manejo de datos relacionados, como comentarios de una publicación."
+          "Relacion de datos": "Facilita la visualización y manejo de datos relacionados, como comentarios de una publicación."
         }
       },
       "9": {
         "title": "Métodos updateMany y deleteMany",
         "purpose": "Actualizar o eliminar múltiples registros a la vez.",
         "implementation": {
-          "step1": "Se implementaron como funciones asíncronas que retornan una promesa resuelta con un array vacío.",
-          "note": "Esta es una implementación dummy para cumplir con la interfaz, y se puede mejorar para soportar estas operaciones según las capacidades del backend."
+          "Paso 1": "Se implementaron como funciones asíncronas que retornan una promesa resuelta con un array vacío.",
+          "Nota": "Esta es una implementación dummy para cumplir con la interfaz, y se puede mejorar para soportar estas operaciones según las capacidades del backend."
         },
         "considerations": {
-          "futureImprovements": "Dependiendo de las necesidades, se pueden implementar estas operaciones para optimizar el rendimiento al manejar lotes de datos."
+          "Mejoras futuras": "Dependiendo de las necesidades, se pueden implementar estas operaciones para optimizar el rendimiento al manejar lotes de datos."
         }
       },
       "10": {
         "title": "Integración en el DataProvider Principal",
         "implementation": {
-          "composition": "Se importaron todos los métodos y se incluyeron en un objeto dataProvider que cumple con la interfaz esperada por React Admin.",
-          "exportation": "Se exportó el dataProvider para ser utilizado en la configuración de React Admin.",
-          "flexibility": "Esta modularidad permite mantener y actualizar cada método de manera independiente."
+          "Composicion": "Se importaron todos los métodos y se incluyeron en un objeto dataProvider que cumple con la interfaz esperada por React Admin.",
+          "Exportacion": "Se exportó el dataProvider para ser utilizado en la configuración de React Admin.",
+          "Flexibilidad": "Esta modularidad permite mantener y actualizar cada método de manera independiente."
         }
       }
     },
     "integration": ""
   },
   "highlightedAspectsAndSkills": {
-    "modularityAndCodeReuse": "Cada operación CRUD se implementó en módulos separados, facilitando la mantenibilidad y escalabilidad del código.",
-    "typescriptUsage": "Se definieron interfaces personalizadas para tipar correctamente los parámetros y las respuestas, aumentando la seguridad y reduciendo errores.",
-    "queryHandling": "Se utilizó query-string para serializar objetos de consulta, asegurando que los parámetros se envíen correctamente en las peticiones GET.",
-    "errorManagementAndValidation": "Se incluyeron comprobaciones para manejar posibles errores, como la ausencia de la cabecera content-range en las respuestas.",
-    "reactAdminToolsIntegration": "Se aprovechó fetchUtils de React Admin para simplificar las peticiones HTTP y garantizar compatibilidad.",
-    "scalabilityPreparation": "Aunque algunos métodos como updateMany y deleteMany se implementaron de manera básica, la estructura permite ampliarlos según las necesidades futuras."
+    "Modularidad Y Reutilización De Código": "Cada operación CRUD se implementó en módulos separados, facilitando la mantenibilidad y escalabilidad del código.",
+    "Uso De TypeScript": "Se definieron interfaces personalizadas para tipar correctamente los parámetros y las respuestas, aumentando la seguridad y reduciendo errores.",
+    "Manejo De Consultas": "Se utilizó query-string para serializar objetos de consulta, asegurando que los parámetros se envíen correctamente en las peticiones GET.",
+    "Gestión Y Validación De Errores": "Se incluyeron comprobaciones para manejar posibles errores, como la ausencia de la cabecera content-range en las respuestas.",
+    "Integración Con Herramientas De React Admin": "Se aprovechó fetchUtils de React Admin para simplificar las peticiones HTTP y garantizar compatibilidad.",
+    "Preparación Para Escalabilidad": "Aunque algunos métodos como updateMany y deleteMany se implementaron de manera básica, la estructura permite ampliarlos según las necesidades futuras."
   },
   "importanceOfCustomDataProvider": {
-    "nonRestfulApi": "Permite adaptar las peticiones y respuestas al formato esperado por React Admin cuando la API no sigue estrictamente los estándares de REST.",
-    "additionalFunctionality": "Es crucial cuando se requieren funcionalidades adicionales o personalizadas, como autenticación, manejo de tokens, o transformación de datos.",
-    "performanceOptimization": "Controlar cómo y cuándo se realizan las peticiones puede mejorar la eficiencia de la aplicación."
+    "Adaptación Para Apis No Rest": "Permite adaptar las peticiones y respuestas al formato esperado por React Admin cuando la API no sigue estrictamente los estándares de REST.",
+    "Funcionalidad Adicional": "Es crucial cuando se requieren funcionalidades adicionales o personalizadas, como autenticación, manejo de tokens, o transformación de datos.",
+    "Optimización Del Rendimiento": "Controlar cómo y cuándo se realizan las peticiones puede mejorar la eficiencia de la aplicación."
   },
   "conclusion2": {
     "skillsDemonstrated": [
@@ -1444,9 +1444,18 @@
     "7": "const getMany = (resource: string, params: GetManyParams): Promise<{ data: any[] }> => {\n  const query = {\n    filter: JSON.stringify({ id: params.ids }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ json }) => ({ data: json }));\n};\n\nexport default getMany;",
     "8": "const getManyReference = (resource: string, params: GetManyReferenceParams): Promise<{ data: any[]; total: number }> => {\n  const { page, perPage } = params.pagination;\n  const { field, order } = params.sort;\n  const query = {\n    sort: JSON.stringify([field, order]),\n    range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),\n    filter: JSON.stringify({\n      ...params.filter,\n      [params.target]: params.id,\n    }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ headers, json }) => {\n    const contentRange = headers.get('content-range');\n    if (!contentRange) {\n      throw new Error('Missing content-range header');\n    }\n    const total = parseInt(contentRange.split('/').pop() as string, 10);\n\n    return {\n      data: json,\n      total,\n    };\n  });\n};\n\nexport default getManyReference;"
   }
-}
+},
 
-
+"keyConcepts": "Conceptos Clave",
+"abstractData": "Datos Abstractos",
+"crudOperations": "Operaciones CRUD",
+"responseStandardization": "Estandarización de Respuestas",
+"implementationDetails": "Detalles de Implementación",
+"note": "Nota:",
+"highlightedAspects": "Aspectos y Habilidades Destacadas",
+"customDataProviderImportance": "Importancia de un Proveedor de Datos Personalizado",
+"Conclusionn": "Conclusion Tecnica",
+"dataProvider":"Data Povider"
 
 }
 
