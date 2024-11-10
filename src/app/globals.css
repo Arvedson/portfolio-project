@@ -15,6 +15,8 @@
   --navbar-text-light: #ffffff; /* Texto claro del Navbar */
   --navbar-hover-light: #495057; /* Hover claro del Navbar */
   --box-shadow-light: rgba(0, 0, 0, 0.1); /* Sombra en modo claro */
+  --star-color-light: rgb(129, 129, 129); /* Color de la estrella fugaz en tema claro */
+  
   
   /* Colores base para el modo oscuro */
   --background-dark: #212529; /* Fondo oscuro */
@@ -27,6 +29,7 @@
   --navbar-text-dark: #ffffff; /* Texto claro del Navbar */
   --navbar-hover-dark: #495057; /* Hover en modo oscuro */
   --box-shadow-dark: rgba(255, 255, 255, 0.2); /* Sombra en modo oscuro */
+  --star-color-dark: rgba(255, 255, 255, 0.7); /* Color de la estrella fugaz en tema oscuro */
 }
 
 /* Modo claro por defecto */
@@ -40,6 +43,7 @@
   --navbar-text: var(--navbar-text-light);
   --navbar-hover: var(--navbar-hover-light);
   --box-shadow-color: var(--box-shadow-light);
+  --star-color: var(--star-color-light);
 }
 
 /* Modo oscuro */
@@ -53,9 +57,28 @@
   --navbar-text: var(--navbar-text-dark);
   --navbar-hover: var(--navbar-hover-dark);
   --box-shadow-color: var(--box-shadow-dark);
+  --star-color: var(--star-color-dark);
 }
 
-/* Estilos globales */
+/* Contenedor para el fondo animado, colocado detrás de los elementos principales */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Asegura que esté detrás del contenido principal */
+}
+
+.night {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(45deg);
+}
+
+/* Estilo del cuerpo de la página */
 body {
   color: var(--foreground);
   background-color: var(--background);
@@ -63,6 +86,71 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
 }
+
+.shooting_star {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(-45deg, var(--star-color), rgba(0, 0, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px var(--star-color));
+  animation: tail 3000ms ease-in-out infinite, shooting 5000ms ease-in-out infinite;
+}
+
+
+.shooting_star::before,
+.shooting_star::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(0, 0, 255, 0), var(--star-color), rgba(0, 0, 255, 0));
+  transform: translateX(50%) rotateZ(45deg);
+  border-radius: 100%;
+  animation: shining 5000ms ease-in-out infinite;
+}
+
+.shooting_star::after {
+  transform: translateX(50%) rotateZ(-45deg);
+}
+
+/* Animaciones */
+@keyframes tail {
+  0% {
+    width: 0;
+  }
+  30% {
+    width: 150px;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes shining {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 30px;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes shooting {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(1000px) translateY(1000px); /* Ajusta la distancia de movimiento */
+  }
+}
+
+
+
+
 
 /* Estilo del Navbar */
 .navbar {
@@ -159,18 +247,29 @@ body {
 
 /* borrar para restaurar default -body-*/
 
+@keyframes pulse {
+  0%, 100% {
+    background-size: 90em 90em;
+  }
+  50% {
+    background-size: 300em 300em; /* Aumenta el tamaño ligeramente para hacer las líneas más gruesas */
+  }
+}
+
 
 
 body {
   background: repeating-linear-gradient(45deg, var(--background) 0%, var(--primary) 3%, transparent 7%, transparent 50%),
-  repeating-linear-gradient(45deg, var(--primary) 0%, var(--background) 10%, transparent 5%, transparent 50%);
-  
-             
+              repeating-linear-gradient(45deg, var(--primary) 0%, var(--background) 10%, transparent 5%, transparent 50%);
   background-size: 90em 90em;
-  background-color: var(--background); /* Usar la variable de fondo según el tema */
+  background-color: var(--background);
   opacity: 1;
   transition: background-color 0.3s ease, color 0.3s ease;
+  
+  /* Aplicar la animación */
+  animation: pulse 500s infinite ease-in-out; /* Ajusta la duración según prefieras */
 }
+
 
 
 /* Estilos de la barra de lvl */
