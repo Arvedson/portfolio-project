@@ -96,7 +96,7 @@ export default function Post3Page() {
         <p className='mb-2'>{t('codingStart')}</p>
         <p className='mb-2'>{t('codingChallenges')}</p>
         <motion.div variants={imageVariants} initial="offscreen" whileInView="onscreen" className="flex justify-center pb-6">
-            <Image src="/imagen2.webp" alt="Technological World Exit" width={800} height={800} className=" rounded-xl shadow-lg dark:brightness-75" />
+            <Image src="/imagen2.webp" alt="Technological World Exit1" width={800} height={800} className=" rounded-xl shadow-lg dark:brightness-75" />
         </motion.div>
     </div>
 
@@ -105,13 +105,13 @@ export default function Post3Page() {
         <p className='mb-2'>{t('learningHTMLCSS')}</p>
         <p className='mb-2'>{t('designLearning')}</p>
         <motion.div variants={imageVariants} initial="offscreen" whileInView="onscreen" className="flex justify-center pb-6">
-            <Image src="/imagen3.webp" alt="Technological World Exit" width={800} height={800} className=" rounded-xl shadow-lg dark:brightness-75" />
+            <Image src="/imagen3.webp" alt="Technological World Exit2" width={800} height={800} className=" rounded-xl shadow-lg dark:brightness-75" />
         </motion.div>
         <p className='mb-2'>{t('projectFailures')}</p>
         <p className='mb-2'>{t('firstWebApp')}</p>
         <p className='mb-2'>{t('reflectionOnJourney')}</p>
         <motion.div variants={imageVariants} initial="offscreen" whileInView="onscreen" className="flex justify-center">
-            <Image src="/imagen4.webp" alt="Technological World Exit" width={800} height={800} className=" rounded-xl shadow-lg dark:brightness-75 " />
+            <Image src="/imagen4.webp" alt="Technological World Exit3" width={800} height={800} className=" rounded-xl shadow-lg dark:brightness-75 " />
         </motion.div>
     </div>
 </section>
