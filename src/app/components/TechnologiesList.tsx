@@ -92,25 +92,26 @@ const TechnologiesList: React.FC = () => {
         }
 
         return (
-          <div
-            key={name}
-            className="
-              p-4
-              border
-              rounded-lg
-              flex
-              flex-col
-              bg-[var(--background)]
-              text-[var(--foreground)]
-              border-[var(--secondary)]
-              hover:border-[var(--primary)]
-              transition-colors
-              duration-300
-              shadow-sm
-              hover:shadow-md
-              group
-            "
-          >
+<div
+  key={name}
+  className="
+    p-4
+    border
+    rounded-lg
+    flex
+    flex-col
+    bg-[rgba(255, 255, 255, 0.8)]  /* Fondo blanco con 80% de opacidad */
+    dark:bg-[rgba(0, 0, 0, 0.6)]    /* Fondo negro con 60% de opacidad para el tema oscuro */
+    text-[var(--foreground)]
+    border-[var(--secondary)]
+    hover:border-[var(--primary)]
+    transition-colors
+    duration-300
+    shadow-sm
+    hover:shadow-md
+    group
+  "
+>
             {/* Contenedor del Icono */}
             <div className="mb-4 flex items-center justify-center">
               <IconComponent />

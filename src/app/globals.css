@@ -387,49 +387,75 @@ body {
 
 /* Estilos para la sección de introducción */
 .introduction-section {
-  max-width: 800px; 
-  margin: 0 auto; 
+  max-width: 800px;
+  margin: 0.8rem auto; 
   background-size: cover;
   background-position: center;
-  color: white;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 6rem;
+  
+  padding: 1rem; 
+  border-radius: 0.3rem; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 2rem; 
+  
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Fondo para el tema claro */
+
 [data-theme='light'] .introduction-section {
-  background-image: url('/backgroundlight.png');
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), 
+                    url('/backgroundlight.png');
+  background-size: cover;
+  background-position: center;
 }
 
 /* Fondo para el tema oscuro */
 [data-theme='dark'] .introduction-section {
-  background-image: url('/backgrounddark.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('/backgrounddark.png');
+  background-size: cover;
+  background-position: center;
 }
 
 
 .introduction-content {
-  
-  padding: 1.5rem;
-  border-radius: 0.5rem;
+  position: relative; 
+  padding: 1.8rem;
+  border-radius: 0.3rem;
   max-width: 800px;
   margin: auto;
+  overflow: hidden; 
 }
 
-/* Fondo semitransparente en el tema oscuro */
-[data-theme='dark'] .introduction-content {
-  background-color: rgba(100, 100, 100, 0.8); /* Fondo oscuro semitransparente */
+
+[data-theme='dark'] .introduction-content::before {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(156, 98, 98, 0.8); 
+  border-radius: 0.3rem; 
+
 }
 
-/* Fondo semitransparente en el tema claro */
-[data-theme='light'] .introduction-content {
-  background-color: rgba(211, 211, 211, 0.8); /* Fondo oscuro semitransparente */
+/* Pseudo-elemento para fondo semitransparente en el tema claro */
+[data-theme='light'] .introduction-content::before {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(240, 240, 240, 0.8); /* Fondo claro con opacidad */
+  border-radius: 0.3rem;
+  
 }
+
+
 
 /* Estilos para el título */
 .introduction-title {
@@ -437,14 +463,17 @@ body {
   font-weight: bold;
   margin-bottom: 1rem;
   color: var(--foreground); 
+ 
 }
 
 /* Estilos para el texto */
 .introduction-text {
-  font-size: 1.25rem;
+  font-size: 1rem;
   max-width: 600px;
   margin: 0 auto;
   color: var(--secondary); 
+ 
+  
 }
 
 /* Color específico para tema claro */
@@ -459,6 +488,18 @@ body {
   color: var(--foreground-dark); 
 }
 
+/* Responsividad */
+@media (max-width: 768px) {
+  .introduction-title {
+    font-size: 1.8rem;
+  }
+
+  .introduction-text {
+    font-size: 1rem;
+  }
+}
+
+
 
 
 
@@ -468,35 +509,40 @@ body {
 .introduction-section-ququlkan {
   margin: 0 auto; 
   max-width: 800px; 
-  background-color: var(--background);
-  color: var(--foreground);
+  
+
   padding: 3rem 1.5rem;
   text-align: center;
   border-radius: 0.5rem;
   box-shadow: 0 4px 4px var(--box-shadow-color);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), 
+  url('/cards.png');
+background-size:auto;
+background-position:center
  
 }
 
 .introduction-title-ququlkan {
-  color: var(--primary);
-  font-size: 2.5rem;
+  
+  color: var(--foreground); /* Texto secundario se ajusta al tema */
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .introduction-text-ququlkan {
   color: var(--secondary);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   line-height: 1.75rem;
 }
 
 /* Responsividad */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .introduction-title-ququlkan {
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
 
   .introduction-text-ququlkan {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }

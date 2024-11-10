@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from '../../src/app/components/Navbar';
 import Footer from "./components/Footer";
 import '/src/config/i18n';
-// RootLayout.js
+// RootLayout
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Image from 'next/image';
+import TechnologiesList2 from "../../components/TechnologiesList2"
+
 
 interface KeyConcept {
   abstractData: string;
@@ -680,7 +682,7 @@ export default function TutorialPage() {
 
       {/* Invitación a Revisar el Código */}
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-           <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
+           <h3 className="font-semibold text-3x2 ">{t('exploreCodeTitle')}</h3>
           <div className="flex flex-row gap-5 ">
           <a
             href="https://github.com/Arvedson/Solar/blob/main/src/app/api/sendgrid/route.tsx"
@@ -691,7 +693,41 @@ export default function TutorialPage() {
             {t('ejemplodeuso')}
           </a>
           </div>
-        </section>  
+
+       
+
+        </section>
+
+
+        <section className=" max-w-3xl mx-auto mb-12 space-y-6">
+        <h2 className="font-bold text-2xl">{t('technologies')}</h2>
+       
+        <TechnologiesList2/>
+         </section>
+
+      {/* Conclusion */}
+       <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto space-y-6 ">
+          <h2 className="font-bold text-3x1 ">{t('todoapp.conclusion.title')}</h2>
+          <p className="">
+              {t('ququlkanapp.conclusion.description')}
+          </p>
+        {/* GitHub Link Repo */}
+       </section>
+
+        {/* Invitación a Revisar el Código */}
+        <div className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
+          <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
+          <div className="flex flex-row gap-5 ">
+            <a
+              href="https://github.com/Arvedson/Solar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto "
+            >
+              {t('codeinviteququlkan')}
+            </a>
+          </div>
+        </div>
 
 
 

@@ -1537,7 +1537,95 @@
     "purpose": "Purpose:",
     "noSectionsAvailable": "No sections available.",
     "importations": "Imports:",
-    "ejemplodeuso":"Code aplied"
+    "ejemplodeuso":"Code aplied",
+
+
+    "todoapp2": {
+    "technologies": {
+      "items": {
+        "Next.js": {
+          "icon": "nextjs-icon",
+          "description": "A React framework for server-rendered and static applications.",
+          "usage": "Demonstrates skills in modern web development and SSR."
+        },
+        "React": {
+          "icon": "react-icon",
+          "description": "Essential library for building dynamic user interfaces.",
+          "usage": "Indicates experience in frontend development."
+        },
+        "TypeScript": {
+          "icon": "typescript-icon",
+          "description": "A JavaScript superset that adds static typing.",
+          "usage": "Shows you write robust and maintainable code."
+        },
+        "Prisma": {
+          "icon": "prisma-icon",
+          "description": "ORM for Node.js and TypeScript.",
+          "usage": "Simplifies database interactions."
+        },
+        "Tailwind CSS": {
+          "icon": "tailwind-icon",
+          "description": "Utility-first CSS framework.",
+          "usage": "Indicates skills in fast and efficient styling."
+        },
+        "Clerk": {
+          "icon": "nextauth-icon",
+          "description": "Complete solution for user authentication and management (Admin).",
+          "usage": "Shows experience in security and authentication."
+        },
+        "Formik": {
+          "icon": "formik-icon",
+          "description": "Library for handling forms in React.",
+          "usage": "Facilitates user input management and validation."
+        },
+        "Framer Motion": {
+          "icon": "framer-motion-icon",
+          "description": "Animation library for React.",
+          "usage": "Enables the creation of interactive interfaces."
+        },
+        "Tesseract": { 
+        "icon": "tesseract-icon",
+        "description": "OCR (Optical Character Recognition) library.",
+        "usage": "Demonstrates ability to work with image processing and text extraction."
+        },
+        "Chart.js": {
+          "icon": "chartjs-icon",
+          "description": "Data visualization library.",
+          "usage": "Represents complex data graphically."
+        },
+        "Zod": {
+          "icon": "zod-icon",
+          "description": "Schema validation library.",
+          "usage": "Ensures data security and integrity."
+        },
+        "Shadcn UI": {
+          "icon": "shadcn-icon",
+          "description": "Accessible and customizable UI components.",
+          "usage": "Improves consistency and accessibility."
+        },
+        "Vercel Analytics": { 
+          "icon": "vercel-analytics-icon",
+          "description": "Analytics tool by Vercel for monitoring and optimizing site performance.",
+          "usage": "Shows experience in performance analysis and monitoring."
+        },
+        "ECharts": { 
+          "icon": "echarts-icon",
+          "description": "Powerful charting and visualization library.",
+          "usage": "Demonstrates skills in data visualization and analytics."
+        },
+        "React Admin": { 
+          "icon": "react-admin-icon",
+          "description": "Framework for building admin interfaces in React.",
+          "usage": "Indicates ability to create dashboards and admin panels."
+        }
+      }
+    }
+  },
+  "technologies":"Some of the technologies implemented in this project:",
+
+  "ququlkanapp.conclusion.description":"This project has been an excellent opportunity to apply and deepen the use of modern technologies such as Next.js, React, and Tailwind CSS, as well as integrate advanced tools for authentication, data management, and visualization. Throughout the development process, various technical challenges were overcome, solidifying knowledge and strengthening web development skills. This portfolio not only demonstrates technical capabilities but also showcases a commitment to creating efficient, scalable, and visually appealing interfaces.",
+  "codeinviteququlkan":"Visit Repo"
+  
 
     
 

@@ -1584,7 +1584,97 @@
   "purpose": "Propósito:",
   "noSectionsAvailable": "No hay secciones disponibles.",
   "importations": "Importaciones:",
-  "ejemplodeuso": "Codigo aplicado"
+  "ejemplodeuso": "Codigo aplicado",
+
+
+  "todoapp2": {
+    "technologies": {
+      "items": {
+        "Next.js": {
+          "icon": "nextjs-icon",
+          "description": "Un framework de React para aplicaciones de servidor y estáticas.",
+          "usage": "Demuestra habilidades en desarrollo web moderno y SSR."
+        },
+        "React": {
+          "icon": "react-icon",
+          "description": "Biblioteca esencial para construir interfaces de usuario dinámicas.",
+          "usage": "Indica experiencia en frontend."
+        },
+        "TypeScript": {
+          "icon": "typescript-icon",
+          "description": "Superset de JavaScript que añade tipado estático.",
+          "usage": "Muestra que escribes código robusto y mantenible."
+        },
+        "Prisma": {
+          "icon": "prisma-icon",
+          "description": "ORM para Node.js y TypeScript.",
+          "usage": "Simplifica la interacción con bases de datos."
+        },
+        "Tailwind CSS": {
+          "icon": "tailwind-icon",
+          "description": "Framework de CSS utilitario.",
+          "usage": "Indica habilidades en diseño y estilización rápida."
+        },
+        "Clerk": {
+          "icon": "nextauth-icon",
+          "description": "Solución completa para autenticación y gestión de usuarios (Admin).",
+          "usage": "Muestra experiencia en seguridad y autenticación."
+        },
+        "Formik": {
+          "icon": "formik-icon",
+          "description": "Biblioteca para manejar formularios en React.",
+          "usage": "Facilita la gestión de entradas y validación."
+        },
+        "Framer Motion": {
+          "icon": "framer-motion-icon",
+          "description": "Biblioteca de animación para React.",
+          "usage": "Permite crear interfaces interactivas."
+        },
+        "Chart.js": {
+          "icon": "chartjs-icon",
+          "description": "Biblioteca de visualización de datos.",
+          "usage": "Representa gráficamente datos complejos."
+        },
+
+        "Zod": {
+          "icon": "zod-icon",
+          "description": "Biblioteca de validación de esquemas.",
+          "usage": "Asegura la seguridad de los datos."
+        },
+        
+        "Shadcn UI": {
+          "icon": "shadcn-icon",
+          "description": "Componentes de UI accesibles y personalizables.",
+          "usage": "Mejora la consistencia y accesibilidad."
+        },
+        "Tesseract": { 
+          "icon": "tesseract-icon",
+          "description": "Biblioteca de OCR (Reconocimiento Óptico de Caracteres).",
+          "usage": "Demuestra la habilidad para trabajar con procesamiento de imágenes y extracción de texto."
+        },
+        "Vercel Analytics": { 
+          "icon": "vercel-analytics-icon",
+          "description": "Herramienta de análisis de Vercel para monitorear y optimizar el rendimiento del sitio.",
+          "usage": "Demuestra experiencia en análisis y monitoreo de rendimiento."
+        },
+        "ECharts": { 
+          "icon": "echarts-icon",
+          "description": "Biblioteca poderosa de gráficos y visualización.",
+          "usage": "Demuestra habilidades en visualización de datos y análisis."
+        },
+        "React Admin": { 
+          "icon": "react-admin-icon",
+          "description": "Framework para construir interfaces de administración en React.",
+          "usage": "Indica habilidad para crear paneles de control y administración."
+        }
+      }
+    }
+  },
+
+  "technologies":"Algunas de las tecnologias implementadas en este proyecto:",
+
+  "ququlkanapp.conclusion.description":"Este proyecto ha sido una excelente oportunidad para aplicar y profundizar en el uso de tecnologías modernas como Next.js, React, y Tailwind CSS, así como integrar herramientas avanzadas de autenticación, administración de datos y visualización. A lo largo del desarrollo, se han solucionado desafíos técnicos, lo que ha permitido afianzar conocimientos y fortalecer habilidades en desarrollo web. Este portafolio no solo muestra capacidades técnicas, sino también el compromiso con la creación de interfaces eficientes, escalables y visualmente atractivas.",
+"codeinviteququlkan":"Visita el Repo"
 }
  
   
