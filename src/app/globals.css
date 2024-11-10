@@ -16,6 +16,14 @@
   --navbar-hover-light: #495057; /* Hover claro del Navbar */
   --box-shadow-light: rgba(0, 0, 0, 0.1); /* Sombra en modo claro */
   --star-color-light: rgb(129, 129, 129); /* Color de la estrella fugaz en tema claro */
+  --border-color-light: rgba(0, 0, 0, 0.1); /* Borde para tema claro */
+    /* Colores base para el modo claro */
+    --primary-light: #ffadad;
+    --secondary-light: #6c757d;
+    
+    /* Variables RGB para transparencia */
+    --primary-light-rgb: 255, 173, 173; /* equivalente a #ffadad */
+    --secondary-light-rgb: 108, 117, 125; /* equivalente a #6c757d */
   
   
   /* Colores base para el modo oscuro */
@@ -30,6 +38,14 @@
   --navbar-hover-dark: #495057; /* Hover en modo oscuro */
   --box-shadow-dark: rgba(255, 255, 255, 0.2); /* Sombra en modo oscuro */
   --star-color-dark: rgba(255, 255, 255, 0.7); /* Color de la estrella fugaz en tema oscuro */
+  --border-color-dark: rgba(255, 255, 255, 0.2); /* Borde para tema oscuro */
+    /* Colores base para el modo oscuro */
+    --primary-dark: #7a4141;
+    --secondary-dark: #adb5bd;
+  
+    /* Variables RGB para transparencia */
+    --primary-dark-rgb: 122, 65, 65; /* equivalente a #7a4141 */
+    --secondary-dark-rgb: 173, 181, 189; /* equivalente a #adb5bd */
 }
 
 /* Modo claro por defecto */
@@ -545,4 +561,151 @@ background-position:center
   .introduction-text-ququlkan {
     font-size: 1rem;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Clase especial para los estilos de los cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch; /* Estira cada card para tener la misma altura */
+}
+.card-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background-color: var(--secondary-dark);
+  color: var(--foreground);
+  border: 1px solid var(--secondary-light);
+  min-height: 100%; /* Se asegura de que todos los cards llenen el espacio vertical */
+}
+
+
+.card-style:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+/* Configuración para el tema oscuro */
+[data-theme="dark"] .card-style {
+  background-color: rgba(173, 181, 189, 0.2); /* Usando el color de --secondary-dark con 20% de opacidad */
+  color: var(--foreground-dark);
+  border-color: var(--foreground-dark);
+}
+
+/* Configuración para el tema claro */
+[data-theme="light"] .card-style {
+  background-color: rgba(108, 117, 125, 0.1); /* Usando el color de --secondary-light con 10% de opacidad */
+  color: var(--foreground-light);
+  border-color: var(--foreground-light);
+}
+
+
+
+.card-body {
+  flex-grow: 1; /* Ocupa el espacio disponible */
+  margin-bottom: 1rem; /* Da un margen inferior para separar el contenido de "Read more" */
+}
+
+/* Clase para el contenedor principal dentro del card */
+.card-content {
+  position: relative;
+  z-index: 2; /* Asegura que el contenido esté por encima del pseudo-elemento */
+}
+
+/* Clase para el contenido de texto dentro del card */
+.card-body {
+  flex-grow: 1; /* Permite que este div crezca para ocupar el espacio */
+}
+
+.card-read-more {
+  margin-top: auto;
+  color: var(--foreground);
+  transition: color 0.3s ease;
+}
+
+.card-read-more:hover {
+  color: var(--primary-dark); /* Cambia de
+   color al hacer hover */
+}
+
+
+
+.read-more {
+  margin-top: auto;
+  color: var(--foreground);
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 2; /* Asegura que "Read more" también esté por encima del fondo */
+}
+
+.read-more:hover {
+  color: var(--primary-dark); /* Cambia de color al hacer hover */
+}
+
+
+.header-section {
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
+  padding: 2rem; /* p-8 en Tailwind equivale a 2rem */
+  border-radius: 0.5rem; /* rounded-lg en Tailwind */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* sombra equivalente a shadow-md */
+  margin-bottom: 3rem; /* mb-12 en Tailwind */
+  text-align: center;
+  border: 1px solid var(--border-color); /* Borde adaptable al tema */
+}
+
+.header-section h1 {
+  font-size: 3rem; /* text-5xl en Tailwind equivale a 3rem */
+  font-weight: 700; /* font-bold en Tailwind */
+  margin-bottom: 1rem; /* mb-4 en Tailwind */
+}
+
+.header-section p {
+  font-size: 1.25rem; /* text-xl en Tailwind equivale a 1.25rem */
+  max-width: 40rem; /* max-w-2xl en Tailwind */
+  margin: 0 auto; /* centrar el párrafo */
+}
+
+[data-theme="light"] {
+  --border-color: var(--foreground-light); /* Negro para tema claro */
+}
+
+[data-theme="dark"] {
+  --border-color: var(--foreground-dark); /* Blanco para tema oscuro */
+  --primary-rgb: 122, 65, 65; /* Morado profundo del tema oscuro */
+  --secondary-rgb: 173, 181, 189; /* Gris claro del tema oscuro */
+}
+
+/* Gradiente con transparencia en el tema claro */
+[data-theme="light"] .header-section {
+  background-image: linear-gradient(
+    to right,
+    rgba(var(--primary-light-rgb), 0.2), /* Primary Light con transparencia */
+    rgba(var(--secondary-light-rgb), 0.2) /* Secondary Light con transparencia */
+  );
+}
+
+/* Gradiente con transparencia en el tema oscuro */
+[data-theme="dark"] .header-section {
+  background-image: linear-gradient(
+    to right,
+    rgba(var(--primary-dark-rgb), 0.2), /* Primary Dark con transparencia */
+    rgba(var(--secondary-dark-rgb), 0.2) /* Secondary Dark con transparencia */
+  );
 }
