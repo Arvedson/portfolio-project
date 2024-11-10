@@ -1406,8 +1406,148 @@
       "7": "const getMany = (resource: string, params: GetManyParams): Promise<{ data: any[] }> => {\n  const query = {\n    filter: JSON.stringify({ id: params.ids }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ json }) => ({ data: json }));\n};\n\nexport default getMany;",
       "8": "const getManyReference = (resource: string, params: GetManyReferenceParams): Promise<{ data: any[]; total: number }> => {\n  const { page, perPage } = params.pagination;\n  const { field, order } = params.sort;\n  const query = {\n    sort: JSON.stringify([field, order]),\n    range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),\n    filter: JSON.stringify({\n      ...params.filter,\n      [params.target]: params.id,\n    }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ headers, json }) => {\n    const contentRange = headers.get('content-range');\n    if (!contentRange) {\n      throw new Error('Missing content-range header');\n    }\n    const total = parseInt(contentRange.split('/').pop() as string, 10);\n\n    return {\n      data: json,\n      total,\n    };\n  });\n};\n\nexport default getManyReference;"
     }
+  },
+
+  
+    "portfolioData": {
+      "title": "Request Management and Security in Web Applications",
+      "introduction2": "In this project, I implemented key functionalities to improve the security and efficiency of our web application using Next.js. Two main components I developed are determining the user's IP address and controlling the number of requests a user can make within a certain time period. Below, I detail how these components contribute to the application's performance and security, accompanied by code examples demonstrating their implementation.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "User IP Address Identification",
+          "description": "To personalize and secure our users' experience, it is essential to know where they are connecting from. I developed a function that detects the client's IP address making each request to our server. This information is essential for several reasons:",
+          "reasons": [
+            {
+              "title": "Security",
+              "description": "By knowing the IP, we can identify and prevent malicious activities, such as unauthorized access attempts."
+            },
+            {
+              "title": "Personalization",
+              "description": "Allows adapting content and functionalities based on the user's geographical location."
+            },
+            {
+              "title": "Traffic Analysis",
+              "description": "Helps better understand user behavior and optimize application performance."
+            }
+          ],
+          "codeExample": {
+            "language": "typescript",
+            "code": "import { NextRequest } from 'next/server';\nimport { getClientIp } from 'request-ip';\n\nexport function getClientIpWrapper(req: NextRequest) {\n  // Attempts to get the client's IP using request-ip\n  let clientIp;\n  try {\n    clientIp = getClientIp(req);\n  } catch (error) {\n    console.log(\"Error obtaining IP with request-ip:\", error);\n  }\n  \n  // Fallback in case request-ip fails\n  if (!clientIp) {\n    clientIp = req.headers.get('x-forwarded-for') || req.headers.get('remote-addr') || '127.0.0.1';\n  }\n  console.log(\"Obtained IP:\", clientIp);\n  return clientIp;\n}"
+          },
+          "codeDescription": {
+            "importations": [
+              {
+                "module": "next/server",
+                "item": "NextRequest",
+                "description": "Specific request type for Next.js applications."
+              },
+              {
+                "module": "request-ip",
+                "item": "getClientIp",
+                "description": "Function from the request-ip library that attempts to extract the client's IP from the request."
+              }
+            ],
+            "function": {
+              "name": "getClientIpWrapper",
+              "purpose": "Obtain the IP address of the client making the request.",
+              "process": {
+                "step1": "Attempt to Obtain IP with request-ip: Tries to get the client's IP using getClientIp(req). If an error occurs, it is caught and logged to the console.",
+                "step2": "Fallback in Case of Error or Missing IP: If clientIp is not obtained via request-ip, the function attempts to manually extract it from the request headers (x-forwarded-for or remote-addr). If the IP still cannot be determined, the local IP '127.0.0.1' is assigned as the default value.",
+                "step3": "Logging and Returning the IP: The obtained IP is logged to the console for debugging purposes and returned to the caller."
+              }
+            }
+          }
+        },
+        {
+          "number": 2,
+          "title": "Request Rate Limiting",
+          "description": "To protect our application from overloads and abuses, I implemented a request rate limiting system. This system regulates how many times a user can interact with our application within specific time intervals, such as per minute, per hour, or per day. The advantages of this implementation include:",
+          "advantages": [
+            {
+              "title": "Attack Prevention",
+              "description": "Prevents malicious users from sending a large number of requests in a short time, which could overwhelm the server and affect all users."
+            },
+            {
+              "title": "Resource Optimization",
+              "description": "Ensures that server resources are used efficiently, guaranteeing consistent performance for all users."
+            },
+            {
+              "title": "Improved User Experience",
+              "description": "By preventing overloads, legitimate users enjoy a smooth and uninterrupted experience."
+            }
+          ],
+          "codeExample": {
+            "language": "typescript",
+            "code": "import { NextRequest, NextResponse } from 'next/server';\nimport { getClientIp } from 'request-ip';\n\n// Reusing the function to get the client's IP\nexport function getClientIpWrapper(req: NextRequest | any): string {\n  let clientIp: string | null = null;\n  try {\n    clientIp = getClientIp(req); // request-ip has no types for NextRequest, so we use 'any'\n  } catch (error) {\n    console.log(\"Error obtaining IP with request-ip:\", error);\n  }\n\n  if (!clientIp) {\n    clientIp = req.headers['x-forwarded-for'] || req.headers['remote-addr'] || '127.0.0.1';\n  }\n  console.log(\"Obtained IP:\", clientIp);\n  return clientIp as string;\n}\n\n// Function to create rate limiters\nfunction rateLimit(windowMs: number, max: number, message: string) {\n  const hits = new Map<string, number[]>();\n\n  return async (req: NextRequest | any, res: any, next: () => void) => {\n    const ip = getClientIpWrapper(req);\n    const currentTime = Date.now();\n\n    if (!hits.has(ip)) {\n      hits.set(ip, []);\n    }\n\n    const timestamps = hits.get(ip) || [];\n    // Filter requests that are within the time window\n    hits.set(ip, timestamps.filter(timestamp => currentTime - timestamp < windowMs));\n\n    if (hits.get(ip)!.length >= max) {\n      console.log(`Limit reached for IP: ${ip}`);\n      return { status: 429, message };\n    } else {\n      hits.get(ip)!.push(currentTime);\n      if (next) next();\n      return { status: 200 };\n    }\n  };\n}\n\n// Creating different limiters\nconst minuteLimiter = rateLimit(60 * 1000, 2, 'You have exceeded the limit of 2 requests per minute.');\nconst hourlyLimiter = rateLimit(60 * 60 * 1000, 5, 'You have exceeded the limit of 5 requests per hour.');\nconst dailyLimiter = rateLimit(24 * 60 * 60 * 1000, 10, 'You have exceeded the limit of 10 requests per day.');\n\nexport { minuteLimiter, hourlyLimiter, dailyLimiter };"
+          },
+          "codeDescription": {
+            "function": {
+              "name": "rateLimit",
+              "purpose": "Create a middleware that limits the number of requests an IP can make within a specific time window.",
+              "parameters": [
+                {
+                  "name": "windowMs",
+                  "description": "Duration of the time window in milliseconds."
+                },
+                {
+                  "name": "max",
+                  "description": "Maximum number of requests allowed within the time window."
+                },
+                {
+                  "name": "message",
+                  "description": "Error message returned when the limit is exceeded."
+                }
+              ],
+              "process": {
+                "step1": "Request Storage (hits): Uses a Map to track the timestamps of requests made by each IP.",
+                "step2": {
+                  "description": "Asynchronous Middleware:",
+                  "substeps": {
+                    "obtencionDeLaIP": "Uses getClientIpWrapper to determine the client's IP.",
+                    "actualizacionDeTimestamps": "Filters the timestamps that are still within the current time window (windowMs).",
+                    "verificacionDeLimites": "If the number of requests within the window exceeds max, it logs to the console and returns an object with status 429 (Too Many Requests) and the corresponding message. If the limit is not exceeded, it adds the current timestamp to the records and allows the next function (next) to proceed, returning status 200 (OK)."
+                  }
+                }
+              }
+            },
+            "limiters": {
+              "minuteLimiter": {
+                "description": "Allows a maximum of 2 requests per minute."
+              },
+              "hourlyLimiter": {
+                "description": "Allows a maximum of 5 requests per hour."
+              },
+              "dailyLimiter": {
+                "description": "Allows a maximum of 10 requests per day."
+              }
+            }
+          }
+        }
+      ],
+      "impact": "The incorporation of these functionalities has significantly strengthened the security and efficiency of our web application. By identifying users' IP addresses and controlling the frequency of their requests, we have achieved:\n\n- Protecting the application against unauthorized access and denial-of-service attacks.\n- Ensuring optimal performance even under high traffic loads, guaranteeing a reliable and satisfying user experience.\n- Facilitating analysis and personalization, allowing informed decisions based on user behavior and location.\n\nThese implementations demonstrate my ability to address security and performance challenges in modern web applications, ensuring that solutions are not only effective but also scalable and sustainable in the long term.",
+      "finalComment": "This approach to user identification and request management reflects a commitment to security, efficiency, and user experience, which are fundamental aspects in developing robust and reliable web applications.\n\nThis summary, accompanied by code examples, provides a clear view of the technical solutions implemented to enhance the security and performance of the web application. By including code snippets, visitors to your portfolio can appreciate not only the final outcome but also the technical implementation behind each functionality."
+    
+    },
+
+
+    "codeExample": "Code Example:",
+    "codeDescription": "Code Description:",
+    "functionLabel": "Function:",
+    "purpose": "Purpose:",
+    "noSectionsAvailable": "No sections available.",
+    "importations": "Imports:",
+    "ejemplodeuso":"Code aplied"
+
+    
+
   }
-}
+  
+
+
+
+
+
 
 
 

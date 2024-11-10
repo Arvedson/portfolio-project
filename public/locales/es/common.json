@@ -1455,9 +1455,142 @@
 "highlightedAspects": "Aspectos y Habilidades Destacadas",
 "customDataProviderImportance": "Importancia de un Proveedor de Datos Personalizado",
 "Conclusionn": "Conclusion Tecnica",
-"dataProvider":"Data Povider"
+"dataProvider":"Data Povider",
 
+
+
+  "portfolioData": {
+    "title": "Gestión de Solicitudes y Seguridad en Aplicaciones Web",
+    "introduction2": "En este proyecto, implementé funcionalidades clave para mejorar la seguridad y eficiencia de nuestra aplicación web utilizando Next.js. Dos componentes principales que desarrollé son la determinación de la dirección IP del usuario y el control de la cantidad de solicitudes que un usuario puede realizar en un período de tiempo determinado. A continuación, detallo cómo estos componentes contribuyen al rendimiento y la seguridad de la aplicación, acompañados de ejemplos de código que demuestran su implementación.",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Identificación de la Dirección IP del Usuario",
+        "description": "Para personalizar y asegurar la experiencia de nuestros usuarios, es fundamental saber desde dónde se están conectando. Desarrollé una función que detecta la dirección IP del cliente que realiza cada solicitud a nuestro servidor. Esta información es esencial por varias razones:",
+        "reasons": [
+          {
+            "title": "Seguridad",
+            "description": "Al conocer la IP, podemos identificar y prevenir actividades maliciosas, como intentos de acceso no autorizado."
+          },
+          {
+            "title": "Personalización",
+            "description": "Permite adaptar el contenido y las funcionalidades según la ubicación geográfica del usuario."
+          },
+          {
+            "title": "Análisis de Tráfico",
+            "description": "Ayuda a entender mejor el comportamiento de los usuarios y a optimizar el rendimiento de la aplicación."
+          }
+        ],
+        "codeExample": {
+          "language": "typescript",
+          "code": "import { NextRequest } from 'next/server';\nimport { getClientIp } from 'request-ip';\n\nexport function getClientIpWrapper(req: NextRequest) {\n  // Intenta obtener la IP del cliente utilizando request-ip\n  let clientIp;\n  try {\n    clientIp = getClientIp(req);\n  } catch (error) {\n    console.log(\"Error obteniendo la IP con request-ip:\", error);\n  }\n  \n  // Fallback en caso de que request-ip falle\n  if (!clientIp) {\n    clientIp = req.headers.get('x-forwarded-for') || req.headers.get('remote-addr') || '127.0.0.1';\n  }\n  console.log(\"IP obtenida:\", clientIp);\n  return clientIp;\n}"
+        },
+        "codeDescription": {
+          "importations": [
+            {
+              "module": "next/server",
+              "item": "NextRequest",
+              "description": "Tipo de solicitud específico para aplicaciones Next.js."
+            },
+            {
+              "module": "request-ip",
+              "item": "getClientIp",
+              "description": "Función de la librería request-ip que intenta extraer la IP del cliente desde la solicitud."
+            }
+          ],
+          "function": {
+            "name": "getClientIpWrapper",
+            "purpose": "Obtener la dirección IP del cliente que realiza la solicitud.",
+            "process": {
+              "step1": "Intento de Obtención de IP con request-ip: Se intenta obtener la IP del cliente utilizando getClientIp(req). Si ocurre un error, se captura y se registra en la consola.",
+              "step2": "Fallback en Caso de Error o Falta de IP: Si clientIp no se obtiene mediante request-ip, la función intenta extraerla manualmente de los encabezados de la solicitud (x-forwarded-for o remote-addr). Si aún así no se puede determinar la IP, se asigna la IP local '127.0.0.1' como valor predeterminado.",
+              "step3": "Registro y Retorno de la IP: La IP obtenida se registra en la consola para fines de depuración y se retorna al llamador."
+            }
+          }
+        }
+      },
+
+
+      {
+        "number": 2,
+        "title": "Control de la Frecuencia de Solicitudes (Rate Limiting)",
+        "description": "Para proteger nuestra aplicación de sobrecargas y abusos, implementé un sistema de limitación de la tasa de solicitudes. Este sistema regula cuántas veces un usuario puede interactuar con nuestra aplicación en intervalos de tiempo específicos, como por minuto, por hora o por día. Las ventajas de esta implementación incluyen:",
+        "advantages": [
+          {
+            "title": "Prevención de Ataques",
+            "description": "Evita que usuarios malintencionados envíen un gran número de solicitudes en poco tiempo, lo que podría saturar el servidor y afectar a todos los usuarios."
+          },
+          {
+            "title": "Optimización de Recursos",
+            "description": "Asegura que los recursos del servidor se utilicen de manera eficiente, garantizando un rendimiento consistente para todos los usuarios."
+          },
+          {
+            "title": "Mejora de la Experiencia del Usuario",
+            "description": "Al prevenir sobrecargas, los usuarios legítimos disfrutan de una experiencia fluida y sin interrupciones."
+          }
+        ],
+        "codeExample": {
+          "language": "typescript",
+          "code": "import { NextRequest, NextResponse } from 'next/server';\nimport { getClientIp } from 'request-ip';\n\n// Reutilizamos la función para obtener la IP del cliente\nexport function getClientIpWrapper(req: NextRequest | any): string {\n  let clientIp: string | null = null;\n  try {\n    clientIp = getClientIp(req); // request-ip no tiene tipos para NextRequest, por eso usamos 'any'\n  } catch (error) {\n    console.log(\"Error obtaining IP with request-ip:\", error);\n  }\n\n  if (!clientIp) {\n    clientIp = req.headers['x-forwarded-for'] || req.headers['remote-addr'] || '127.0.0.1';\n  }\n  console.log(\"IP obtained:\", clientIp);\n  return clientIp as string;\n}\n\n// Función para crear limitadores de tasa\nfunction rateLimit(windowMs: number, max: number, message: string) {\n  const hits = new Map<string, number[]>();\n\n  return async (req: NextRequest | any, res: any, next: () => void) => {\n    const ip = getClientIpWrapper(req);\n    const currentTime = Date.now();\n\n    if (!hits.has(ip)) {\n      hits.set(ip, []);\n    }\n\n    const timestamps = hits.get(ip) || [];\n    // Filtramos las solicitudes que están dentro de la ventana de tiempo\n    hits.set(ip, timestamps.filter(timestamp => currentTime - timestamp < windowMs));\n\n    if (hits.get(ip)!.length >= max) {\n      console.log(`Limit reached for IP: ${ip}`);\n      return { status: 429, message };\n    } else {\n      hits.get(ip)!.push(currentTime);\n      if (next) next();\n      return { status: 200 };\n    }\n  };\n}\n\n// Creación de diferentes limitadores\nconst minuteLimiter = rateLimit(60 * 1000, 2, 'You have exceeded the limit of 2 requests per minute.');\nconst hourlyLimiter = rateLimit(60 * 60 * 1000, 5, 'You have exceeded the limit of 5 requests per hour.');\nconst dailyLimiter = rateLimit(24 * 60 * 60 * 1000, 10, 'You have exceeded the limit of 10 requests per day.');\n\nexport { minuteLimiter, hourlyLimiter, dailyLimiter };"
+        },
+        "codeDescription": {
+          "function": {
+            "name": "rateLimit",
+            "purpose": "Crear un middleware que limita la cantidad de solicitudes que una IP puede realizar dentro de una ventana de tiempo específica.",
+            "parameters": [
+              {
+                "name": "windowMs",
+                "description": "Duración de la ventana de tiempo en milisegundos."
+              },
+              {
+                "name": "max",
+                "description": "Número máximo de solicitudes permitidas dentro de la ventana de tiempo."
+              },
+              {
+                "name": "message",
+                "description": "Mensaje de error que se devuelve cuando se excede el límite."
+              }
+            ],
+            "process": {
+              "step1": "Almacenamiento de Solicitudes (hits): Utiliza un Map para rastrear las marcas de tiempo (timestamps) de las solicitudes realizadas por cada IP.",
+              "step2": {
+                "description": "Middleware Asíncrono:",
+                "substeps": {
+                  "obtencionDeLaIP": "Utiliza getClientIpWrapper para determinar la IP del cliente.",
+                  "actualizacionDeTimestamps": "Filtra las marcas de tiempo que aún están dentro de la ventana de tiempo actual (windowMs).",
+                  "verificacionDeLimites": "Si el número de solicitudes dentro de la ventana excede max, se registra en la consola y se retorna un objeto con el estado 429 (Too Many Requests) y el mensaje correspondiente. Si no se excede el límite, se agrega la marca de tiempo actual a los registros y se permite continuar con la siguiente función (next), retornando un estado 200 (OK)."
+                }
+              }
+            }
+          },
+          "limiters": {
+            "minuteLimiter": {
+              "description": "Permite un máximo de 2 solicitudes por minuto."
+            },
+            "hourlyLimiter": {
+              "description": "Permite un máximo de 5 solicitudes por hora."
+            },
+            "dailyLimiter": {
+              "description": "Permite un máximo de 10 solicitudes por día."
+            }
+          }
+        }
+      }]
+    },
+
+    "codeExample": "Ejemplo de código:",
+  "codeDescription": "Descripción del Código:",
+  "functionLabel": "Función",
+  "purpose": "Propósito:",
+  "noSectionsAvailable": "No hay secciones disponibles.",
+  "importations": "Importaciones:",
+  "ejemplodeuso": "Codigo aplicado"
 }
+ 
+  
+
+
+
 
 
 

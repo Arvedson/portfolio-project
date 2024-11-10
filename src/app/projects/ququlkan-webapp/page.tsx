@@ -103,9 +103,74 @@ interface PuntoImpacto {
   descripcion: string;
 }
 
+
+
+
+// Definición de interfaces
+interface PortfolioSectionData {
+  title: string;
+  introduction: string;
+  sections: Section[];
+  impact: string;
+  finalComment: string;
+}
+
+interface Section {
+  number: number;
+  title: string;
+  description: string;
+  reasons?: Reason[];
+  advantages?: Advantage[];
+  codeExample?: CodeExample;
+  codeDescription?: CodeDescription;
+}
+
+interface Reason {
+  title: string;
+  description: string;
+}
+
+interface Advantage {
+  title: string;
+  description: string;
+}
+
+interface CodeExample {
+  language: string;
+  code: string;
+}
+
+interface CodeDescription {
+  importations?: Importation[];
+  function?: FunctionDescription;
+}
+
+interface Importation {
+  module: string;
+  item: string;
+  description: string;
+}
+
+interface FunctionDescription {
+  name: string;
+  purpose: string;
+  process: ProcessSteps;
+}
+
+interface ProcessSteps {
+  [stepKey: string]: string | {
+    description: string;
+    substeps: {
+      [subStepKey: string]: string;
+    };
+  };
+}
+
+
 export default function TutorialPage() {
   const { t } = useTranslation('common');
   const [mounted, setMounted] = useState(false);
+  
 
   useEffect(() => {
     setMounted(true);
@@ -118,6 +183,9 @@ export default function TutorialPage() {
   if (!mounted) {
     return null;
   }
+
+
+  const portfolioData = t('portfolioData', { returnObjects: true }) as PortfolioSectionData;
  
   const dataProviderDocumentation = t('dataProviderDocumentation', { returnObjects: true }) as unknown as DataProviderDocumentation;
   const obstaculos = t('obstaculos', { returnObjects: true }) as Obstaculo[];
@@ -158,12 +226,14 @@ export default function TutorialPage() {
             <p className="introduction-text-ququlkan">{t('ququlkan_introduction_subtitulo')}</p>
             </div>
          </section>
+
        {/* Descripción General*/}
          <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-            <h2 className="text-2xl font-bold">{t('titulo descripcion')}</h2>
+            <h2 className="text-3xl font-bold">{t('titulo descripcion')}</h2>
             <p>{t('descripcion del webapp')}</p>
          </section>
-       {/* Sección de Funcionalidades */}
+
+      {/* Sección de Funcionalidades */}
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12 ">
             {/* Funcionalidad 1 */}
             <div className="space-y-6">
@@ -230,8 +300,9 @@ export default function TutorialPage() {
                 </a>
             </div>
         </section>  
+
         <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-8">
-      <h2 className="font-bold text-2xl">{t('desafio.titulo')}</h2>
+      <h2 className="font-bold text-3xl">{t('desafio.titulo')}</h2>
       <Image
                 src={t('imgreader')}
                 alt={`${t('introququlkan.funcionalidad3.titulo')} - Imagen 1`}
@@ -383,119 +454,122 @@ export default function TutorialPage() {
           </li>
         ))}
       </ul>
-      </section>
-        {/* Invitación a Revisar el Código */}
-      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
-        <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>    
-        <div className="flex flex-row gap-5 ">
-          <a
-            href="https://github.com/Arvedson/Solar/blob/main/src/app/api/ocr/route.tsx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto "
-          >
-            {t('ocrApiLinkText')}
-          </a>
-          <a
-            href="https://github.com/Arvedson/Solar/blob/main/src/components/app/ImageReader.tsx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="overflow-x-auto border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300"
-          >
-            {t('imageReaderLinkText')}
-          </a>
-        </div>
-      </section>
-      {/* Sección del DataProvider */}
-      <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-8 space-y-6">
-      <h3 className="font-bold text-2xl">{t('title1')}</h3>
-      <p>{t('introduction')}</p>
+        </section>
 
-      <h3 className="font-bold text-2xl">{t('keyConcepts')}</h3>
-      <ul className="list-disc pl-5 space-y-4">
-        <li>
-          <h4 className="font-semibold text-xl">{t('abstractData')}</h4>
-          <p>{dataProviderDocumentation.keyConcepts.abstractData}</p>
-        </li>
-        <li>
-          <h4 className="font-semibold text-xl">{t('crudOperations')}</h4>
-          <p>{dataProviderDocumentation.keyConcepts.crudOperations}</p>
-        </li>
-        <li>
-          <h4 className="font-semibold text-xl">{t('responseStandardization')}</h4>
-          <p>{dataProviderDocumentation.keyConcepts.responseStandardization}</p>
-        </li>
-      </ul>
-      <h3 className="font-bold text-2xl">{t('implementationDetails')}</h3>
-      <p>{dataProviderDocumentation.implementationDetails.summary}</p>
-      <ul className="list-disc pl-5 space-y-5">
-      {Object.entries(dataProviderDocumentation.implementationDetails.methods).map(([key, method]) => (
-        <div key={key}>      
-          <li className="space-y-2">
-            <h4 className="font-semibold text-xl">{method.title}</h4>
-            {method.purpose && <p>{method.purpose}</p>}
-            {method.implementation && (
-              <ul className="list-disc pl-5 space-y-2">
-                {Object.entries(method.implementation).map(([stepKey, stepValue]) => (
-                  <li key={stepKey}>
-                    <strong>{stepKey}:</strong> {stepValue}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {method.note && <p><strong>{t('note')}</strong> {method.note}</p>}
-            {method.considerations && (
-              <ul className="list-disc pl-5 space-y-2">
-                {Object.entries(method.considerations).map(([considerationKey, considerationValue]) => (
-                  <li key={considerationKey}>
-                    <strong>{considerationKey}:</strong> {considerationValue}
-                  </li>
-                ))}
-              </ul>
-            )}
+      {/* Invitación a Revisar el Código */}
+        <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
+          <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>    
+          <div className="flex flex-row gap-5 ">
+            <a
+              href="https://github.com/Arvedson/Solar/blob/main/src/app/api/ocr/route.tsx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto "
+            >
+              {t('ocrApiLinkText')}
+            </a>
+            <a
+              href="https://github.com/Arvedson/Solar/blob/main/src/components/app/ImageReader.tsx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="overflow-x-auto border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300"
+            >
+              {t('imageReaderLinkText')}
+            </a>
+          </div>
+        </section>
+
+      {/* Sección del DataProvider */}
+        <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-8 space-y-6">
+        <h3 className="font-bold text-3xl">{t('title1')}</h3>
+        <p>{t('introduction')}</p>
+
+        <h3 className="font-bold text-2xl">{t('keyConcepts')}</h3>
+        <ul className="list-disc pl-5 space-y-4">
+          <li>
+            <h4 className="font-semibold text-xl">{t('abstractData')}</h4>
+            <p>{dataProviderDocumentation.keyConcepts.abstractData}</p>
           </li>
-          {dataProviderDocumentation.codeExamples?.[key] && (
-            <div className="bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)] my-4">
-              <pre className="whitespace-pre-wrap overflow-x-auto">
-                <code>
-                  {t(`dataProviderDocumentation.codeExamples.${key}`)}
-                </code>
-              </pre>
-            </div>
-          )}
-        </div>
-      ))}
-    </ul>
-      <h3 className="font-bold text-2xl">{t('highlightedAspects')}</h3>
-      <ul className="list-disc pl-5 space-y-4">
-        {Object.entries(dataProviderDocumentation.highlightedAspectsAndSkills).map(([key, value]) => (
-          <li key={key}>
-            <strong>{key}:</strong> {value}
+          <li>
+            <h4 className="font-semibold text-xl">{t('crudOperations')}</h4>
+            <p>{dataProviderDocumentation.keyConcepts.crudOperations}</p>
           </li>
+          <li>
+            <h4 className="font-semibold text-xl">{t('responseStandardization')}</h4>
+            <p>{dataProviderDocumentation.keyConcepts.responseStandardization}</p>
+          </li>
+        </ul>
+        <h3 className="font-bold text-2xl">{t('implementationDetails')}</h3>
+        <p>{dataProviderDocumentation.implementationDetails.summary}</p>
+        <ul className="list-disc pl-5 space-y-5">
+        {Object.entries(dataProviderDocumentation.implementationDetails.methods).map(([key, method]) => (
+          <div key={key}>      
+            <li className="space-y-2">
+              <h4 className="font-semibold text-xl">{method.title}</h4>
+              {method.purpose && <p>{method.purpose}</p>}
+              {method.implementation && (
+                <ul className="list-disc pl-5 space-y-2">
+                  {Object.entries(method.implementation).map(([stepKey, stepValue]) => (
+                    <li key={stepKey}>
+                      <strong>{stepKey}:</strong> {stepValue}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {method.note && <p><strong>{t('note')}</strong> {method.note}</p>}
+              {method.considerations && (
+                <ul className="list-disc pl-5 space-y-2">
+                  {Object.entries(method.considerations).map(([considerationKey, considerationValue]) => (
+                    <li key={considerationKey}>
+                      <strong>{considerationKey}:</strong> {considerationValue}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            {dataProviderDocumentation.codeExamples?.[key] && (
+              <div className="bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)] my-4">
+                <pre className="whitespace-pre-wrap overflow-x-auto">
+                  <code>
+                    {t(`dataProviderDocumentation.codeExamples.${key}`)}
+                  </code>
+                </pre>
+              </div>
+            )}
+          </div>
         ))}
       </ul>
-      <h3 className="font-bold text-2xl">{t('customDataProviderImportance')}</h3>
-      <ul className="list-disc pl-5 space-y-4">
-        {Object.entries(dataProviderDocumentation.importanceOfCustomDataProvider).map(([key, value]) => (
-          <li key={key}>
-            <strong>{key}:</strong> {value}
+        <h3 className="font-bold text-2xl">{t('highlightedAspects')}</h3>
+        <ul className="list-disc pl-5 space-y-4">
+          {Object.entries(dataProviderDocumentation.highlightedAspectsAndSkills).map(([key, value]) => (
+            <li key={key}>
+              <strong>{key}:</strong> {value}
+            </li>
+          ))}
+        </ul>
+        <h3 className="font-bold text-2xl">{t('customDataProviderImportance')}</h3>
+        <ul className="list-disc pl-5 space-y-4">
+          {Object.entries(dataProviderDocumentation.importanceOfCustomDataProvider).map(([key, value]) => (
+            <li key={key}>
+              <strong>{key}:</strong> {value}
+            </li>
+          ))}
+        </ul>
+        <h3 className="font-bold text-2xl">{t('Conclusionn')}</h3>
+        <ul className="list-disc pl-5 space-y-4">   
+            <ul className="list-disc pl-5 space-y-2">
+              {dataProviderDocumentation.conclusion2.skillsDemonstrated.map((skill, index) => (
+                <li key={index}>{skill}</li>
+              ))}
+            </ul>  
+          <li>
+            <strong>Impact:</strong> {dataProviderDocumentation.conclusion2.impact}
           </li>
-        ))}
-      </ul>
-      <h3 className="font-bold text-2xl">{t('Conclusionn')}</h3>
-      <ul className="list-disc pl-5 space-y-4">   
-          <ul className="list-disc pl-5 space-y-2">
-            {dataProviderDocumentation.conclusion2.skillsDemonstrated.map((skill, index) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>  
-        <li>
-          <strong>Impact:</strong> {dataProviderDocumentation.conclusion2.impact}
-        </li>
-      </ul>
-    </section>
-            {/* Invitación a Revisar el Código */}
-            <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
+        </ul>
+        </section>
+
+      {/* Invitación a Revisar el Código */}
+        <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
         <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
         <div className="flex flex-row gap-5 ">
           <a
@@ -507,7 +581,120 @@ export default function TutorialPage() {
             {t('dataProvider')}
           </a>
         </div>
-      </section>
+        </section>
+
+
+      {/*Gestión de Solicitudes */}
+
+        <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-8 space-y-6">
+          <h3 className="font-bold text-2xl pb-2">
+            {portfolioData.title}
+          </h3>
+          <p className='pb-1'>{portfolioData.introduction}</p>
+
+          {portfolioData.sections && portfolioData.sections.length > 0 ? (
+            portfolioData.sections.map((section) => (
+              <div className="" key={section.number}>
+                <h3 className="font-bold text-2xl pb-6">
+                  {section.number}. {section.title}
+                </h3>
+                <p className='pb-1'>{section.description}</p>
+
+                {section.reasons && section.reasons.length > 0 && (
+                  <ul className="list-disc pl-5 space-y-4">
+                    {section.reasons.map((reason, index) => (
+                      <li className='pt-3' key={index}>
+                        <strong>{reason.title}:</strong> {reason.description}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {section.advantages && section.advantages.length > 0 && (
+                  <ul className="list-disc pl-5 space-y-4">
+                    {section.advantages.map((advantage, index) => (
+                      <li key={index}>
+                        <strong>{advantage.title}:</strong> {advantage.description}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {section.codeExample && section.codeExample.code && (
+                  <div className="mt-4">
+                    <h4 className="font-semibold text-xl">{t('codeExample')}</h4>
+                    
+                    <pre className={`bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)] my-4 whitespace-pre-wrap overflow-x-auto language-${section.codeExample.language}`}>
+                      <code>{section.codeExample.code}</code>
+                    </pre>
+                  </div>
+                )}
+
+                {section.codeDescription && (
+                  <div className="mt-4">
+                    <h4 className="font-semibold text-xl pb-4">{t('codeDescription')}</h4>
+
+                    {section.codeDescription.importations && section.codeDescription.importations.length > 0 && (
+                      <div className="mb-4">
+                        <h5 className="font-semibold">{t('importations')}</h5>
+                        <ul className="list-disc pl-5 space-y-4">
+                          {section.codeDescription.importations.map((imp, index) => (
+                            <li className='pt-2' key={index}>
+                              <strong>{imp.item} / &#39;{imp.module}&#39;:</strong> {imp.description}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {section.codeDescription.function && (
+                      <div>
+                        <h5 className="font-semibold pb-4">{t('functionLabel')} {section.codeDescription.function.name}:</h5>
+                        <p className="pb-2"><strong>{t('purpose')}</strong> {section.codeDescription.function.purpose}</p>
+                      
+                        <ol className="list-decimal pl-5 space-y-2">
+                          {Object.entries(section.codeDescription.function.process).map(([key, value]) => (
+                            <li className="pb-1" key={key}>
+                              {typeof value === 'string' ? value : value.description}
+                              {typeof value !== 'string' && value.substeps && (
+                                <ul className="list-disc pl-5 space-y-4 pt-4">
+                                  {Object.entries(value.substeps).map(([subKey, subValue]) => (
+                                    <li key={subKey}>{subValue}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <p>{t('noSectionsAvailable')}</p>
+          )}
+        </section>
+
+
+      {/* Invitación a Revisar el Código */}
+        <section className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-6">
+           <h3 className="font-semibold text-2xl ">{t('exploreCodeTitle')}</h3>
+          <div className="flex flex-row gap-5 ">
+          <a
+            href="https://github.com/Arvedson/Solar/blob/main/src/app/api/sendgrid/route.tsx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto "
+          >
+            {t('ejemplodeuso')}
+          </a>
+          </div>
+        </section>  
+
+
+
   </div>
 )
 }
