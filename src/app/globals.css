@@ -132,7 +132,7 @@ body {
     width: 0;
   }
   50% {
-    width: 30px;
+    width: 15px;
   }
   100% {
     width: 0;
@@ -144,7 +144,7 @@ body {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateX(1000px) translateY(1000px); /* Ajusta la distancia de movimiento */
+    transform: translateX(1000px); /* Ajusta la distancia de movimiento */
   }
 }
 
@@ -247,14 +247,6 @@ body {
 
 /* borrar para restaurar default -body-*/
 
-@keyframes pulse {
-  0%, 100% {
-    background-size: 90em 90em;
-  }
-  50% {
-    background-size: 300em 300em; /* Aumenta el tamaño ligeramente para hacer las líneas más gruesas */
-  }
-}
 
 
 
@@ -267,7 +259,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   
   /* Aplicar la animación */
-  animation: pulse 500s infinite ease-in-out; /* Ajusta la duración según prefieras */
+ 
 }
 
 
