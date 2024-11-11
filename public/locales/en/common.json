@@ -42,12 +42,7 @@
   "recent_posts": "Recent Posts",
   "language_short":"EN",
   "posts": [
-    {
-      "title": "Personal Development & Learning Journey",
-      "excerpt": "Explore my journey of continuous learning and self-improvement in the tech world.",
-      "image": "/Image3.webp",
-      "link": "/blog/post-3"
-    },
+ 
     {
       "title": "Building a Full-Stack App with Next.js",
       "excerpt": "Learn how to build a full-stack application using Next.js and Tailwind CSS.",
@@ -65,6 +60,12 @@
       "excerpt": "Discover essential practices and tools to improve your JavaScript development workflow and code quality.",
       "image": "/image4.webp",
       "link": "/blog/post-4"
+    },
+    {
+      "title": "Personal Development & Learning Journey",
+      "excerpt": "Explore my journey of continuous learning and self-improvement in the tech world.",
+      "image": "/Image3.webp",
+      "link": "/blog/post-3"
     }
     
 

@@ -92,45 +92,41 @@ const Technologies = () => {
     };
 
     return (
-      <div className="container px-4 lg:px-12 py-8  py-0">
-      <h3 className="text-lg lg:text-2xl font-inter pb-8 mb-8 lg:mx-1 text-center lg:text-left lg:px-7">{t('tecnologies')}</h3>
+      <div className="container px-4 lg:px-12 py-8 pt-16  ">
+     
       
-      {/* Grid responsivo */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-12">
-        {technologies.map((tech, index) => (
-          <div 
-            key={index} 
-            className={`flex flex-col items-center hover:scale-110 transition-transform cursor-pointer 
-            ${selectedTech === tech.name ? 'selected-tech' : ''}`} 
-            onClick={() => handleIconClick(tech.name, tech.level)}
-          >
-            <div className="text-5xl mb-2">{tech.icon}</div>
-            <p className="text-sm font-medium">{tech.name}</p>
+     
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-12 mx-3">
 
-            {/* Mostrar descripción solo si esta tecnología está seleccionada */}
-            {selectedTech === tech.name && (
-              <div 
-                className="mt-4 p-4 rounded shadow-lg text-center description-box"
-                style={{
-                  backgroundColor: 'var(--background)', 
-                  color: 'var(--foreground)',
-                  border: '1px solid var(--foreground)'
-                }}
-              >
-                <p className="text-xs mb-2">{tech.description}</p>
-                
-                {/* Barra de lvl */}
-                <div className="progress-container">
-                  <div 
-                    className="progress-bar" 
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-                <p className="text-xs mt-2">{`${tech.level}% `}</p>
+
+      {technologies.map((tech, index) => (
+        <div 
+          key={index} 
+          className={`tech-card flex flex-col items-center hover:scale-110 transition-transform cursor-pointer 
+          ${selectedTech === tech.name ? 'selected-tech' : ''}`} 
+          onClick={() => handleIconClick(tech.name, tech.level)}
+        >
+          <div className="text-5xl mb-2">{tech.icon}</div>
+          <p className="text-sm font-medium">{tech.name}</p>
+
+          
+          {selectedTech === tech.name && (
+            <div className="mt-4 p-4 rounded shadow-lg text-center description-box">
+              <p className="text-xs mb-2">{tech.description}</p>
+              
+              {/* Barra de nivel */}
+              <div className="progress-container">
+                <div 
+                  className="progress-bar" 
+                  style={{ width: `${progress}%` }}
+                ></div>
               </div>
-            )}
-          </div>
-        ))}
+              <p className="text-xs mt-2">{`${tech.level}%`}</p>
+            </div>
+          )}
+        </div>
+      ))}
+
       </div>
     </div>
     );

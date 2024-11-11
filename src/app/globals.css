@@ -76,6 +76,8 @@
   --star-color: var(--star-color-dark);
 }
 
+
+
 /* Contenedor para el fondo animado, colocado detrás de los elementos principales */
 .background-container {
   position: fixed;
@@ -576,7 +578,7 @@ background-position:center
 
 
 /* Clase especial para los estilos de los cards */
-.grid {
+.custom-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
@@ -607,6 +609,7 @@ background-position:center
   background-color: rgba(173, 181, 189, 0.2); /* Usando el color de --secondary-dark con 20% de opacidad */
   color: var(--foreground-dark);
   border-color: var(--foreground-dark);
+  box-shadow: 0 4px 8px var(--box-shadow-dark); /* Sombra en modo oscuro */
 }
 
 /* Configuración para el tema claro */
@@ -614,7 +617,9 @@ background-position:center
   background-color: rgba(108, 117, 125, 0.1); /* Usando el color de --secondary-light con 10% de opacidad */
   color: var(--foreground-light);
   border-color: var(--foreground-light);
+  box-shadow: 0 8px 16px var(--box-shadow-light); /* Sombra en modo claro */
 }
+
 
 
 
@@ -708,4 +713,133 @@ background-position:center
     rgba(var(--primary-dark-rgb), 0.2), /* Primary Dark con transparencia */
     rgba(var(--secondary-dark-rgb), 0.2) /* Secondary Dark con transparencia */
   );
+  box-shadow: 0 4px 8px var(--box-shadow-dark); /* Sombra en modo oscuro */
 }
+
+
+
+
+
+.card-style2 {
+  margin: 0 auto; 
+  max-width: 1380px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 20px;
+  margin-right: 20px;
+  align-items: center;
+  
+  background-color: var(--secondary-dark);
+  color: var(--foreground);
+  border: 1px solid var(--secondary-light);
+  margin-top: 2rem;
+
+}
+
+
+
+/* Configuración para el tema oscuro */
+[data-theme="dark"] .card-style2 {
+  background: linear-gradient(
+    135deg,
+    
+    rgba(var(--secondary-dark-rgb), 0.2),
+    rgba(var(--primary-dark-rgb), 0.3)
+  ); /* Gradiente en modo oscuro */
+  color: var(--foreground-dark);
+  border-color: var(--foreground-dark);
+  box-shadow: 0 4px 8px var(--box-shadow-dark); /* Sombra en modo oscuro */
+}
+
+/* Configuración para el tema claro */
+[data-theme="light"] .card-style2 {
+  background: linear-gradient(
+    135deg,
+    
+    rgba(var(--secondary-light-rgb), 0.1),
+    rgba(var(--primary-light-rgb), 0.2)
+  ); /* Gradiente en modo claro */
+  color: var(--foreground-light);
+  border-color: var(--foreground-light);
+  box-shadow: 0 8px 16px var(--box-shadow-light); /* Sombra en modo claro */
+}
+
+
+
+
+/* Estilos para el card de tecnología */
+.tech-card {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+[data-theme="dark"] .tech-card {
+  border-color: var(--border-color-dark);
+}
+
+.tech-card:hover {
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+  transform: scale(1.05);
+}
+
+/* Estilos para el card seleccionado */
+.selected-tech {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-light-rgb), 0.2),
+    rgba(var(--secondary-light-rgb), 0.1)
+  );
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .selected-tech {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-dark-rgb), 0.4),
+    rgba(var(--secondary-dark-rgb), 0.2)
+  );
+  border-color: var(--primary);
+}
+
+/* Estilos para la caja de descripción */
+.description-box {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--box-shadow-color);
+}
+
+[data-theme="dark"] .description-box {
+  border-color: var(--border-color-dark);
+}
+
+/* Estilos para la barra de progreso */
+.progress-container {
+  background-color: var(--tertiary-light);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 8px;
+}
+
+[data-theme="dark"] .progress-container {
+  background-color: var(--tertiary-dark);
+}
+
+.progress-bar {
+  background-color: var(--accent);
+  height: 100%;
+  transition: width 0.3s;
+}
+
+
+

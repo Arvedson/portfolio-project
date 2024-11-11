@@ -21,8 +21,8 @@ const Navbar = () => {
       i18next.changeLanguage(storedLang);
     }
 
-    // Cargar el tema desde localStorage o aplicar 'light' por defecto
-    const storedTheme = localStorage.getItem('theme') || 'light';
+    
+    const storedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(storedTheme);
     document.documentElement.setAttribute('data-theme', storedTheme);
   }, []);
@@ -67,9 +67,10 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="/blog" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
-              {t('blog')}
+          <a href="/about" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
+              {t('about')}
             </a>
+
           </li>
           <li>
             <a href="/projects" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
@@ -77,9 +78,10 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="/about" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
-              {t('about')}
+          <a href="/blog" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
+              {t('blog')}
             </a>
+
           </li>
           <li>
             <a href="/contact" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
@@ -180,13 +182,15 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="/blog" className="block text-white px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
-                {t('blog')}
+            <a href="/projects" className="block text-white px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
+                {t('projects')}
               </a>
+
             </li>
             <li>
-              <a href="/projects" className="block text-white px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
-                {t('projects')}
+
+              <a href="/blog" className="block text-white px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
+                {t('blog')}
               </a>
             </li>
             <li>

@@ -55,12 +55,7 @@
 "categories": "Categorías",
 "recent_posts": "Publicaciones recientes",
 "posts": [
-{
-"title": "Desarrollo Personal y Trayectoria de Aprendizaje",
-"excerpt": "Explora mi viaje de aprendizaje continuo y auto-mejora en el mundo tecnológico.",
-"image": "/Image3.webp",
-"link": "/blog/post-3"
-},
+
 {
 "title": "Construyendo una aplicación full-stack con Next.js",
 "excerpt": "Aprende cómo construir una aplicación full-stack utilizando Next.js y Tailwind CSS.",
@@ -78,7 +73,13 @@
   "excerpt": "Descubre prácticas esenciales y herramientas para mejorar tu flujo de trabajo de desarrollo en JavaScript y la calidad del código.",
   "image": "/image4.webp",
   "link": "/blog/post-4"
-}
+},
+{
+  "title": "Desarrollo Personal y Trayectoria de Aprendizaje",
+  "excerpt": "Explora mi viaje de aprendizaje continuo y auto-mejora en el mundo tecnológico.",
+  "image": "/Image3.webp",
+  "link": "/blog/post-3"
+  }
 
 
 ],

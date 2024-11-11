@@ -56,13 +56,6 @@ export default function Blog() {
   <p>{t('blog_intro')}</p>
 </div>
 
-
-
-
-    
-
-
-
       <section className="mb-16">
         <h2 className="text-3xl font-semibold mb-6">{t('featured_posts')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
