@@ -1625,12 +1625,135 @@
   "technologies":"Some of the technologies implemented in this project:",
 
   "ququlkanapp.conclusion.description":"This project has been an excellent opportunity to apply and deepen the use of modern technologies such as Next.js, React, and Tailwind CSS, as well as integrate advanced tools for authentication, data management, and visualization. Throughout the development process, various technical challenges were overcome, solidifying knowledge and strengthening web development skills. This portfolio not only demonstrates technical capabilities but also showcases a commitment to creating efficient, scalable, and visually appealing interfaces.",
-  "codeinviteququlkan":"Visit Repo"
+  "codeinviteququlkan":"Visit Repo",
+
+  
+
+
+    "about2": {
+  "introduction": {
+    "name": "Tomas Arvedson",
+    "profession": "Web Developer",
+    "summary": "Summary about me."
+  },
+  "autobiography": [
+    {
+      "title": "I'm not good at talking about myself, but here we go... anything for a job and learn.",
+      "content": [
+        "My name is Tomas Arvedson, I am half Colombian and half Swedish, but more Mexican than the cactus itself.",
+        "I was born and raised in Bogotá, Colombia, where I lived until I was 11. I currently live in Mexico, a country known for its freedom, geographic beauty, and culinary culture, where I moved due to my father's career in mining."
+      ]
+    },
+    {
+      "title": "A new culture? I don't think so",
+      "content": [
+        "When I arrived in Mexico, I integrated quickly, except in one aspect: spicy food.",
+        "It took me some time to get used to it, but after a few tries, my friends accepted me as I mastered the most intense levels of spice."
+      ]
+    },
+    {
+      "title": "Education? Rebellion",
+      "content": [
+        "I completed high school and began a career in engineering in mining and construction, where I developed my technical skills.",
+        "However, I took a critical stance towards the educational system. I believed knowledge should be accessible and free from financial constraints, and I rebelled against what I saw as a capitalization on errors."
+      ]
+    },
+    {
+      "title": "The First World",
+      "content": [
+        "Towards the end of my studies, I decided to withdraw to seek real motivation in my life.",
+        "I moved to England, where I worked in a warehouse until the pandemic forced me to reconsider my perspective on the world and human purpose. It was there that I began studying geopolitics, history, wars, and adversities that humanity has faced—not as naturally as we believe, but rather to maintain the structure of power and benefits for the few in the apparent interest of all."
+      ]
+    },
+    {
+      "title": "Reality Check",
+      "content": [
+        "When I left England due to excessive lockdowns, I moved to Dallas, Texas, to train in renewable energy and door-to-door sales.",
+        "It was a very demanding job, with temperatures reaching 113°F (45°C), but gratifying due to the resilience I developed day by day."
+      ]
+    },
+    {
+      "title": "No Empty Spaces",
+      "content": [
+        "I returned to Mexico to be close to my family because nothing compares to seeing what's most important to me day after day.",
+        "I thought that beyond my future, it was my present that really mattered—to be close to the people who, at some point, will no longer be there. People who gave me love and life."
+      ]
+    },
+    {
+      "title": "My Career, The Jack of All Trades",
+      "content": [
+        "Since I set my career aside due to being a frustrated musician and a critic of the system with a fear of capitalist failure, I had to start from scratch several times.",
+        
+        "I attempted the nearly impossible path of trading, developing a kind of hyper-aware gambling addiction to risk. For two years of day trading, I managed to multiply my initial capital almost tenfold; however, my ambition was more consistent than a solid statistical method, and my mind and principles changed drastically. I sacrificed two years of my life and quite a few salaries, only to dissolve them in a matter of weeks. I didn’t want to see a trading account again for years. The next time I trade, it won’t be me personally; it will be a script to avoid the mistakes a human could make.",
+        
+        "",
+        
+        "The good thing about following that path is that I learned a lot about economics, finance, geoeconomics, banking systems, hard money, fiduciary systems, commodities, markets and their laws, and much more!",
+        
+        "Shortly after, realizing that energy is the core of the value humans perceive as effort (J), I went to learn about photovoltaic systems and how to sell them. If there is something difficult in this life, it's door-to-door sales. I never imagined I would become an expert in communication along the way. After knocking on over 15,000 doors, I could read certain traits that seemed universal in humans. After being locked in a warehouse all day, in a 5x5 room doing trading all night with the volatility of the lockdown, I was grateful to have spoken to so many people.",
+        
+        "Then I returned to Mexico to start a business close to my family, and I started programming because I thought it was too easy :) Many of my close friends had studied computer systems or mechatronics, so they were my guides and provided all the knowledge on a silver platter. I am very grateful to them, especially to Axel, a great teacher.",
+        
+        "99% of what you see was self-taught. Nobody ever gave me a problem to solve or even a question to answer; my mind was the problem, and the questions came from there—from errors in the console, from hunger, and from concern. I keep going, I keep learning, I don't stop.",
+        
+        "Algorithm problems, pseudocode, and JS—thinking, thinking, and thinking. Funny how naturally it came to me. Then HTML, easy; CSS, not so much.",
+        
+        "React was the cherry on top. Intermittently, I tried NoSQL before SQL. It was challenging, but I learned the hard way. I also managed to grasp Django, Ruby on Rails, and Laravel. A friend who is an expert in data, noticing my rapid progress, invited me to one of his projects, where I even got to work with Flask for Python.",
+        
+        "At this moment, I have about 12 effective months programming. I’ve spoken to several graduates in computer science, and it seems as though I went to school with aliens (:",
+        
+        "I want to reach the next level of learning; I want to work in large teams, to learn from those who know, to surround myself with real experts and prove to myself through them that I am good at this. I may not have the best resume, but every line of this project is dedicated to proving I can be of service to you.",
+        
+        "I am also the co-founder of a solar energy company in Mexico. However, to fulfill the goal of allowing all Mexicans to buy a piece of a solar park, rather than foreign companies with their financing and interest over the Mexican people, I have to give them a great application.",
+        
+        "I am always willing to make sacrifices. The time has come, and a new chapter in my life begins."
+      ]
+    },
+    {
+      "title": "Current Focus",
+      "content": [
+        "I am focused on learning; that's the only way to reach the next step. Dreams may exist, but to achieve them, we must understand what the universe is made of.",
+        "I am focused on becoming an expert developer, full-stack front and back.",
+        "When I have a team under my guidance, I will have all the knowledge and will be able to take the reins of what’s to come: an application for my solar company."
+      ]
+    }
+  ],
+ "personal_interests": {
+  "hobbies": ["Playing blues", "Video Games", "News", "Learning"],
+  "values": "Honesty, Hard work, Honest work, Clean money, No nepotism, and definitely no corruption!",
+  "unique_details": ""
+},
+
+  "call_to_action": {
+    "message": "Get in touch with me to collaborate on interesting projects.",
+    "contact_methods": {
+      "email": "Arvedson94@gmail.com",
+      "phone": "+52 871 566 8027"
+    }
+  }
+},
+"introduction2": "Introduction",
+"autobiography": "Autobiography",
+"personal_interests": "Personal Interests",
+"hobbies": "Hobbies",
+"values": "Values",
+
+"get_in_touch": "Get in Touch",
+"email": "Email",
+"phone": "Phone",
+"unique_details": "I am self-taught, I never give up, and I always strive to give my best in every project I undertake."
+
+
+
+
+
+  }
+  
   
 
     
 
-  }
+  
   
 
 

@@ -1675,8 +1675,127 @@
   "technologies":"Algunas de las tecnologias implementadas en este proyecto:",
 
   "ququlkanapp.conclusion.description":"Este proyecto ha sido una excelente oportunidad para aplicar y profundizar en el uso de tecnologías modernas como Next.js, React, y Tailwind CSS, así como integrar herramientas avanzadas de autenticación, administración de datos y visualización. A lo largo del desarrollo, se han solucionado desafíos técnicos, lo que ha permitido afianzar conocimientos y fortalecer habilidades en desarrollo web. Este portafolio no solo muestra capacidades técnicas, sino también el compromiso con la creación de interfaces eficientes, escalables y visualmente atractivas.",
-"codeinviteququlkan":"Visita el Repo"
+"codeinviteququlkan":"Visita el Repo",
+
+
+
+"about2": {
+    "introduction": {
+      "name": "Tomas Arvedson",
+      "profession": "Desarrollador Web",
+      "summary": "Resumen sobre Mí."
+    },
+    "autobiography": [
+      {
+        "title": "No soy bueno hablando de mi mismo, pero venga... que mas da, todo sea por aprender y trabajar.",
+        "content": [
+          "Me llamo Tomas Arvedson, soy mitad colombiano y mitad sueco, pero más mexicano que el mismísimo nopal.",
+          "Nací y crecí en Bogotá, Colombia, donde viví hasta los 11 años. Actualmente vivo en México, un país reconocido por su libertad, su belleza geográfica y su cultura culinaria, adonde me mudé por la profesión de mi padre en minería."
+        ]
+      },
+      {
+        "title": "¿Una nueva cultura? No lo creo",
+        "content": [
+          "Cuando llegué a México, me integré rápidamente, salvo en un aspecto: el picante.",
+          "Me tomó tiempo acostumbrarme, pero después de unas cuantas pruebas, mis amigos me aceptaron al dominar los niveles de picante más intensos."
+        ]
+      },
+      {
+        "title": "¿Educacion? Rebelion",
+        "content": [
+          "Cursé hasta la preparatoria y comencé una carrera en ingeniería en minería y construcción, donde desarrollé mis habilidades técnicas.",
+          "Sin embargo, tuve una postura crítica respecto al sistema educativo. Creía que el conocimiento debería ser accesible y libre de restricciones financieras, y me rebelé contra lo que veía como una capitalización de los errores."
+        ]
+      },
+      {
+        "title": "El primer mundo",
+        "content": [
+          "Casi al final de mis estudios, decidí retirarme para buscar una motivación real en mi vida.",
+          "Me mudé a Inglaterra, donde trabajé en un warehouse hasta que la pandemia me forzó a reconsiderar mi perspectiva sobre el mundo y el propósito humano. Ahí es donde comencé a estudiar la geopolítica, la historia, las guerras y adversidades que el ser humano ha vivido, no de forma tan natural como creemos, más bien con el fin de mantener la estructura del poder y los beneficios para pocos en aparente beneficio de todos."
+        ]
+      },
+      {
+        "title": "Choque de realidad",
+        "content": [
+          "Cuando dejé Inglaterra por los excesivos confinamientos, me fui a Dallas, Texas, para capacitarme en energías renovables y como vendedor puerta a puerta.",
+          "Fue un trabajo muy demandante, bajo temperaturas de hasta 45 grados centígrados, pero gratificante por la templanza que adquirí día con día."
+        ]
+      },
+      {
+        "title": "Sin vacios",
+        "content": [
+          "Regresé a México con mi familia porque algo que no tiene valor es poder ver lo más importante para mí día con día.",
+          "Pensaba que más allá de mi futuro, era mi presente lo que realmente importaba, estar cerca de las personas que sé que en algún punto ya no estarán. Personas que me dieron el amor y la vida."
+        ]
+      },
+      {
+        "title": "Mi carrera, el todologo",
+"content": [
+  "Dado que dejé a un lado mi carrera por ser un músico frustrado y un crítico del sistema con miedo al fracaso capitalista, tuve que comenzar desde cero varias veces.",
+  
+  "Intenté el camino, fácilmente imposible, del trading, desarrollando una especie de ludopatía hiperconsciente del riesgo. Por dos años haciendo day trading logré multiplicar mi capital inicial casi 10 veces; sin embargo, mi ambición fue más consistente que un método estadístico sólido y mi mente y principios se vieron transformados drásticamente. Sacrifiqué dos años de mi vida y bastantes salarios para disolverlos en cuestión de semanas; no quise volver a ver una cuenta de trading en años. La siguiente vez que haga trading no seré yo personalmente, será un script para no cometer los errores que un ser humano podría cometer.",
+  
+  "",
+  
+  "Lo bueno de haber tocado ese camino es que aprendí mucho de economía, finanzas, geoeconomía, sistemas bancarios, dinero duro, fiduciario, materias primas, mercados y sus leyes, y muchísimo más!",
+
+  "Al poco tiempo despues, por saber que la energia es el nucleo del valor que el ser humano percibe como esfuerzo J (un trade, un click, vienen y se van);  me fui a aprender de sistemas fotovoltaicos y como venderlos. Si hay algo dificil en esta vida es hacer door to door, nunca me imagine que me haria un expero en comunicacion a lo largo de mi camino, habiendo tocado en mas de 15mil puertas ya podia leer ciertos razgos que parecian genericos en el ser humano, despues de haber estado encerrado en un warehouse todo el dia, en un cuarto de 5*5 haciendo trading toda la noche con la volatilidad del pleno lockdown; agradeci haber hablando con tantas pero tantas personas.",
+  "Luego regrese a Mexico para emprender cerca de mi familia y comence a programar porque creia que era demasiado facil :) muchos de mis amigos cercanos habian estudiado sistemas computacionales o mecatronicos, entonces fueron mis guias para ponerme todo el conocimiento en bandeja de oro. Se los agradezco mucho, especialmente a Axel, un gran maestro.",
+  "El 99% fue de forma autodidacta, de esto que ven, nadie nunca me puso un problema, tampoco una pregunta, mi mente fue el problema y de ella salieron las preguntas, del error en consola, del hambre y de la preocupacion, sigo insistiendo, sigo aprendiendo, no me detengo.",
+  "Problemas de algoritmos, pseudocodigo y JS, pensar pensar y pensar, que casualidad. Despues HTML izi, CSS no tan izi.",
+  "React la cereza del pastel, intermitentemente intente no SQL antes que SQL, fue un problema, pero me costo aprenderlo a las malas, tambien podria aprender a dominar Django, Ruby on Rails, Laravel incluso un amigo experto en datos, al ver la velocidad en la que estaba avanzando me invito a participar en uno de sus proyectos donde hasta Flask para python pude tocar tambien.",
+  "Hasta este momento, llevo unos 12 meses efectivos programando, he hablando con varios egresados de carreras computacionales y pareceria que yo fui a la escuela con aliens (:",
+  "Quiero llegar al siguiente nivel de aprendizaje, quiero trabajar en equipos grandes, quiero aprender de los que saben, quiero rodearme con verdaderos expertos y poder demostrarme a mi a traves de ellos, que soy bueno para esto. No tendre el mejor CV pero cada linea de este proyecto esta dedicada para poder demostrarles que les puedo servir de algo.",
+  
+  "Tambien soy coofundador de una empresa de energia solar en Mexico, sin embargo para poder cumplir con el objetivo de que todos los mexicanos compren un pedazo de parque solar y no sean las empresas extranjeras con sus financiamientos e intereses sobre el pueblo Mexicano, tengo que darles una muy buena aplicacion.",
+  "Siempre estoy diespuesto a sacrirficarme, el tiempo ha llegado y comienza una nueva etapa en mi vida"
+]
+
+      },
+      {
+        "title": "Mi horizonte actual",
+        "content": [
+          "Estoy enfocado en aprender, ese es el unico camino hacia el siguiente escalon, podran existir los sueños, pero para cumplirlos tenemos que ver de que esta hecho el universo.",
+          "Estoy centrado en convertirme en un Experto Desarrollador, Full stack por delante y por detras.",
+          "Cuando pueda tener un equipo a cargo de mi, tendre todo el conocimiento y podre tomar las riendas de lo que vendra, una aplicacion para mi empresa solar."
+        ]
+      }
+    ],
+
+    
+    "personal_interests": {
+      "hobbies": ["Tocar blues", "Video Juegos", "Noticias", "Aprender"],
+      "values": "Honestidad, Trabajo duro, Trabajo honesto, Dinero limpio, No al nepotismo y mucho menos la corrupcion!", 
+      "unique_details": ""
+    },
+
+
+
+    "call_to_action": {
+      "message": "Ponte en contacto conmigo para colaborar en proyectos interesantes.",
+      "contact_methods": {
+        "email": "Arvedson94@gmail.com",
+        "phone": "+52 871 566 8027"
+      }
+    }
+  },
+  "introduction2": "Introducción",
+  "autobiography": "Autobiografía",
+  "personal_interests": "Intereses Personales",
+  "hobbies": "Pasatiempos",
+  "values": "Valores",
+ 
+  "get_in_touch": "Ponerse en Contacto",
+  "email": "Correo Electrónico",
+  "phone": "Teléfono",
+  "unique_details": "Soy autodidacta, nunca me rindo y siempre intento dar lo mejor de mí.."
+
+
+
+
 }
+
+
  
   
 

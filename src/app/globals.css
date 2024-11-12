@@ -741,10 +741,33 @@ background-position:center
 
 }
 
+.card-style3 {
+  /* Elimina display: flex para evitar conflictos */
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+  /* Ajusta el alineado y márgenes */
+  margin-top: 0;
+  background-color: var(--secondary-dark);
+  color: var(--foreground);
+
+  /* Bordes solo en los lados y en la parte inferior */
+  border-left: 1px solid var(--secondary-light);
+  border-right: 1px solid var(--secondary-light);
+  border-bottom: 1px solid var(--secondary-light);
+
+  /* Border radius solo en la parte inferior */
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+
 
 
 /* Configuración para el tema oscuro */
-[data-theme="dark"] .card-style2 {
+[data-theme="dark"] .card-style2, .card-style3 {
   background: linear-gradient(
     135deg,
     
@@ -754,6 +777,20 @@ background-position:center
   color: var(--foreground-dark);
   border-color: var(--foreground-dark);
   box-shadow: 0 4px 8px var(--box-shadow-dark); /* Sombra en modo oscuro */
+}
+
+[data-theme="light"] .card-style3 {
+  background: linear-gradient(
+    135deg,
+    
+    rgba(var(--secondary-light-rgb), 0.1),
+    rgba(var(--primary-light-rgb), 0.2)
+  ); /* Gradiente en modo claro */
+  color: var(--foreground-light);
+  border-color: var(--foreground-light);
+  box-shadow: 0 8px 16px var(--box-shadow-light); /* Sombra en modo claro */
+  
+
 }
 
 /* Configuración para el tema claro */
