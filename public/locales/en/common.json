@@ -1741,7 +1741,20 @@
 "get_in_touch": "Get in Touch",
 "email": "Email",
 "phone": "Phone",
-"unique_details": "I am self-taught, I never give up, and I always strive to give my best in every project I undertake."
+"unique_details": "I am self-taught, I never give up, and I always strive to give my best in every project I undertake.",
+
+
+  "contact1": "Contact",
+  "contact_intro1": "If you have any questions or need more information, feel free to send us a message.",
+  "contact_name": "Name",
+  "contact_email": "Email",
+  "contact_message": "Message",
+  "contact_send": "Send",
+  "contact_sending": "Sending...",
+  "contact_success_message": "Your message has been sent successfully. We will get in touch with you soon.",
+  "contact_whatsapp": "Contact via WhatsApp"
+
+
 
 
 

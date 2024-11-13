@@ -1788,7 +1788,20 @@
   "get_in_touch": "Ponerse en Contacto",
   "email": "Correo Electrónico",
   "phone": "Teléfono",
-  "unique_details": "Soy autodidacta, nunca me rindo y siempre intento dar lo mejor de mí.."
+  "unique_details": "Soy autodidacta, nunca me rindo y siempre intento dar lo mejor de mí..",
+
+  
+    "contact1": "Contacto",
+    "contact_intro1": "Si tienes alguna pregunta o necesitas más información, no dudes en enviarnos un mensaje.",
+    "contact_name": "Nombre",
+    "contact_email": "Correo Electrónico",
+    "contact_message": "Mensaje",
+    "contact_send": "Enviar",
+    "contact_sending": "Enviando...",
+    "contact_success_message": "Tu mensaje ha sido enviado exitosamente. Nos pondremos en contacto contigo pronto.",
+    "contact_whatsapp": "Contactar por WhatsApp"
+  
+  
 
 
 
