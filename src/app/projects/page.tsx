@@ -63,6 +63,15 @@ export default function Projects() {
       imageDark: '/ququlkanimage.png',
       url: '/projects/ququlkan-webapp'
     },
+    {
+      id: 'portfolio',
+      title: t('portfolio_title'),  
+      description: t('portfolio_short_description'), 
+      imageLight: '/portfoliolight.png',
+      imageDark: '/portfoliodark.png',
+      url: '/projects/portfolio' 
+    }
+    
   ];
 
   return (

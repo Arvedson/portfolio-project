@@ -1752,15 +1752,194 @@
   "contact_send": "Send",
   "contact_sending": "Sending...",
   "contact_success_message": "Your message has been sent successfully. We will get in touch with you soon.",
-  "contact_whatsapp": "Contact via WhatsApp"
+  "contact_whatsapp": "Contact via WhatsApp",
+
+  "portfolio_title": "Portfolio Project",
+  "portfolio_short_description": "A personal portfolio showcasing various web development projects, skills, and experiences.",
+  "contact2": "Contact",
+  "contact_intro2": "Get in touch for project inquiries, collaborations, or any questions.",
+
+
+    "portfolio": {
+      "title": "Portfolio Project",
+      "introduction": {
+        "header": "Welcome to My Portfolio Project",
+        "description": "This project showcases various skills and experiences in web development. You’ll find examples of dynamic components, Tailwind CSS styling, and internationalization (i18n) using i18next."
+      },
+      "sections": [
+        {
+          "number": 1,
+          "title": "Internationalization (i18n) Integration",
+          "description": "This project utilizes i18next for managing translations across different languages. i18next is configured to pull text from structured JSON files located in each language's folder.",
+          "reasons": [
+            {
+              "title": "Why i18next?",
+              "description": "Enables easy translation of text content across languages, providing a better user experience."
+            },
+            {
+              "title": "JSON structure",
+              "description": "Each language has its own JSON file for organized and scalable text management."
+            }
+          ],
+          "advantages": [
+            {
+              "title": "Dynamic Injection",
+              "description": "Inject translated text dynamically into components using the useTranslation hook."
+            },
+            {
+              "title": "Automatic Locale Loading",
+              "description": "i18next loads the appropriate language file based on user settings."
+            }
+          ],
+          "codeExample": {
+            "language": "javascript",
+            "code": "const { t } = useTranslation('portfolio');\n// Using t('portfolio_title') to pull translated titles."
+          },
+          "codeDescription": {
+            "importations": [
+              { "item": "useTranslation", "module": "react-i18next", "description": "Hook for accessing translations in components." }
+            ],
+            "function": {
+              "name": "t",
+              "purpose": "To fetch the translated string based on the active locale.",
+              "process": {
+                "step1": { "description": "Import useTranslation from 'react-i18next'." },
+                "step2": { "description": "Invoke the hook to retrieve the t function." },
+                "step3": { "description": "Call t('key') with the key name from the JSON." }
+              }
+            }
+          }
+        },
+        {
+          "number": 2,
+          "title": "Efficient and Dynamic Components",
+          "description": "The PortfolioPage component demonstrates efficient, reusable component design. It dynamically iterates over data and injects text and structured content into each section without hardcoding values. This page component is built in just 150 lines of code -Including TS interfaces-. "
+,
+          "reasons": [
+            {
+              "title": "Iterative Rendering",
+              "description": "By iterating over sections and injecting content, PortfolioPage adapts dynamically to the provided data structure."
+            }
+          ],
+          "advantages": [
+            {
+              "title": "Scalability",
+              "description": "PortfolioPage can render different data structures with minimal changes, handling various sections, examples, and descriptions effectively."
+            },
+            {
+              "title": "Reduced Code Duplication",
+              "description": "Reduces repetitive structures by using dynamic iteration, making the code cleaner and more maintainable."
+            }
+          ],
+          "codeExample": {
+            "language": "javascript",
+            "code": "'use client';\n\nimport { useEffect, useState } from 'react';\nimport { useTranslation } from 'react-i18next';\nimport i18next from 'i18next';\n\n// Interfaces\ninterface PortfolioSection {\n  number: number;\n  title: string;\n  description: string;\n  reasons?: { title: string; description: string }[];\n  advantages?: { title: string; description: string }[];\n  codeExample?: { code: string; language: string };\n  codeDescription?: {\n    importations?: { item: string; module: string; description: string }[];\n    function?: {\n      name: string;\n      purpose: string;\n      process: {\n        [key: string]: string | { description: string; substeps?: { [subkey: string]: string } };\n      };\n    };\n  };\n}\n\ninterface PortfolioData {\n  title: string;\n  introduction: { header: string; description: string };\n  sections: PortfolioSection[];\n}\n\nexport default function PortfolioPage() {\n  const { t } = useTranslation('common');\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n    const storedLang = localStorage.getItem('language');\n    if (storedLang) {\n      i18next.changeLanguage(storedLang);\n    }\n  }, []);\n\n  if (!mounted) {\n    return null;\n  }\n\n  // Fetch portfolio data from i18n with type assertion\n  const portfolioData = t('portfolio', { returnObjects: true }) as PortfolioData;\n\n  // Links and labels for specific iterations\n  const exploreLinks = [\n    {\n      url: 'https://github.com/Arvedson/portfolio-project/blob/main/src/app/projects/ququlkan-webapp/page.tsx',\n      label: t('codeinvitesection'),\n    },\n    {\n      url: 'https://github.com/Arvedson/portfolio-project/blob/main/src/app/globals.css',\n      label: t('codeinvitesection2'),\n    },\n  ];\n\n  return (\n    <div className=\"container mx-auto px-4 py-12 space-y-12 min-h-screen\">\n      <section className=\"prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12\">\n        <h3 className=\"font-bold text-2xl\">{portfolioData.title}</h3>\n        <p>{portfolioData.introduction.description}</p>\n      </section>\n\n      {portfolioData.sections.map((section, index) => (\n        <section key={index} className=\"prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12\">\n          <h3 className=\"font-bold text-2xl\">\n            {section.number}. {section.title}\n          </h3>\n          <p>{section.description}</p>\n\n          {section.reasons && (\n            <ul className=\"list-disc pl-5 space-y-4\">\n              {section.reasons.map((reason, reasonIndex) => (\n                <li key={reasonIndex}>\n                  <h4 className=\"font-semibold text-xl\">{reason.title}</h4>\n                  <p>{reason.description}</p>\n                </li>\n              ))}\n            </ul>\n          )}\n\n          {section.advantages && (\n            <ul className=\"list-disc pl-5 space-y-4\">\n              {section.advantages.map((advantage, advIndex) => (\n                <li key={advIndex}>\n                  <h4 className=\"font-semibold text-xl\">{advantage.title}</h4>\n                  <p>{advantage.description}</p>\n                </li>\n              ))}\n            </ul>\n          )}\n\n          {section.codeExample && (\n            <div className=\"bg-[var(--background)] text-[var(--foreground)] p-4 rounded-lg shadow-md border border-[var(--secondary)]\">\n              <pre className=\"whitespace-pre-wrap overflow-x-auto\">\n                <code>{section.codeExample.code}</code>\n              </pre>\n            </div>\n          )}\n\n          {section.codeDescription && (\n            <div className=\"mt-4\">\n              <h4 className=\"font-semibold text-xl pb-4\">{t('codeDescription')}</h4>\n              {section.codeDescription.importations && section.codeDescription.importations.length > 0 && (\n                <div className=\"mb-4\">\n                  <h5 className=\"font-semibold\">{t('importations')}</h5>\n                  <ul className=\"list-disc pl-5 space-y-4\">\n                    {section.codeDescription.importations.map((imp, impIndex) => (\n                      <li key={impIndex}>\n                        <strong>{imp.item} / &apos;{imp.module}&apos;:</strong> {imp.description}\n                      </li>\n                    ))}\n                  </ul>\n                </div>\n              )}\n\n              {section.codeDescription.function && (\n                <div>\n                  <h5 className=\"font-semibold pb-4\">\n                    {t('functionLabel')} {section.codeDescription.function.name}:\n                  </h5>\n                  <p className=\"pb-2\"><strong>{t('purpose')}</strong> {section.codeDescription.function.purpose}</p>\n\n                  <ol className=\"list-decimal pl-5 space-y-2\">\n                    {Object.entries(section.codeDescription.function.process).map(([key, value]) => (\n                      <li key={key}>\n                        {typeof value === 'string' ? value : value.description}\n                        {typeof value !== 'string' && value.substeps && (\n                          <ul className=\"list-disc pl-5 space-y-4 pt-4\">\n                            {Object.entries(value.substeps).map(([subKey, subValue]) => (\n                              <li key={subKey}>{subValue}</li>\n                            ))}\n                          </ul>\n                        )}\n                      </li>\n                    ))}\n                  </ol>\n                </div>\n              )}\n            </div>\n          )}\n\n          {exploreLinks[index - 1] && (\n            <div className=\"mt-8\">\n              <h3 className=\"font-semibold text-2xl\">{t('exploreCodeTitle')}</h3>\n              <div className=\"flex flex-row gap-5\">\n                <a\n                  href={exploreLinks[index - 1].url}\n                  target=\"_blank\"\n                  rel=\"noopener noreferrer\"\n                  className=\"mt-6 border border-[var(--border-color)] inline-block px-8 py-4 text-lg font-semibold text-[var(--foreground)] bg-[var(--primary)] rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 overflow-hidden overflow-x-auto\"\n                >\n                  {exploreLinks[index - 1].label}\n                </a>\n              </div>\n            </div>\n          )}\n        </section>\n      ))}\n    </div>\n  );\n}"
+          },
+          "codeDescription": {
+            "importations": [
+              { "item": "PortfolioPage", "module": "Portfolio component file", "description": "Component for rendering portfolio sections and examples dynamically based on provided data." }
+            ],
+            "function": {
+              "name": "PortfolioPage",
+              "purpose": "Renders each portfolio section dynamically by mapping over data and injecting content.",
+              "process": {
+                "step1": { "description": "Fetch data and iterate through the sections array." },
+                "step2": { "description": "Within each iteration, populate component fields dynamically based on data." },
+                "step3": { "description": "Render each element according to the mapped data, creating flexible, data-driven content." }
+              }
+            }
+          }
+        }
+        ,
+        {
+          "number": 3,
+          "title": "Using Tailwind CSS and Custom CSS for Aesthetics",
+          "description": "The project uses Tailwind CSS extensively for styling while incorporating custom CSS to refine the design. This approach allows for a balance between utility classes and specific style adjustments, creating a visually cohesive and flexible layout.",
+          "reasons": [
+            {
+              "title": "Consistency with Tailwind",
+              "description": "Tailwind's utility classes ensure consistent and clean design across all components."
+            }
+          ],
+          "advantages": [
+            {
+              "title": "Improved Customization",
+              "description": "Custom CSS allows for fine-tuning of styles to achieve a unique look beyond predefined utility classes."
+            },
+            {
+              "title": "Enhanced Readability",
+              "description": "CSS variables and custom styles improve code readability and allow easier updates to theming."
+            }
+          ],
+          "codeExample": {
+            "language": "css",
+            "code": "/* Input and Textarea Styles */\n.form-input,\n.form-textarea {\n  width: 100%;\n  padding: 0.5rem;\n  border: 1px solid var(--border-color-light);\n  border-radius: 0.375rem;\n  outline: none;\n  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;\n  background-image: linear-gradient(\n    135deg,\n    rgba(var(--primary-light-rgb), 0.2),\n    rgba(var(--secondary-light-rgb), 0.2)\n  );\n  background-color: rgba(255, 255, 255, 0.1);\n  color: var(--foreground-light);\n  box-shadow: 0 2px 4px var(--box-shadow-light);\n}\n\n/* Dark mode styling for input and textarea */\n[data-theme=\"dark\"] .form-input,\n[data-theme=\"dark\"] .form-textarea {\n  background-image: linear-gradient(\n    135deg,\n    rgba(var(--primary-dark-rgb), 0.2),\n    rgba(var(--secondary-dark-rgb), 0.2)\n  );\n  background-color: rgba(0, 0, 0, 0.15);\n  color: var(--foreground-dark);\n  border-color: rgba(255, 255, 255, 0.2);\n  box-shadow: 0 2px 4px var(--box-shadow-dark);\n}\n\n/* Focus styles for input and textarea */\n.form-input:focus,\n.form-textarea:focus {\n  border-color: var(--primary-light);\n  background-color: rgba(255, 255, 255, 1);\n  box-shadow: 0 0 0 2px var(--primary-light);\n}\n\n/* Dark mode focus styles for input and textarea */\n[data-theme=\"dark\"] .form-input:focus,\n[data-theme=\"dark\"] .form-textarea:focus {\n  background-color: rgba(0, 0, 0, 1);\n  border-color: var(--primary-dark);\n  box-shadow: 0 0 0 2px var(--primary-dark);\n}\n\n/* Submit button styling */\n.submit-button {\n  background-color: var(--primary-light);\n  color: white;\n  padding: 0.75rem;\n  border-radius: 0.375rem;\n  font-size: 1rem;\n  font-weight: bold;\n  transition: background-color 0.3s, box-shadow 0.3s;\n  cursor: pointer;\n  border: 1px solid var(--secondary-light);\n  box-shadow: 0 0 4px var(--secondary-light);\n}\n\n/* Dark mode submit button styling */\n[data-theme=\"dark\"] .submit-button {\n  background-color: var(--primary-dark);\n  border: 1px solid var(--secondary-dark);\n  box-shadow: 0 0 4px var(--secondary-dark);\n}\n\n/* Hover effects for submit button in light mode */\n.submit-button:hover {\n  background-color: var(--secondary-light);\n  border: 1px solid var(--primary-light);\n  box-shadow: 0 0 4px var(--primary-light);\n}\n\n/* Hover effects for submit button in dark mode */\n[data-theme=\"dark\"] .submit-button:hover {\n  background-color: var(--secondary-dark);\n  border: 1px solid var(--primary-dark);\n  box-shadow: 0 0 4px var(--primary-dark);\n}"
+          },
+          "codeDescription": {
+            "importations": [
+              {
+                "item": "Tailwind classes",
+                "module": "tailwind.config.js",
+                "description": "Extend the default colors and customize the theme in Tailwind's configuration file."
+              }
+            ],
+            "function": {
+              "name": "CSS Variables and Dark Mode",
+              "purpose": "Allow color customization and seamless theme switching between light and dark modes.",
+              "process": {
+                "step1": { "description": "Define primary and secondary colors in root CSS variables." },
+                "step2": { "description": "Apply variables to components to manage theming dynamically." },
+                "step3": { "description": "Implement dark mode styles by toggling data attributes in the theme." }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "codeinvitesection":"Visit Component",
+    "codeinvitesection2":"Visit custom Global CSS",
+    "portfolio_technologies": {
+    "Next.js": {
+      "icon": "nextjs-icon",
+      "description": "A React framework for server-rendered and static applications.",
+      "usage": "Supports SEO-friendly, server-side rendered pages."
+    },
+    "React": {
+      "icon": "react-icon",
+      "description": "Library for building interactive user interfaces.",
+      "usage": "Enables efficient and modular UI development."
+    },
+    "Tailwind CSS": {
+      "icon": "tailwind-icon",
+      "description": "Utility-first CSS framework for rapid UI development.",
+      "usage": "Makes custom styling and responsive design straightforward."
+    },
+    "TypeScript": {
+      "icon": "typescript-icon",
+      "description": "JavaScript with static typing to improve maintainability.",
+      "usage": "Ensures code is more robust and reduces bugs."
+    },
+    "SendGrid": {
+      "icon": "sendgrid-icon",
+      "description": "Email delivery service for transactional emails.",
+      "usage": "Handles automated email notifications reliably."
+    },
+    "CSS": {
+      "icon": "css-icon",
+      "description": "Styling language for structuring and formatting content.",
+      "usage": "Used alongside Tailwind for additional style customizations."
+    }
+  },
+  "use2": "Usage:"
+}
+  
+  
+  
 
 
 
-
-
-
-
-  }
+  
   
   
 

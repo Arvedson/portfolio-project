@@ -566,17 +566,6 @@ background-position:center
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* Clase especial para los estilos de los cards */
 .custom-grid {
   display: grid;
@@ -880,23 +869,6 @@ background-position:center
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Estilo del contenedor de campos del formulario */
 .contact-form-fields {
   display: flex;
@@ -1117,4 +1089,35 @@ background-position:center
 
 [data-theme="dark"] .whatsapp-button:hover {
   color: var(--secondary-dark); 
+}
+
+
+
+/* Estilos personalizados para el header del PortfolioPage */
+.portfolio-header {
+  color: var(--foreground); 
+  padding: 2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, border-color 0.3s;
+
+  /* Gradiente de fondo translúcido para el modo claro */
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-light-rgb), 0.2),
+    rgba(var(--secondary-light-rgb), 0.2)
+  );
+  border: 2px solid var(--border-color-light);
+  box-shadow: 0 4px 8px var(--box-shadow-light); 
+}
+
+/* Modo oscuro */
+[data-theme='dark'] .portfolio-header {
+  /* Gradiente de fondo translúcido para el modo oscuro */
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-dark-rgb), 0.2),
+    rgba(var(--secondary-dark-rgb), 0.2)
+  );
+  border: 2px solid var(--border-color-dark); 
+  box-shadow: 0 4px 8px var(--box-shadow-dark); 
 }
