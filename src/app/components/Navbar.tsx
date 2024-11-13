@@ -67,20 +67,23 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-          <a href="/about" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
-              {t('about')}
-            </a>
-
-          </li>
-          <li>
-            <a href="/projects" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
+          <a href="/projects" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
               {t('projects')}
             </a>
+
           </li>
           <li>
           <a href="/blog" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
               {t('blog')}
             </a>
+
+
+          </li>
+          <li>
+          <a href="/about" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white">
+              {t('about')}
+            </a>
+
 
           </li>
           <li>
