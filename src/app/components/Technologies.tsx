@@ -141,12 +141,7 @@ const Technologies = () => {
       description: t("typescript_description"),
       level: 80,
     },
-    {
-      name: "Google Cloud",
-      icon: <SiGooglecloud className="text-yellow-500" />,
-      description: t("googlecloud_description"),
-      level: 70,
-    },
+
     {
       name: "Vercel",
       icon: <SiVercel style={{ color: "var(--foreground)" }} />,
