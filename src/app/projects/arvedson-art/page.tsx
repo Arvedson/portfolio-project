@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import Image from "next/image";
-import TechnologiesList from "@/app/components/TechnologiesList";
 import ArvedsonArtTechnologiesList from "@/app/components/ArvedsonArtTechnologiesList";
 
 export default function ArvedsonArtProject() {

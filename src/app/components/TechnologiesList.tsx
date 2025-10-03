@@ -24,9 +24,7 @@ import {
   SiPrettier,
   SiFramer,
   SiZod,
-  SiSendgrid,
   SiReactquery,
-  SiLucide,
   SiNpm,
   SiJavascript,
   SiCss3,
@@ -36,7 +34,7 @@ import {
   SiPython,
   SiFigma,
   SiDocker,
-  SiAmazonaws,
+  SiAmazon,
   SiFirebase,
   SiSupabase,
   SiRedis,
@@ -44,8 +42,6 @@ import {
   SiCypress,
   SiWebpack,
   SiBabel,
-  SiEslint as SiEslintIcon,
-  SiPrettier as SiPrettierIcon,
 } from "react-icons/si";
 
 // Importación de Iconify
@@ -79,9 +75,7 @@ const icons: {
   "prettier-icon": SiPrettier,
   "framer-motion-icon": SiFramer,
   "zod-icon": SiZod,
-  "sendgrid-icon": SiSendgrid,
   "react-query-icon": SiReactquery,
-  "lucide-icon": SiLucide,
 
   // Tecnologías adicionales del repositorio
   "javascript-icon": SiJavascript,
@@ -92,7 +86,7 @@ const icons: {
   "python-icon": SiPython,
   "figma-icon": SiFigma,
   "docker-icon": SiDocker,
-  "aws-icon": SiAmazonaws,
+  "aws-icon": SiAmazon,
   "firebase-icon": SiFirebase,
   "supabase-icon": SiSupabase,
   "redis-icon": SiRedis,

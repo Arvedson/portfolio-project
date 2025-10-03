@@ -89,7 +89,7 @@ export default function Projects() {
           <p className="text-lg mb-8">{t("projects_intro")}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div key={project.id}>
               <ProjectCard
                 title={project.title}

@@ -8,7 +8,6 @@ import {
   FaCode,
   FaRocket,
   FaCogs,
-  FaGraduationCap,
   FaTrophy,
   FaLightbulb,
   FaUsers,
