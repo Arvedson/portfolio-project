@@ -11,13 +11,10 @@ import {
   SiTypescript,
   SiPrisma,
   SiPostgresql,
-  SiGooglecloud,
   SiTailwindcss,
-  SiDotenv,
   SiGithub,
   SiVercel,
   SiGit,
-  SiYarn,
   SiCoder,
   SiStripe,
   SiEslint,
@@ -27,31 +24,12 @@ import {
   SiSendgrid,
   SiReactquery,
   SiLucide,
-  SiNpm,
-  SiJavascript,
-  SiCss3,
-  SiHtml5,
-  SiNodedotjs,
-  SiMongodb,
-  SiPython,
-  SiFigma,
-  SiDocker,
-  SiAmazonaws,
-  SiFirebase,
-  SiSupabase,
-  SiRedis,
-  SiJest,
-  SiCypress,
-  SiWebpack,
-  SiBabel,
-  SiEslint as SiEslintIcon,
-  SiPrettier as SiPrettierIcon,
 } from "react-icons/si";
 
 // Importación de Iconify
 import { Icon } from "@iconify/react";
 
-// Mapeo de iconos corregido
+// Mapeo de iconos para Arvedson Art
 const icons: {
   [key: string]:
     | React.ComponentType<{ size?: number; className?: string }>
@@ -61,16 +39,11 @@ const icons: {
   "react-icon": SiReact,
   "typescript-icon": SiTypescript,
   "prisma-icon": SiPrisma,
-  "prisma-nextauth-icon": SiPrisma,
   "postgresql-icon": SiPostgresql,
-  "google-cloud-icon": SiGooglecloud,
   "tailwind-icon": SiTailwindcss,
-  "env-variables-icon": SiDotenv,
-  "prisma-client-icon": SiPrisma,
   "github-icon": SiGithub,
   "vercel-icon": SiVercel,
   "git-icon": SiGit,
-  "npm-yarn-icon": SiYarn,
   "default-icon": SiCoder,
 
   // Nuevos iconos para Arvedson Art
@@ -83,30 +56,8 @@ const icons: {
   "react-query-icon": SiReactquery,
   "lucide-icon": SiLucide,
 
-  // Tecnologías adicionales del repositorio
-  "javascript-icon": SiJavascript,
-  "nodejs-icon": SiNodedotjs,
-  "css3-icon": SiCss3,
-  "html5-icon": SiHtml5,
-  "mongodb-icon": SiMongodb,
-  "python-icon": SiPython,
-  "figma-icon": SiFigma,
-  "docker-icon": SiDocker,
-  "aws-icon": SiAmazonaws,
-  "firebase-icon": SiFirebase,
-  "supabase-icon": SiSupabase,
-  "redis-icon": SiRedis,
-  "jest-icon": SiJest,
-  "cypress-icon": SiCypress,
-  "webpack-icon": SiWebpack,
-  "babel-icon": SiBabel,
-  "npm-icon": SiNpm,
-
   // Iconos de Iconify
   "nextauth-icon": { icon: "mdi:shield-lock", component: Icon },
-  "neon-tech-icon": { icon: "mdi:database", component: Icon },
-  "api-routes-icon": { icon: "mdi:api", component: Icon },
-  "image-component-icon": { icon: "mdi:image", component: Icon },
   "zustand-icon": { icon: "simple-icons:zustand", component: Icon },
   "react-hook-form-icon": {
     icon: "simple-icons:reacthookform",
@@ -116,21 +67,13 @@ const icons: {
     icon: "simple-icons:githubactions",
     component: Icon,
   },
-  "nextauth-js-icon": { icon: "mdi:shield-lock", component: Icon },
-  "prisma-orm-icon": { icon: "simple-icons:prisma", component: Icon },
-  "stripe-payments-icon": { icon: "simple-icons:stripe", component: Icon },
-  "vercel-deployment-icon": { icon: "simple-icons:vercel", component: Icon },
-  "tailwind-css-icon": { icon: "simple-icons:tailwindcss", component: Icon },
-  "typescript-ts-icon": { icon: "simple-icons:typescript", component: Icon },
-  "react-js-icon": { icon: "simple-icons:react", component: Icon },
-  "next-js-icon": { icon: "simple-icons:nextdotjs", component: Icon },
 };
 
-const TechnologiesList: React.FC = () => {
+const ArvedsonArtTechnologiesList: React.FC = () => {
   const { t } = useTranslation("common");
 
   // Obtener el objeto de tecnologías desde los archivos de traducción
-  const technologies: Technologies = t("todoapp.technologies.items", {
+  const technologies: Technologies = t("arvedson_art_technologies.items", {
     returnObjects: true,
   }) as Technologies;
 
@@ -163,6 +106,7 @@ const TechnologiesList: React.FC = () => {
                   size: 48,
                   className:
                     "text-[var(--accent)] transition-transform duration-300 group-hover:scale-110",
+                  "aria-label": `${name} icon`,
                 }
               );
 
@@ -177,22 +121,22 @@ const TechnologiesList: React.FC = () => {
           <div
             key={name}
             className="
-    p-4
-    border
-    rounded-lg
-    flex
-    flex-col
-    bg-[rgba(255, 255, 255, 0.8)]  /* Fondo blanco con 80% de opacidad */
-    dark:bg-[rgba(0, 0, 0, 0.6)]    /* Fondo negro con 60% de opacidad para el tema oscuro */
-    text-[var(--foreground)]
-    border-[var(--secondary)]
-    hover:border-[var(--primary)]
-    transition-colors
-    duration-300
-    shadow-sm
-    hover:shadow-md
-    group
-  "
+              p-4
+              border
+              rounded-lg
+              flex
+              flex-col
+              bg-[rgba(255, 255, 255, 0.8)]  /* Fondo blanco con 80% de opacidad */
+              dark:bg-[rgba(0, 0, 0, 0.6)]    /* Fondo negro con 60% de opacidad para el tema oscuro */
+              text-[var(--foreground)]
+              border-[var(--secondary)]
+              hover:border-[var(--primary)]
+              transition-colors
+              duration-300
+              shadow-sm
+              hover:shadow-md
+              group
+            "
           >
             {/* Contenedor del Icono */}
             <div className="mb-4 flex items-center justify-center">
@@ -212,4 +156,4 @@ const TechnologiesList: React.FC = () => {
   );
 };
 
-export default TechnologiesList;
+export default ArvedsonArtTechnologiesList;

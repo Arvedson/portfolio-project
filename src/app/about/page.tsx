@@ -1,134 +1,30 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
-import i18next from 'i18next';
-import { FaGuitar, FaGamepad, FaNewspaper, FaBrain } from 'react-icons/fa';
-
-// Define la interfaz AboutContent correctamente
-interface AboutContent {
-  introduction: {
-    name: string;
-    profession: string;
-    summary: string;
-  };
-  autobiography: {
-    title: string;
-    content: string[];
-  }[];
-  personal_interests: {
-    hobbies: string[];
-    values: string;
-    unique_details: string;
-  };
-  call_to_action: {
-    message: string;
-    contact_methods: {
-      email: string;
-      phone: string;
-    };
-  };
-}
-
-// Define el valor predeterminado de aboutContent como una constante independiente
-const defaultAboutContent: AboutContent = {
-  introduction: {
-    name: '',
-    profession: '',
-    summary: ''
-  },
-  autobiography: [
-    {
-      title: '',
-      content: ['']
-    }
-  ],
-  personal_interests: {
-    hobbies: [],
-    values: '',
-    unique_details: ''
-  },
-  call_to_action: {
-    message: '',
-    contact_methods: {
-      email: '',
-      phone: ''
-    }
-  }
-};
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import Image from "next/image";
+import i18next from "i18next";
+import {
+  FaCode,
+  FaRocket,
+  FaCogs,
+  FaGraduationCap,
+  FaTrophy,
+  FaLightbulb,
+  FaUsers,
+  FaGlobe,
+  FaMobile,
+  FaDatabase,
+  FaCloud,
+} from "react-icons/fa";
 
 export default function About() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const [mounted, setMounted] = useState(false);
-  const [containerHeight, setContainerHeight] = useState('80vh'); // Estado para el tamaño dinámico del contenedor
-
-  useEffect(() => {
-    // Detectar el tema actual
-    const theme = document.documentElement.getAttribute('data-theme');
-    setIsDarkTheme(theme === 'dark');
-
-    // Ajustar la altura del contenedor según el tamaño de la pantalla
-    const adjustContainerHeight = () => {
-      const screenHeight = window.innerHeight;
-      let calculatedHeight = '63vh';
-
-      if (screenHeight > 1000) {
-        calculatedHeight = '90vh';
-      } else if (screenHeight < 600) {
-        calculatedHeight = '70vh';
-      }
-
-      setContainerHeight(calculatedHeight);
-    };
-
-    adjustContainerHeight(); // Ajuste inicial
-    window.addEventListener('resize', adjustContainerHeight); // Ajuste al cambiar el tamaño de la ventana
-
-    // Limpiar el listener cuando el componente se desmonte
-    return () => window.removeEventListener('resize', adjustContainerHeight);
-  }, []);
-
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-  useEffect(() => {
-    const theme = document.documentElement.getAttribute('data-theme');
-    setIsDarkTheme(theme === 'dark');
-
-    const observer = new MutationObserver(() => {
-      const newTheme = document.documentElement.getAttribute('data-theme');
-      setIsDarkTheme(newTheme === 'dark');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const [isOpen, setIsOpen] = useState({
-    introduction: false,
-    autobiography: false,
-    personal_interests: false,
-    call_to_action: false
-  });
-
-  const iconMap: { [key: string]: JSX.Element } = {
-    "Tocar blues": <FaGuitar />,
-    "Playing blues": <FaGuitar />,
-    "Video Juegos": <FaGamepad />,
-    "Video Games": <FaGamepad />,
-    "Noticias": <FaNewspaper />,
-    "News": <FaNewspaper />,
-    "Aprender": <FaBrain />,
-    "Learning": <FaBrain />
-  };
 
   useEffect(() => {
     setMounted(true);
-    const storedLang = localStorage.getItem('language');
+    const storedLang = localStorage.getItem("language");
     if (storedLang) {
       i18next.changeLanguage(storedLang);
     }
@@ -138,152 +34,213 @@ export default function About() {
     return null;
   }
 
-  const aboutContent: AboutContent = (t('about2', { returnObjects: true }) as AboutContent) || defaultAboutContent;
+  const skills = [
+    { name: "Frontend Development", level: 95, icon: <FaCode /> },
+    { name: "Backend Development", level: 90, icon: <FaCogs /> },
+    { name: "Mobile Development", level: 85, icon: <FaMobile /> },
+    { name: "Database Design", level: 88, icon: <FaDatabase /> },
+    { name: "Cloud Services", level: 82, icon: <FaCloud /> },
+    { name: "DevOps", level: 80, icon: <FaRocket /> },
+  ];
 
-  const toggleSection = (section: keyof typeof isOpen) => {
-    setIsOpen(prevState => ({ ...prevState, [section]: !prevState[section] }));
-  };
+  const achievements = [
+    {
+      title: "Full-Stack Developer",
+      description: "3+ years building scalable web applications",
+      icon: <FaTrophy />,
+    },
+    {
+      title: "Modern Technologies",
+      description: "Expert in React, Next.js, Node.js, and TypeScript",
+      icon: <FaLightbulb />,
+    },
+    {
+      title: "Team Collaboration",
+      description: "Experienced in agile methodologies and code reviews",
+      icon: <FaUsers />,
+    },
+    {
+      title: "Global Projects",
+      description: "Worked with international teams and clients",
+      icon: <FaGlobe />,
+    },
+  ];
 
   return (
-    <div className="flex flex-col" style={{ minHeight: containerHeight }}>
-      {/* Contenedor principal */}
-      <main className="container mx-auto px-4 py-8 flex-1">
-        
-        {/* Introducción */}
-        <div className="container mx-auto px-4 py-6 max-w-screen-lg">
-          <button
-            className={`w-full text-left text-2xl font-bold py-2 border-b ${
-              isDarkTheme ? 'border-white' : 'border-black'
-            }`}
-            onClick={() => toggleSection('introduction')}
-          >
-            {t('introduction2')}
-          </button>
+    <div className="container mx-auto px-4 py-12 space-y-12">
+      {/* Hero Section */}
+      <section className="max-w-4xl mx-auto text-center">
+        <div className="card-style2">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-shrink-0">
+              <Image
+                src="/pp.png"
+                alt="Profile Picture"
+                width={200}
+                height={200}
+                className="rounded-full shadow-2xl border-4 border-[var(--primary)]"
+              />
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
+                {t("about_title")}
+              </h1>
+              <h2 className="text-2xl font-semibold mb-4 text-[var(--secondary)]">
+                {t("about_subtitle")}
+              </h2>
+              <p className="text-lg leading-relaxed mb-6">
+                {t("about_description")}
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                <div className="px-4 py-2 bg-[var(--primary)] bg-opacity-20 rounded-full border border-[var(--primary)]">
+                  <span className="text-sm font-medium">
+                    Full-Stack Developer
+                  </span>
+                </div>
+                <div className="px-4 py-2 bg-[var(--accent)] bg-opacity-20 rounded-full border border-[var(--accent)]">
+                  <span className="text-sm font-medium">React Expert</span>
+                </div>
+                <div className="px-4 py-2 bg-[var(--secondary)] bg-opacity-20 rounded-full border border-[var(--secondary)]">
+                  <span className="text-sm font-medium">TypeScript</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div
-            className={`${
-              isOpen.introduction ? 'max-h-[1000px]' : 'max-h-0'
-            } overflow-hidden transition-all duration-500 ease-in-out`}
-          >
-            <div className="card-style3 mt-4">
-              <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-y-6 md:gap-x-20">
-                <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left h-full">
-                  <h1 className="text-4xl font-bold mb-1">{aboutContent.introduction.name}</h1>
-                  <h2 className="text-2xl mb-1">{aboutContent.introduction.profession}</h2>
-                  <p className="text-lg">{aboutContent.introduction.summary}</p>
+      {/* Skills Section */}
+      <section className="max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4">{t("skills_title")}</h2>
+          <p className="text-lg text-[var(--secondary)]">
+            {t("skills_description")}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skills.map((skill, index) => (
+            <div key={index} className="card-style">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg flex items-center justify-center mr-4">
+                  <span className="text-white text-xl">{skill.icon}</span>
                 </div>
                 <div>
-                  <Image
-                    src="/pp.png"
-                    alt="Profile Picture"
-                    width={130}
-                    height={130}
-                    className="rounded-lg shadow-lg"
-                  />
+                  <h3 className="text-lg font-semibold">{skill.name}</h3>
+                  <div className="w-full bg-[var(--secondary)] bg-opacity-20 rounded-full h-2 mt-2">
+                    <div
+                      className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] h-2 rounded-full transition-all duration-1000 ease-out"
+                      style={{ width: `${skill.level}%` }}
+                    ></div>
+                  </div>
+                  <span className="text-sm text-[var(--secondary)]">
+                    {skill.level}%
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Achievements Section */}
+      <section className="max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4">{t("achievements_title")}</h2>
+          <p className="text-lg text-[var(--secondary)]">
+            {t("achievements_description")}
+          </p>
         </div>
 
-        {/* Autobiografía */}
-        <div className="container mx-auto px-4 py-6 max-w-screen-lg">
-          <button
-            className={`w-full text-left text-2xl font-bold py-2 border-b ${
-              isDarkTheme ? 'border-white' : 'border-black'
-            }`}
-            onClick={() => toggleSection('autobiography')}
-          >
-            {t('autobiography')}
-          </button>
-
-          <div
-            className={`transition-all duration-500 ease-in-out ${
-              isOpen.autobiography ? 'max-h-[20000px]' : 'max-h-0'
-            } overflow-hidden`}
-          >
-            <div className="card-style3 mt-4">
-              {aboutContent.autobiography.map((section, index) => (
-                <div key={index} className="mb-6">
-                  <h3 className="text-xl font-semibold mt-4 mb-4">{section.title}</h3>
-                  {section.content.map((paragraph, idx) => (
-                    <p key={idx} className="text-lg mb-3">{paragraph}</p>
-                  ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {achievements.map((achievement, index) => (
+            <div key={index} className="card-style">
+              <div className="flex items-start">
+                <div className="w-12 h-12 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                  <span className="text-white text-xl">{achievement.icon}</span>
                 </div>
-              ))}
-              <div className="mt-8 flex justify-center">
-                <Image
-                  src="/solar.jpeg"
-                  alt="Tomas Arvedson"
-                  width={1600}
-                  height={1600}
-                  className="rounded-lg shadow-lg z-10"
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-[var(--secondary)]">
+                    {achievement.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="max-w-4xl mx-auto">
+        <div className="card-style2 text-center">
+          <div className="mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-full mb-4">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
-              </div>
+              </svg>
             </div>
+            <h2 className="text-3xl font-bold mb-4">{t("cta_title")}</h2>
+            <p className="text-lg text-[var(--secondary)] mb-6 max-w-2xl mx-auto">
+              {t("cta_description")}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              className="group inline-flex items-center justify-center px-6 py-3 bg-[var(--primary)] text-white rounded-lg font-semibold transition-all duration-300 hover:bg-[var(--secondary)] hover:scale-105 hover:shadow-lg"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                />
+              </svg>
+              {t("contact_me")}
+            </a>
+
+            <a
+              href="/projects"
+              className="group inline-flex items-center justify-center px-6 py-3 bg-[var(--accent)] text-white rounded-lg font-semibold transition-all duration-300 hover:bg-[var(--primary)] hover:scale-105 hover:shadow-lg"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                />
+              </svg>
+              {t("view_projects")}
+            </a>
           </div>
         </div>
-
-        {/* Intereses Personales */}
-        <div className="container mx-auto px-4 py-6 max-w-screen-lg">
-          <button
-            className={`w-full text-left text-2xl font-bold py-2 border-b ${
-              isDarkTheme ? 'border-white' : 'border-black'
-            }`}
-            onClick={() => toggleSection('personal_interests')}
-          >
-            {t('personal_interests')}
-          </button>
-
-          <div
-            className={`transition-all duration-500 ease-in-out ${
-              isOpen.personal_interests ? 'max-h-[8000px]' : 'max-h-0'
-            } overflow-hidden`}
-          >
-            <div className="card-style3">
-              <p className="text-lg font-semibold">{t('hobbies')}</p>
-              <ul className="list-disc list-inside mb-2">
-                {aboutContent.personal_interests.hobbies.map((hobby, index) => (
-                  <li key={index} className="text-lg flex items-center">
-                    <span className="mr-2">{iconMap[hobby] || null}</span>
-                    {hobby}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-lg font-semibold">{t('values')}</p>
-              <p className="text-lg mb-2">{aboutContent.personal_interests.values}</p>
-              <p className="text-lg font-semibold">{t('unique_details')}</p>
-              <p className="text-lg mb-6">{aboutContent.personal_interests.unique_details}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Llamado a la Acción */}
-        <div className="container mx-auto px-4 py-6 max-w-screen-lg">
-          <button
-            className={`w-full text-left text-2xl font-bold py-2 border-b ${
-              isDarkTheme ? 'border-white' : 'border-black'
-            }`}
-            onClick={() => toggleSection('call_to_action')}
-          >
-            {t('get_in_touch')}
-          </button>
-
-          <div
-            className={`transition-all duration-500 ease-in-out ${
-              isOpen.call_to_action ? 'max-h-[8000px]' : 'max-h-0'
-            } overflow-hidden`}
-          >
-            <div className="card-style3">
-              <p className="text-lg mb-4">{aboutContent.call_to_action.message}</p>
-              <div className="text-lg">
-                <p><strong>{t('email')}:</strong> {aboutContent.call_to_action.contact_methods.email}</p>
-                <p><strong>{t('phone')}:</strong> {aboutContent.call_to_action.contact_methods.phone}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }

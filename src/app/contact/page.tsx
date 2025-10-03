@@ -1,33 +1,33 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { FaWhatsapp } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Contact() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [containerHeight, setContainerHeight] = useState('80vh'); // Estado para la altura del contenedor
+  const [containerHeight, setContainerHeight] = useState("80vh"); // Estado para la altura del contenedor
 
   // Función para ajustar la altura del contenedor
   const adjustContainerHeight = () => {
     const screenHeight = window.innerHeight;
-    let calculatedHeight = '80vh';
+    let calculatedHeight = "80vh";
 
     if (screenHeight > 1000) {
-      calculatedHeight = '65vh';
+      calculatedHeight = "65vh";
     } else if (screenHeight < 600) {
-      calculatedHeight = '90vh';
+      calculatedHeight = "90vh";
     }
 
     setContainerHeight(calculatedHeight);
@@ -35,7 +35,7 @@ export default function Contact() {
 
   useEffect(() => {
     setMounted(true);
-    const storedLang = localStorage.getItem('language');
+    const storedLang = localStorage.getItem("language");
     if (storedLang) {
       i18next.changeLanguage(storedLang);
     }
@@ -44,10 +44,10 @@ export default function Contact() {
     adjustContainerHeight();
 
     // Agregar el event listener para cambiar el tamaño de la ventana
-    window.addEventListener('resize', adjustContainerHeight);
+    window.addEventListener("resize", adjustContainerHeight);
 
     // Limpiar el listener cuando el componente se desmonte
-    return () => window.removeEventListener('resize', adjustContainerHeight);
+    return () => window.removeEventListener("resize", adjustContainerHeight);
   }, []);
 
   // Llamar a adjustContainerHeight después de enviar el formulario para ajustar la altura correctamente
@@ -57,23 +57,25 @@ export default function Contact() {
     }
   }, [formSubmitted]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
-  
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/sendemail', {
-        method: 'POST',
+      const response = await fetch("/api/sendemail", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           to: formData.email,
@@ -84,23 +86,27 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        console.log('Email sent successfully');
+        console.log("Email sent successfully");
         setFormSubmitted(true);
       } else {
-        console.error('Error sending email:', await response.text());
+        console.error("Error sending email:", await response.text());
       }
     } catch (error) {
-      console.error('Request failed:', error);
+      console.error("Request failed:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = '1234567890'; // Número de WhatsApp de destino
-    const message = `Hola, mi nombre es ${formData.name}. ${formData.message ? `Mensaje: ${formData.message}` : ''}`;
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    const phoneNumber = "1234567890"; // Número de WhatsApp de destino
+    const message = `Hola, mi nombre es ${formData.name}. ${
+      formData.message ? `Mensaje: ${formData.message}` : ""
+    }`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   if (!mounted) {
@@ -108,28 +114,28 @@ export default function Contact() {
   }
 
   return (
-    <div className="" style={{ minHeight: containerHeight }}>
+    <div style={{ minHeight: containerHeight }}>
       <div className="flex flex-col container mx-auto px-4 py-8">
         <div className="header-section2">
-          <h1 className="contact-title">{t('contact1')}</h1>
-          <p className="contact-intro">{t('contact_intro1')}</p>
+          <h1 className="contact-title">{t("contact1")}</h1>
+          <p className="contact-intro">{t("contact_intro1")}</p>
         </div>
-        
+
         {formSubmitted ? (
           <div className="text-center">
-            <p className="success-message">{t('contact_success_message')}</p>
+            <p className="success-message">{t("contact_success_message")}</p>
             <button
               onClick={handleWhatsAppClick}
               className="whatsapp-button"
               aria-label="Contactar por WhatsApp"
-            >
-           
-            </button>
+            ></button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="contact-form-fields">
             <div className="form-group">
-              <label htmlFor="name" className="form-label">{t('contact_name')}</label>
+              <label htmlFor="name" className="form-label">
+                {t("contact_name")}
+              </label>
               <input
                 type="text"
                 id="name"
@@ -142,7 +148,9 @@ export default function Contact() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email" className="form-label">{t('contact_email')}</label>
+              <label htmlFor="email" className="form-label">
+                {t("contact_email")}
+              </label>
               <input
                 type="email"
                 id="email"
@@ -155,7 +163,9 @@ export default function Contact() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="message" className="form-label">{t('contact_message')}</label>
+              <label htmlFor="message" className="form-label">
+                {t("contact_message")}
+              </label>
               <textarea
                 id="message"
                 name="message"
@@ -167,22 +177,24 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            <button
-              type="submit"
-              className="submit-button"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? t('contact_sending') : t('contact_send')}
-            </button>
+            <div className="flex gap-4 justify-center">
+              <button
+                type="submit"
+                className="submit-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? t("contact_sending") : t("contact_send")}
+              </button>
 
-            <button
-              type="button"
-              onClick={handleWhatsAppClick}
-              className="whatsapp-button"
-              aria-label="Contactar por WhatsApp"
-            >
-              <FaWhatsapp className="whatsapp-icon" />
-            </button>
+              <button
+                type="button"
+                onClick={handleWhatsAppClick}
+                className="whatsapp-button"
+                aria-label="Contactar por WhatsApp"
+              >
+                <FaWhatsapp className="whatsapp-icon" />
+              </button>
+            </div>
           </form>
         )}
       </div>

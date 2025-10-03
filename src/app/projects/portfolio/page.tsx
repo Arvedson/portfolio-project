@@ -1,7 +1,7 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+"use client";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import PortfolioTechnologiesList from "../../components/PortfolioTechnologiesList";
 
 interface PortfolioSection {
@@ -17,7 +17,9 @@ interface PortfolioSection {
       name: string;
       purpose: string;
       process: {
-        [key: string]: string | { description: string; substeps?: { [subkey: string]: string } };
+        [key: string]:
+          | string
+          | { description: string; substeps?: { [subkey: string]: string } };
       };
     };
   };
@@ -30,12 +32,12 @@ interface PortfolioData {
 }
 
 export default function PortfolioPage() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const storedLang = localStorage.getItem('language');
+    const storedLang = localStorage.getItem("language");
     if (storedLang) {
       i18next.changeLanguage(storedLang);
     }
@@ -45,15 +47,17 @@ export default function PortfolioPage() {
     return null;
   }
 
-  const portfolioData = t('portfolio', { returnObjects: true }) as PortfolioData;
+  const portfolioData = t("portfolio", {
+    returnObjects: true,
+  }) as PortfolioData;
   const exploreLinks = [
     {
-      url: 'https://github.com/Arvedson/portfolio-project/blob/main/src/app/projects/ququlkan-webapp/page.tsx',
-      label: t('codeinvitesection'),
+      url: "https://github.com/Arvedson/portfolio-project/blob/main/src/app/projects/ququlkan-webapp/page.tsx",
+      label: t("codeinvitesection"),
     },
     {
-      url: 'https://github.com/Arvedson/portfolio-project/blob/main/src/app/globals.css',
-      label: t('codeinvitesection2'),
+      url: "https://github.com/Arvedson/portfolio-project/blob/main/src/app/globals.css",
+      label: t("codeinvitesection2"),
     },
   ];
 
@@ -61,14 +65,16 @@ export default function PortfolioPage() {
     <div className="container mx-auto px-4 py-12 space-y-12 min-h-screen">
       {/* Main Section */}
       <section className="portfolio-header prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12">
-  <h3 className="font-bold text-2xl">{portfolioData.title}</h3>
-  <p>{portfolioData.introduction.description}</p>
-</section>
-
+        <h3 className="font-bold text-2xl">{portfolioData.title}</h3>
+        <p>{portfolioData.introduction.description}</p>
+      </section>
 
       {/* Loop through sections */}
       {portfolioData.sections.map((section, index) => (
-        <section key={index} className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12">
+        <section
+          key={index}
+          className="prose prose-lg dark:prose-dark max-w-3xl mx-auto mb-12 space-y-12"
+        >
           <h3 className="font-bold text-2xl">
             {section.number}. {section.title}
           </h3>
@@ -110,36 +116,50 @@ export default function PortfolioPage() {
           {/* Code Description */}
           {section.codeDescription && (
             <div className="mt-4">
-              <h4 className="font-semibold text-xl pb-4">{t('codeDescription')}</h4>
-              {section.codeDescription.importations && section.codeDescription.importations.length > 0 && (
-                <div className="mb-4">
-                  <h5 className="font-semibold">{t('importations')}</h5>
-                  <ul className="list-disc pl-5 space-y-4">
-                    {section.codeDescription.importations.map((imp, impIndex) => (
-                      <li key={impIndex}>
-                        <strong>{imp.item} / &apos;{imp.module}&apos;:</strong> {imp.description}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <h4 className="font-semibold text-xl pb-4">
+                {t("codeDescription")}
+              </h4>
+              {section.codeDescription.importations &&
+                section.codeDescription.importations.length > 0 && (
+                  <div className="mb-4">
+                    <h5 className="font-semibold">{t("importations")}</h5>
+                    <ul className="list-disc pl-5 space-y-4">
+                      {section.codeDescription.importations.map(
+                        (imp, impIndex) => (
+                          <li key={impIndex}>
+                            <strong>
+                              {imp.item} / &apos;{imp.module}&apos;:
+                            </strong>{" "}
+                            {imp.description}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                )}
               {section.codeDescription.function && (
                 <div>
                   <h5 className="font-semibold pb-4">
-                    {t('functionLabel')} {section.codeDescription.function.name}:
+                    {t("functionLabel")} {section.codeDescription.function.name}
+                    :
                   </h5>
                   <p className="pb-2">
-                    <strong>{t('purpose')}</strong> {section.codeDescription.function.purpose}
+                    <strong>{t("purpose")}</strong>{" "}
+                    {section.codeDescription.function.purpose}
                   </p>
                   <ol className="list-decimal pl-5 space-y-2">
-                    {Object.entries(section.codeDescription.function.process).map(([key, value]) => (
+                    {Object.entries(
+                      section.codeDescription.function.process
+                    ).map(([key, value]) => (
                       <li key={key}>
-                        {typeof value === 'string' ? value : value.description}
-                        {typeof value !== 'string' && value.substeps && (
+                        {typeof value === "string" ? value : value.description}
+                        {typeof value !== "string" && value.substeps && (
                           <ul className="list-disc pl-5 space-y-4 pt-4">
-                            {Object.entries(value.substeps).map(([subKey, subValue]) => (
-                              <li key={subKey}>{subValue}</li>
-                            ))}
+                            {Object.entries(value.substeps).map(
+                              ([subKey, subValue]) => (
+                                <li key={subKey}>{subValue}</li>
+                              )
+                            )}
                           </ul>
                         )}
                       </li>
@@ -153,7 +173,9 @@ export default function PortfolioPage() {
           {/* Show the button after specific iterations */}
           {exploreLinks[index - 1] && (
             <div className="mt-8">
-              <h3 className="font-semibold text-2xl">{t('exploreCodeTitle')}</h3>
+              <h3 className="font-semibold text-2xl">
+                {t("exploreCodeTitle")}
+              </h3>
               <div className="flex flex-row gap-5">
                 <a
                   href={exploreLinks[index - 1].url}
@@ -168,7 +190,9 @@ export default function PortfolioPage() {
           )}
 
           {/* PortfolioTechnologiesList on the last iteration */}
-          {index === portfolioData.sections.length - 1 && <PortfolioTechnologiesList />}
+          {index === portfolioData.sections.length - 1 && (
+            <PortfolioTechnologiesList />
+          )}
         </section>
       ))}
     </div>
