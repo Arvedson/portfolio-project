@@ -21,9 +21,7 @@ import {
   SiPrettier,
   SiFramer,
   SiZod,
-  SiSendgrid,
   SiReactquery,
-  SiLucide,
 } from "react-icons/si";
 
 // Importación de Iconify
@@ -52,9 +50,8 @@ const icons: {
   "prettier-icon": SiPrettier,
   "framer-motion-icon": SiFramer,
   "zod-icon": SiZod,
-  "sendgrid-icon": SiSendgrid,
+
   "react-query-icon": SiReactquery,
-  "lucide-icon": SiLucide,
 
   // Iconos de Iconify
   "nextauth-icon": { icon: "mdi:shield-lock", component: Icon },
@@ -101,6 +98,7 @@ const ArvedsonArtTechnologiesList: React.FC = () => {
                 iconEntry as React.ComponentType<{
                   size?: number;
                   className?: string;
+                  "aria-label"?: string;
                 }>,
                 {
                   size: 48,
