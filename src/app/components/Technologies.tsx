@@ -625,8 +625,8 @@ const Technologies = () => {
   };
 
   return (
-    <div className="container px-4 lg:px-12 py-8 pt-16">
-      <div className="grid grid-cols-2 sm:grid-cols-3 w-full md:grid-cols-4 lg:grid-cols-5 gap-6 lg-12 mx-3">
+    <div className="container mx-auto px-4 lg:px-12 py-8 pt-16">
+      <div className="grid grid-cols-2 sm:grid-cols-3 w-full md:grid-cols-4 lg:grid-cols-5 gap-6 lg-12 mx-auto justify-items-center">
         {technologies.map((tech, index) => (
           <div
             key={index}
