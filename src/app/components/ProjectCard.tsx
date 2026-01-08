@@ -24,7 +24,7 @@ export default function ProjectCard({
 
   return (
     <div
-      className="rounded-lg shadow-md overflow-hidden transform transition hover:scale-105"
+      className="rounded-lg shadow-md overflow-hidden transform transition hover:scale-105 h-full flex flex-col"
       style={{
         // Fondo translúcido según el tema
         backgroundColor:
