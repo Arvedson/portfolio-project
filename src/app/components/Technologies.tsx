@@ -20,8 +20,14 @@ import {
   FaLock,
   FaPlug,
   FaLayerGroup,
+  FaCheckCircle,
+  FaShieldAlt,
+  FaMapSigns,
+  FaPaw,
+  FaMagic,
 } from "react-icons/fa";
 import {
+
   SiNextdotjs,
   SiTailwindcss,
   SiJavascript,
@@ -39,6 +45,12 @@ import {
   SiDocker,
   SiFirebase,
   SiGit,
+  SiAxios,
+  SiExpo,
+  SiReacthookform,
+  SiRailway,
+  SiJsonwebtokens,
+  SiRadixui,
 } from "react-icons/si";
 
 import { Icon } from "@iconify/react"; // Importación de Iconify para NextAuth.js
@@ -599,6 +611,163 @@ const Technologies = () => {
       ),
       description: t("deepseek_description"),
       level: 80,
+    },
+    // Nuevas Tecnologías (Backend, Mobile, Web)
+    {
+      name: "JWT",
+      icon: <SiJsonwebtokens className="text-pink-500" />,
+      description: t("jwt_description"),
+      level: 80,
+    },
+    {
+      name: "Bcrypt",
+      icon: <FaLock className="text-gray-600" />,
+      description: t("bcrypt_description"),
+      level: 85,
+    },
+    {
+      name: "Joi",
+      icon: <FaCheckCircle className="text-orange-500" />,
+      description: t("joi_description"),
+      level: 75,
+    },
+    {
+      name: "Helix (Helmet)",
+      icon: <FaShieldAlt className="text-green-600" />,
+      description: t("helmet_description"),
+      level: 90,
+    },
+    {
+      name: "CORS",
+      icon: <FaSync className="text-blue-400" />,
+      description: t("cors_description"),
+      level: 95,
+    },
+    {
+      name: "Google Auth",
+      icon: <SiGooglecloud className="text-red-500" />,
+      description: t("google_auth_description"),
+      level: 80,
+    },
+    {
+      name: "Pino",
+      icon: <FaCode className="text-green-700" />,
+      description: t("pino_description"),
+      level: 70,
+    },
+    {
+      name: "Axios",
+      icon: <SiAxios className="text-purple-600" />,
+      description: t("axios_description"),
+      level: 90,
+    },
+    {
+      name: "React Native",
+      icon: <FaReact className="text-blue-500" />,
+      description: t("react_native_description"),
+      level: 85,
+    },
+    {
+      name: "Expo",
+      icon: <SiExpo style={{ color: "var(--foreground)" }} />,
+      description: t("expo_description"),
+      level: 85,
+    },
+    {
+      name: "React Navigation",
+      icon: <FaMapSigns className="text-purple-500" />,
+      description: t("react_navigation_description"),
+      level: 80,
+    },
+    {
+      name: "Zustand",
+      icon: <FaPaw className="text-orange-400" />,
+      description: t("zustand_description"),
+      level: 85,
+    },
+    {
+      name: "Async Storage",
+      icon: <FaDatabase className="text-gray-500" />,
+      description: t("async_storage_description"),
+      level: 80,
+    },
+    {
+      name: "Notifee",
+      icon: <FaEnvelope className="text-yellow-500" />,
+      description: t("notifee_description"),
+      level: 75,
+    },
+    {
+      name: "Radix UI",
+      icon: <SiRadixui style={{ color: "var(--foreground)" }} />,
+      description: t("radix_ui_description"),
+      level: 80,
+    },
+    {
+      name: "Lucide",
+      icon: <FaCode className="text-orange-500" />,
+      description: t("lucide_description"),
+      level: 85,
+    },
+    {
+      name: "Animate.css",
+      icon: <FaMagic className="text-pink-500" />,
+      description: t("animate_css_description"),
+      level: 70,
+    },
+    {
+      name: "Clsx",
+      icon: <FaCode className="text-blue-500" />,
+      description: t("clsx_description"),
+      level: 90,
+    },
+    {
+      name: "Next Themes",
+      icon: <SiNextdotjs className="text-gray-600" />,
+      description: t("next_themes_description"),
+      level: 95,
+    },
+    {
+      name: "Recharts",
+      icon: <FaChartLine className="text-blue-500" />,
+      description: t("recharts_description"),
+      level: 75,
+    },
+    {
+      name: "Sonner",
+      icon: <FaEnvelope className="text-orange-400" />,
+      description: t("sonner_description"),
+      level: 80,
+    },
+    {
+      name: "Vaul",
+      icon: <FaLayerGroup className="text-gray-500" />,
+      description: t("vaul_description"),
+      level: 70,
+    },
+    {
+      name: "Date-fns",
+      icon: <FaSync className="text-purple-600" />,
+      description: t("date_fns_description"),
+      level: 85,
+    },
+    {
+      name: "React Hook Form",
+      icon: <SiReacthookform className="text-pink-500" />,
+      description: t("react_hook_form_description"),
+      level: 90,
+    },
+    {
+      name: "Next Intl",
+      icon: <FaCodeBranch className="text-blue-500" />,
+      description: t("next_intl_description"),
+      level: 80,
+    },
+    {
+      name: "Railway",
+      icon: <SiRailway className="text-purple-600" />,
+      description: t("railway_description"),
+      level: 75,
     },
   ];
 

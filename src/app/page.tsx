@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Technologies from "./components/Technologies";
+import SectionTransition from "./components/SectionTransition";
 import SVGParallaxBackground from "./components/SVGParallaxBackground";
 import Image from "next/image";
 import Link from "next/link";
@@ -177,6 +178,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Componente de Transición Suave */}
+        <SectionTransition />
       </section>
 
       {/* Sección de tecnologías */}
