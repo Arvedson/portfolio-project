@@ -14,6 +14,8 @@
   "view_projects": "Ver Proyectos",
   "download_cv": "Descargar CV",
   "projects_intro": "Aquí puedes encontrar los proyectos en los que he trabajado, desde aplicaciones web hasta proyectos paralelos.",
+  "vital_guard_title": "Vital Guard AI",
+  "vital_guard_short_description": "Plataforma bimodal de inteligencia clínica para pacientes y médicos.",
   "about_intro": "Hola, soy Tomas Arvedson, un desarrollador apasionado con experiencia en desarrollo web y diseño.",
   "about_title": "Sobre Mí",
   "about_subtitle": "Desarrollador Full-Stack",
@@ -2198,5 +2200,97 @@
   "tensorboard_description": "Conjunto de herramientas de visualización para inspeccionar y comprender el entrenamiento de modelos.",
   "perlin_description": "Algoritmo de generación de ruido coherente utilizado para texturas y terrenos realistas.",
   "noisets_description": "Implementación en TypeScript de algoritmos de ruido para generación procedimental.",
-  "wgan_math_description": "Base matemática para GANs de Wasserstein con penalización de gradiente para mayor estabilidad."
+  "wgan_math_description": "Base matemática para GANs de Wasserstein con penalización de gradiente para mayor estabilidad.",
+  "vital_guard": {
+    "introduccion": {
+      "title": "VitalGuard AI: Plataforma Bimodal Clínica",
+      "subtitle": "Inteligencia Artificial Médica y Triaje Bimodal Asistido",
+      "description": "VitalGuard es un puente semántico entre el paciente y el clínico. Resuelve la fragmentación en historiales médicos implementando una 'Arquitectura Bimodal'. A partir de un mismo input, el sistema genera simultáneamente un análisis de bienestar seguro para el paciente y una pre-evaluación clínica (con referencias ICD-10) estructurada para la toma de decisiones médicas."
+    },
+    "arquitectura": {
+      "title": "Arquitectura y Decisiones de Diseño Críticas",
+      "description": "Basado en un patrón de Arquitectura Monolítica Modular (Next.js App Router) fuertemente acoplada a Vercel. La decisión de diseño más importante fue priorizar 'Determinismo vs LLM Latency': en lugar de depender de la IA para calcular el nivel de alerta biológico (riesgoso en salud), se diseñó un motor de scoring local asíncrono O(n) garantizando cero alucinaciones en el nivel de emergencia."
+    },
+    "caracteristicas_clave": {
+      "title": "Características y Optimizaciones Clave",
+      "items": [
+        "Renderizado híbrido: Componentes estáticos combinados con Server Components asíncronos para reducir notoriamente el TTI.",
+        "Type-Safety end-to-end: Integración profunda sin REST estricto, manejando mutaciones vía React Server Actions + Zod.",
+        "Accesibilidad y UI (a11y): Diseño headless interactivo con Radix UI, componentes fluidos y Optimistic UI.",
+        "Pipeline Multimodal: Ingestión de historiales en PDF e imágenes procesadas mediante OCR inteligente (Gemini Flash Lite)."
+      ]
+    },
+    "desafios_y_soluciones": {
+      "title": "Ingeniería de Desafíos y Resoluciones",
+      "challenges": [
+        {
+          "problem": "Alucinación de Fechas en Vision AI",
+          "solution": "Los modelos alucinaban 'Epoch 1970' en documentos sin fecha. Se implementó un pipeline estricto requiriendo al LLM retornar 'null' en caso de duda, forzando un flow 'Human-in-the-Loop' en el front-end antes de persistir los datos."
+        },
+        {
+          "problem": "Rate Limits API (429) por Ejecución Concurrente",
+          "solution": "La naturaleza bimodal exigía 2 prompts masivos. Se transicionó de Promise.all a despacho secuencial e implementó un Contextual Cache (10min TTL) que recicla el diagnóstico si las métricas en Prisma no mutan, reduciendo agresivamente costos."
+        },
+        {
+          "problem": "Type-Safety Dinámica Rota por Output de LLM",
+          "solution": "Desarrollo de un wrapper Regex a nivel de red para la poda automática de bloques de Markdown inyectados inesperadamente ('```json') y tipado estricto en el fallback."
+        }
+      ]
+    },
+    "snippets": {
+      "title": "Snippet: Rate-Limiting & Heurística de Caché",
+      "tv_loss": "if (prevDiagnosis) {\n  const diagTime = new Date(prevDiagnosis.timestamp).getTime();\n  const vitalsTime = latestVitals ? new Date(latestVitals.timestamp).getTime() : 0;\n  \n  if (Date.now() - diagTime < 10 * 60 * 1000 && diagTime >= vitalsTime) {\n    return { success: true, diagnosisId: prevDiagnosis.id }; // Save quota\n  }\n}"
+    },
+    "technologies": {
+      "Next.js": {
+        "description": "App Router y Server Actions",
+        "usage": "Eliminación de la API clásica, renderizado servidor y Optimistic UI.",
+        "icon": "nextjs-icon"
+      },
+      "PostgreSQL": {
+        "description": "Almacenamiento Relacional de Series",
+        "usage": "Mapeo complejo y transacciones anidadas de historias clínicas y scoring.",
+        "icon": "postgresql-icon"
+      },
+      "Gemini": {
+        "description": "Inferencia Multimodal Flash Server",
+        "usage": "Traducción médica bimodal desde lenguaje natural y OCR asíncrona.",
+        "icon": "gemini-icon"
+      }
+    },
+    "samples_gallery": {
+      "title": "Galería de Interfaces y UX/UI Clínica",
+      "description": "Explora los dashboards principales de VitalGuard. Una filosofía de diseño que prioriza el 'Glassmorphism' limpio con Radix UI para asegurar total accesibilidad.",
+      "compare_label": "Modo Vista",
+      "xray_label": "Dashboard Médico",
+      "result_label": "Reporte Paciente",
+      "view_more": "Desliza para explorar"
+    },
+    "cta": {
+      "title": "Explora VitalGuard",
+      "description": "Sumérgete en la arquitectura del proyecto, revisa el código fuente o descubre más sobre el pipeline en acción.",
+      "visit_website": "Probar VitalGuard",
+      "view_repo": "Ver Repositorio"
+    },
+    "futuro_y_escalabilidad": {
+      "title": "Roadmap Técnico y Misión a Largo Plazo",
+      "description": "VitalGuard es un ecosistema continuo en fase de desarrollo activo. La arquitectura actual resuelve la inmediatez clínica (procesamiento de historial, feedback, telemedicina y agendamiento), pero el roadmap técnico apunta hacia la automatización biométrica y predicción por Deep Learning.",
+      "phases": [
+        {
+          "phase": "Fase Actual: Telemedicina y Concurrencia Bimodal",
+          "details": "Motor de scoring local determinista, parseo OCR estricto del historial y comunicación bidireccional paciente-médico. Envío de consultas concurrentes eficientes y agendamiento o llamadas médicas automatizadas y contextualizadas por LLMs."
+        },
+        {
+          "phase": "Siguiente Frontera: Ecosistema IoT & Mobile Nativo",
+          "details": "Sustitución de ingresos manuales mediante un bridging activo con Web Bluetooth API nativo para wearables. Desarrollo del frontend nativo iOS/Android integrando flujos directos (Apple HealthKit / Google Fit). Los signos vitales serán transmitidos vía WebSockets y Edge Functions permitiendo telemetría en tiempo real."
+        },
+        {
+          "phase": "Visión Lejana: Predictive Healthcare Models",
+          "details": "Migración agresiva de almacenamiento hacia bases de datos de series temporales (TimescaleDB) como Lake para entrenamiento masivo de modelos predictivos. La meta es transcender de una inteligencia reactiva a un pipeline Deductivo: lograr predecir eventos adversos e insuficiencias biológicas exactas horas antes del declive crítico mediante el análisis tensor de millones de anomalías de métricas fisiológicas."
+        }
+      ]
+    }
+  },
+  "vital_guard_title": "VitalGuard AI Health Platform",
+  "vital_guard_short_description": "Plataforma bimodal de registro clínico e inferencia LLM que traduce síntomas y signos en reportes de bienestar para pacientes y paneles médicos."
 }

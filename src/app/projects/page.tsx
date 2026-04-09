@@ -87,6 +87,14 @@ export default function Projects() {
       imageDark: "/Barmaps fondo.png",
       url: "/projects/bar-terrain-wgan",
     },
+    {
+      id: "vital-guard",
+      title: t("vital_guard_title"),
+      description: t("vital_guard_short_description"),
+      imageLight: "/vital1.png",
+      imageDark: "/vital1.png",
+      url: "/projects/vital-guard",
+    },
   ];
 
   return (

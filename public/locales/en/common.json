@@ -14,6 +14,8 @@
   "view_projects": "View Projects",
   "download_cv": "Download CV",
   "projects_intro": "Here you can find the projects I have worked on, from web applications to side projects.",
+  "vital_guard_title": "Vital Guard AI",
+  "vital_guard_short_description": "Bimodal clinical intelligence platform for patients and doctors.",
   "about_intro": "Hi, I'm Tomas Arvedson, a passionate developer with experience in web development and design.",
   "about_title": "About Me",
   "about_subtitle": "Full-Stack Developer",
@@ -2235,5 +2237,97 @@
   "tensorboard_description": "Visualization toolkit for inspecting and understanding model training.",
   "perlin_description": "Coherent noise algorithm used for realistic textures and terrain generation.",
   "noisets_description": "TypeScript implementation of noise algorithms for procedural generation.",
-  "wgan_math_description": "Mathematical foundation for Wasserstein GANs with Gradient Penalty for improved stability."
+  "wgan_math_description": "Mathematical foundation for Wasserstein GANs with Gradient Penalty for improved stability.",
+  "vital_guard": {
+    "introduccion": {
+      "title": "VitalGuard AI: Bimodal Clinical Platform",
+      "subtitle": "Medical AI and Assisted Bimodal Triage",
+      "description": "VitalGuard is not just a health tracking app; it's a semantic bridge between patient and doctor. It tackles fragmented medical history by implementing a 'Bimodal Medical Translation Architecture'. From a single user input, it calculates a legal-safe wellness analysis for the patient and a clinical pre-evaluation (with ICD-10 references) structured for the doctor."
+    },
+    "arquitectura": {
+      "title": "Architecture & Critical Design Decisions",
+      "description": "Built upon a tightly-coupled Modular Monolithic setup utilizing Next.js Edge infrastructure. The most critical decision was 'Determinism vs LLM Latency': instead of relying on AI to map biological hazard levels, a local O(1) TypeScript scoring engine modifies thresholds strictly algorithmically, preventing any medical hallucinations."
+    },
+    "caracteristicas_clave": {
+      "title": "Key Features and Optimization",
+      "items": [
+        "Hybrid Rendering: Static UI on client with Server Components loaded asynchronously.",
+        "End-to-End Type-Safety: Mutating and validating via React Server Actions + Zod wrapper.",
+        "Total A11y & UI: Accessible components with Radix, smooth Framer Motion micro-interactions.",
+        "Multimodal Pipeline: Vision AI OCR ingest applied to unstructured medical history PDF inputs."
+      ]
+    },
+    "desafios_y_soluciones": {
+      "title": "Engineering Challenges & Mastery",
+      "challenges": [
+        {
+          "problem": "Unstable Vision API and Epoch 1970 Hallucinations",
+          "solution": "Forced LLM explicit 'null' return on uncertain physical timestamps, interrupting DB writes dynamically and demanding a Front-end Human-in-the-Loop sanity check to prevent metric corruption."
+        },
+        {
+          "problem": "API Rate Limits and 429 Errors",
+          "solution": "With a Bimodal workflow requesting continuous parallel insights, Promise.all was serialized. More importantly, I introduced a 10-minute contextual TTL heuristic caching algorithm that bypasses network requests completely if Vitals haven't mutated."
+        },
+        {
+          "problem": "Dynamic Prompts breaking Type-Safety",
+          "solution": "Unpredictable markdown blocks injected before JSON.parse were neutralized using a surgical RegEx network-level parser combined with stringent interface-mapped fallback objects."
+        }
+      ]
+    },
+    "snippets": {
+      "title": "Snippet: Contextual Heuristic TTL Cache",
+      "tv_loss": "if (prevDiagnosis) {\n  const diagTime = new Date(prevDiagnosis.timestamp).getTime();\n  const vitalsTime = latestVitals ? new Date(latestVitals.timestamp).getTime() : 0;\n  \n  if (Date.now() - diagTime < 10 * 60 * 1000 && diagTime >= vitalsTime) {\n    return { success: true, diagnosisId: prevDiagnosis.id }; // Save quota\n  }\n}"
+    },
+    "technologies": {
+      "Next.js": {
+        "description": "App Server & Frontend",
+        "usage": "Elimination of classic REST APIs for tight, fast React Server Actions.",
+        "icon": "nextjs-icon"
+      },
+      "PostgreSQL": {
+        "description": "Relational DB (Prisma)",
+        "usage": "Intricate cross-mapping between Patients, Vitals, and Doctor models.",
+        "icon": "postgresql-icon"
+      },
+      "Gemini": {
+        "description": "Multimodal Deep Learning AI",
+        "usage": "Generative NLP narrative and unstructured OCR data extraction.",
+        "icon": "gemini-icon"
+      }
+    },
+    "samples_gallery": {
+      "title": "Clinical Interface Gallery",
+      "description": "Explore the different views constructed for VitalGuard. An extreme focus on a11y with glassmorphic modern layouts.",
+      "compare_label": "View Mode",
+      "xray_label": "Clinical Dashboard",
+      "result_label": "Patient Overview",
+      "view_more": "Swipe to explore"
+    },
+    "cta": {
+      "title": "Experience VitalGuard",
+      "description": "Dive straight into the code or access the live repository.",
+      "visit_website": "Open App",
+      "view_repo": "View Source Code"
+    },
+    "futuro_y_escalabilidad": {
+      "title": "Technical Roadmap & Long-Term Vision",
+      "description": "VitalGuard is a living ecosystem in active development. While the current monolith efficiently handles immediate biological triaging, historical parsing, and telemedicine scheduling, the true engineering roadmap points toward passive biometric ingestion and predictive AI.",
+      "phases": [
+        {
+          "phase": "Current Phase: Telemedicine & Bimodal Concurrency",
+          "details": "Stable deterministic scoring engine, strict OCR pipeline for medical records, and bidirectional encrypted telemetry. Features a fully integrated telemedicine suite that schedules remote appointments and resolves concurrent LLM-assisted queries seamlessly."
+        },
+        {
+          "phase": "Next Frontier: IoT & Native Mobile Ecosystem",
+          "details": "Pivoting away from manual entry by building an active Web Bluetooth bridge for wearables, alongside a mobile port integrating Apple HealthKit and Google Fit directly. Vitals will stream natively via WebSockets for real-time Edge telemetry tracking."
+        },
+        {
+          "phase": "Distant Vision: Predictive Deep Learning Healthcare",
+          "details": "Transitioning purely to robust Time-Series databases (TimescaleDB) optimized as data lakes for heavy Deep Learning. The ultimate objective revolves around migrating from reactive assessments to an active deductive engine: training custom forecasting models that proactively predict life-threatening situations based on precision anomaly matching against millions of biometric inputs."
+        }
+      ]
+    }
+  },
+  "vital_guard_title": "VitalGuard AI Health Platform",
+  "vital_guard_short_description": "A Bimodal clinical pipeline utilizing Multimodal LLMs to translate unstructured patient symptoms into robust medical insights."
 }
