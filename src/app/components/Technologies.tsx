@@ -769,6 +769,104 @@ const Technologies = () => {
       description: t("railway_description"),
       level: 75,
     },
+    {
+      name: "Kaggle",
+      icon: (
+        <Icon
+          icon="simple-icons:kaggle"
+          width="48"
+          height="48"
+          className="text-blue-400 transition-transform duration-300 group-hover:scale-110"
+          aria-label="Kaggle icon"
+        />
+      ),
+      description: t("kaggle_description"),
+      level: 90,
+    },
+    {
+      name: "Google Colab",
+      icon: (
+        <Icon
+          icon="simple-icons:googlecolab"
+          width="48"
+          height="48"
+          className="text-[#F9AB00] transition-transform duration-300 group-hover:scale-110"
+          aria-label="Google Colab icon"
+        />
+      ),
+      description: t("colab_description"),
+      level: 85,
+    },
+    {
+      name: "PyTorch",
+      icon: (
+        <Icon
+          icon="simple-icons:pytorch"
+          width="48"
+          height="48"
+          className="text-[#EE4C2C] transition-transform duration-300 group-hover:scale-110"
+          aria-label="PyTorch icon"
+        />
+      ),
+      description: t("pytorch_description"),
+      level: 95,
+    },
+    {
+      name: "TensorBoard",
+      icon: (
+        <Icon
+          icon="simple-icons:tensorflow"
+          width="48"
+          height="48"
+          className="text-[#FF9800] transition-transform duration-300 group-hover:scale-110"
+          aria-label="TensorBoard icon"
+        />
+      ),
+      description: t("tensorboard_description"),
+      level: 80,
+    },
+    {
+      name: "Perlin Noise",
+      icon: (
+        <Icon
+          icon="mdi:waves"
+          width="48"
+          height="48"
+          className="text-blue-300 transition-transform duration-300 group-hover:scale-110"
+          aria-label="Perlin Noise icon"
+        />
+      ),
+      description: t("perlin_description"),
+      level: 90,
+    },
+    {
+      name: "Noise.ts",
+      icon: (
+        <Icon
+          icon="mdi:matrix"
+          width="48"
+          height="48"
+          className="text-blue-500 transition-transform duration-300 group-hover:scale-110"
+          aria-label="Noise.ts icon"
+        />
+      ),
+      description: t("noisets_description"),
+      level: 85,
+    },
+    {
+      name: "WGAN-GP Math",
+      icon: (
+        <Icon
+          icon="mdi:function-variant"
+          width="48"
+          height="48"
+          className="text-gray-600 transition-transform duration-300 group-hover:scale-110"
+          aria-label="WGAN-GP Math icon"
+        />
+      ),
+      description: t("wgan_math_description"),
+      level: 95,
+    },
   ];
 
   const handleIconClick = (techName: string, techLevel: number) => {

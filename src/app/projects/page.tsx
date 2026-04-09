@@ -79,6 +79,14 @@ export default function Projects() {
       imageDark: "/portfoliodark.png",
       url: "/projects/portfolio",
     },
+    {
+      id: "bar-terrain-wgan",
+      title: t("bar_terrain_wgan_title"),
+      description: t("bar_terrain_wgan_short_description"),
+      imageLight: "/Barmaps fondo.png",
+      imageDark: "/Barmaps fondo.png",
+      url: "/projects/bar-terrain-wgan",
+    },
   ];
 
   return (

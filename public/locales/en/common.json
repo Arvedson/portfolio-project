@@ -15,22 +15,15 @@
   "download_cv": "Download CV",
   "projects_intro": "Here you can find the projects I have worked on, from web applications to side projects.",
   "about_intro": "Hi, I'm Tomas Arvedson, a passionate developer with experience in web development and design.",
-
   "about_title": "About Me",
   "about_subtitle": "Full-Stack Developer",
   "about_description": "Passionate developer with over 3 years of experience creating modern and scalable web applications. Specialized in React, Next.js, Node.js, and TypeScript, with a focus on code quality and user experience.",
-
   "skills_title": "Technical Skills",
   "skills_description": "Technologies and tools I master to create innovative digital solutions",
-
   "achievements_title": "Achievements & Experience",
   "achievements_description": "My professional journey and the most important milestones in my career",
-
   "cta_title": "Let's Work Together?",
   "cta_description": "I'm always open to new opportunities and challenging projects. Let's talk about how I can help you bring your ideas to life!",
-
-  "contact_me": "Contact Me",
-  "view_projects": "View Projects",
   "contact_intro": "If you'd like to get in touch, feel free to reach out via email or social media!",
   "change-language": "EN",
   "quick_links": "Quick Links",
@@ -55,7 +48,6 @@
   "nextauth_description": "NextAuth.js is a flexible authentication solution for Next.js applications, supporting multiple providers and secure session management.",
   "googlecloud_description": "Google Cloud Platform offers robust and scalable cloud services, enabling developers to build and manage applications easily.",
   "typescript_description": "TypeScript is a superset of JavaScript that adds static typing, making it easier to catch errors and develop more robust applications.",
-
   "stripe_description": "Online payment platform for e-commerce that enables secure payment processing",
   "eslint_description": "JavaScript/TypeScript code analysis tool that helps maintain code quality",
   "prettier_description": "Code formatter that maintains consistency in programming style",
@@ -63,7 +55,7 @@
   "zod_description": "TypeScript schema validation library that ensures data integrity",
   "sendgrid_description": "Transactional email service for web applications",
   "react_query_description": "Library for server state management and data synchronization",
-  "lucide_description": "Collection of SVG icons for modern and consistent interfaces",
+  "lucide_description": "Beautiful & consistent icons.",
   "html5_description": "Markup language for web structure with new semantic features",
   "git_description": "Distributed version control system for collaborative development",
   "npm_description": "Package manager for Node.js that facilitates dependency installation",
@@ -119,7 +111,6 @@
   "status_bar_description": "Control the apps status bar.",
   "crypto_description": "Cryptographic operations.",
   "radix_ui_description": "Unstyled, accessible components for building design systems.",
-  "lucide_description": "Beautiful & consistent icons.",
   "animate_css_description": "Tailwind CSS plugin for Animate.css.",
   "clsx_description": "Utility for constructing className strings.",
   "next_themes_description": "Perfect dark mode in 2 lines of code.",
@@ -164,11 +155,9 @@
       "link": "/blog/post-3"
     }
   ],
-
   "categories_list": [
     {
       "name": "React",
-
       "sublinks": [
         {
           "name": "Hooks",
@@ -229,7 +218,6 @@
       ]
     }
   ],
-
   "read_more": "Read more...",
   "POST NUMERO1": "POST-1",
   "tutorial_title": "How to Build a Full-Stack App with Next.js",
@@ -466,7 +454,6 @@
   },
   "post2_conclusion2": "Conclusion!",
   "post2_end": "Implementing optimization strategies in React not only improves the end-user experience but also ensures that your application is efficient and sustainable over the long term. By adopting optimization techniques such as lazy loading, efficient state management, and rendering optimization, you can significantly reduce load times, decrease resource usage, and enhance scalability. Always remember to measure the impact of these optimizations with appropriate tools to ensure that you are truly enhancing performance without compromising functionality.",
-
   "BLOGPOST3": "THIS IS BLOG POST 3 vvvvv",
   "title": "A Journey of Discovery and Transformation",
   "subtitle": "Exploring the Road Less Traveled: My Journey from Physical Labor to Programming",
@@ -477,7 +464,6 @@
   "motivation": "Where did my motivation come from? It's a question equivalent to where did matter come from. The universe and its behavior not understood by man, gives us the answer. Reality is mental, the power of thought moves the fractals of all universes, a place where energy is infinite in its infinities.",
   "philosophy": "Where order is in disorder and the command of thought materializes reality, it is so similar to programming, they are the same fundamentals, it is the structure of thought, the logical within the illogical.",
   "intro_title": "How We Got Here",
-
   "blogPostTitle": "Discovery and Transformation",
   "blogPostSubtitle": "A short story about what keeps me motivated",
   "introParagraph": "I started from zero, without having pursued a degree in programming; I had never seen a line of code. Perhaps in my childhood, thanks to a friend who made scripts to bot in a game called Tibia, was my only contact with scripts and automation, but I had never been in contact with a terminal.",
@@ -491,9 +477,7 @@
   "projectFailures": "I failed in several personal projects, but I knew that watching videos and courses I would not learn at the speed I should. My failure and frustration at seeing errors after errors were what made me learn to investigate. I was also between a rock and a hard place due to my financial and personal situation; my situation at those moments gave me no motivation, it seemed the worst decision I had ever made. But I never give up, I fight for what I really want, and my pride is humble, but tough as the rock my father always taught me to be.",
   "firstWebApp": "At 9 months, I was already creating my first web application, currently deployed and belonging to a Mexican solar energy company. It had its database implemented, its APIs, REST, CRUD, protocols, providers, and much more. They were 16-hour days for several months of learning on my own, without certifications or courses or classes or absolutely any support except for a single friend who guided me among the fundamentals.",
   "reflectionOnJourney": "Today, in October 2024, it has been about 14 months since I started in this world and with what little I have created I feel that I have come too far. This is thanks to trying too hard, because no matter how much back pain my plastic chair caused me, I never gave up. I always knew there were people in the world who would have wanted to be in my place and all the little sacrifice I made was in the name of what they would have done too.",
-
   "post4": "post4",
-
   "javascriptContent": {
     "javascriptFundamentals": {
       "basicConcepts": {
@@ -575,7 +559,6 @@
         }
       }
     },
-
     "javascriptTipsAndTricks": {
       "title": "JavaScript Tips and Tricks",
       "lessKnownOperators": {
@@ -646,7 +629,6 @@
         }
       }
     },
-
     "javascriptCuriosities": {
       "title": "JavaScript Curiosities",
       "historyOfJavaScript": {
@@ -699,7 +681,6 @@
       },
       "conclusion": "These examples highlight some of the peculiarities and unique aspects of JavaScript that developers need to be aware of. From its origins to its current state, JavaScript has proven to be a dynamic and essential programming language in modern web application development."
     },
-
     "javascriptBestPractices": {
       "title": "JavaScript Best Practices",
       "cleanAndMaintainableCode": {
@@ -762,7 +743,6 @@
       },
       "conclusion": "Implementing these best practices not only improves code quality but also ensures that applications are more robust, secure, and easy to maintain, which is essential for professional software development."
     },
-
     "javascriptResourcesAndTools": {
       "title": "JavaScript Resources and Tools",
       "librariesAndFrameworks": {
@@ -827,7 +807,6 @@
       "conclusion": "Each of these resources provides valuable tools and platforms that help developers improve their skills and stay up-to-date in a rapidly changing field."
     }
   },
-
   "BasicConcepts": "Basic Concepts",
   "Variables": "Variables",
   "Data-Types": "Data Types",
@@ -838,10 +817,8 @@
   "Control-Structures": "Control Structures",
   "Functionss": "Functions and ES6+",
   "Beyond": "ES6 and Beyond",
-
   "todo_app_title": "Simple Task Management MVP",
   "todo_app_short_description": "TaskTrack showcases streamlined task management through a minimalist MVP designed with modern web technologies. Perfect for demonstrating clean coding practices, responsive design and more.",
-
   "todoapp": {
     "introduction": {
       "titulo": "Task Management MVP",
@@ -910,7 +887,6 @@
     "task_operations_api": {
       "title": "11.- Task Operations Handling in the API",
       "description": "Functions were developed to handle task deletion and updating through the API.",
-
       "operations": {
         "deleteTask": {
           "description": "Deletes a task by verifying the task ID validity. If valid, it removes it from the database and properly handles errors.",
@@ -1071,7 +1047,6 @@
         }
       }
     },
-
     "conclusion": {
       "title": "Conclusion",
       "description": "The development of the todo-app involved a combination of modern technologies and tools that facilitated the creation of a robust, scalable, and maintainable application. From efficient database management with Prisma and Neon Tech, to secure authentication with NextAuth.js and Google Cloud, each technology played a crucial role. Additionally, the use of Next.js and React ensured a smooth and responsive user experience, while Tailwind CSS enabled quick and consistent styling of interface components."
@@ -1084,15 +1059,12 @@
     }
   },
   "use": "Usage",
-
   "ququlkan_title": "Ququlkan Solar - Web Application",
   "ququlkan_desc": "Ququlkan Solar is a web application that allows you to estimate a solar system based on your electricity consumption. It offers a wide variety of components and interesting materials for web developers, including parts of the backend.",
   "ququlkan_introduction_titulo": "Ququlkan Solar Web App",
   "ququlkan_introduction_subtitulo": "Custom solar system calculator and comprehensive inventory management based on electrical consumption.",
-
   "titulo descripcion": "Ququlkan Solar Web App: Custom Solar System Calculator",
   "descripcion del webapp": "Ququlkan Solar is a web application designed to calculate custom solar systems based on customers' electrical consumption. It transforms the entered electrical consumption into a detailed financial projection of the return on investment, considering the tariff schemes of the CFE in Mexico. Additionally, it features advanced tools for inventory management, allowing efficient control of solar components.",
-
   "introququlkan": {
     "funcionalidad1": {
       "titulo": "Entry of Electrical Consumption",
@@ -1111,10 +1083,8 @@
       "imagen2": "/analisis2ququlkan.png"
     }
   },
-
   "verWebApp": "Visit Section",
   "invitarVisita": "Explore this section of the web application and quote your personalized solar system!",
-
   "desafio": {
     "titulo": "Challenge: Identifying Consistent Patterns in OCR Text",
     "descripcion": "When working with text extracted from receipt images using OCR (Optical Character Recognition), I encountered several obstacles:"
@@ -1252,7 +1222,6 @@
           "Consumption in kWh (kwh):",
           "  - I split the line into parts around the peso sign.",
           "  - I look for the last number before the peso sign, assuming it represents the consumption.",
-
           "  - I use another regular expression to capture the billing period."
         ]
       },
@@ -1299,7 +1268,6 @@
       }
     ]
   },
-
   "Obstáculos": "Obstacles",
   "Enfoque:": "Approach:",
   "Problema": "Problem",
@@ -1323,7 +1291,6 @@
   "note": "Note:",
   "highlightedAspects": "Highlighted Aspects and Skills",
   "customDataProviderImportance": "Importance of Custom Data Provider",
-
   "dataProviderDocumentation": {
     "keyConcepts": {
       "abstractData": "The DataProvider allows React Admin to interact with any RESTful API without worrying about implementation details.",
@@ -1479,7 +1446,6 @@
       "8": "const getManyReference = (resource: string, params: GetManyReferenceParams): Promise<{ data: any[]; total: number }> => {\n  const { page, perPage } = params.pagination;\n  const { field, order } = params.sort;\n  const query = {\n    sort: JSON.stringify([field, order]),\n    range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),\n    filter: JSON.stringify({\n      ...params.filter,\n      [params.target]: params.id,\n    }),\n  };\n  const url = `${apiUrl}/${resource}?${stringify(query)}`;\n\n  return httpClient(url).then(({ headers, json }) => {\n    const contentRange = headers.get('content-range');\n    if (!contentRange) {\n      throw new Error('Missing content-range header');\n    }\n    const total = parseInt(contentRange.split('/').pop() as string, 10);\n\n    return {\n      data: json,\n      total,\n    };\n  });\n};\n\nexport default getManyReference;"
     }
   },
-
   "portfolioData": {
     "title": "Request Management and Security in Web Applications",
     "introduction2": "In this project, I implemented key functionalities to improve the security and efficiency of our web application using Next.js. Two main components I developed are determining the user's IP address and controlling the number of requests a user can make within a certain time period. Below, I detail how these components contribute to the application's performance and security, accompanied by code examples demonstrating their implementation.",
@@ -1599,7 +1565,6 @@
     "impact": "The incorporation of these functionalities has significantly strengthened the security and efficiency of our web application. By identifying users' IP addresses and controlling the frequency of their requests, we have achieved:\n\n- Protecting the application against unauthorized access and denial-of-service attacks.\n- Ensuring optimal performance even under high traffic loads, guaranteeing a reliable and satisfying user experience.\n- Facilitating analysis and personalization, allowing informed decisions based on user behavior and location.\n\nThese implementations demonstrate my ability to address security and performance challenges in modern web applications, ensuring that solutions are not only effective but also scalable and sustainable in the long term.",
     "finalComment": "This approach to user identification and request management reflects a commitment to security, efficiency, and user experience, which are fundamental aspects in developing robust and reliable web applications.\n\nThis summary, accompanied by code examples, provides a clear view of the technical solutions implemented to enhance the security and performance of the web application. By including code snippets, visitors to your portfolio can appreciate not only the final outcome but also the technical implementation behind each functionality."
   },
-
   "codeExample": "Code Example:",
   "codeDescription": "Code Description:",
   "functionLabel": "Function:",
@@ -1607,7 +1572,6 @@
   "noSectionsAvailable": "No sections available.",
   "importations": "Imports:",
   "ejemplodeuso": "Code aplied",
-
   "todoapp2": {
     "technologies": {
       "items": {
@@ -1689,10 +1653,8 @@
       }
     }
   },
-
   "ququlkanapp.conclusion.description": "This project has been an excellent opportunity to apply and deepen the use of modern technologies such as Next.js, React, and Tailwind CSS, as well as integrate advanced tools for authentication, data management, and visualization. Throughout the development process, various technical challenges were overcome, solidifying knowledge and strengthening web development skills. This portfolio not only demonstrates technical capabilities but also showcases a commitment to creating efficient, scalable, and visually appealing interfaces.",
   "codeinviteququlkan": "Visit Repo",
-
   "about2": {
     "introduction": {
       "name": "Tomas Arvedson",
@@ -1746,29 +1708,17 @@
         "title": "My Career, The Jack of All Trades",
         "content": [
           "Since I set my career aside due to being a frustrated musician and a critic of the system with a fear of capitalist failure, I had to start from scratch several times.",
-
           "I attempted the nearly impossible path of trading, developing a kind of hyper-aware gambling addiction to risk. For two years of day trading, I managed to multiply my initial capital almost tenfold; however, my ambition was more consistent than a solid statistical method, and my mind and principles changed drastically. I sacrificed two years of my life and quite a few salaries, only to dissolve them in a matter of weeks. I didn’t want to see a trading account again for years. The next time I trade, it won’t be me personally; it will be a script to avoid the mistakes a human could make.",
-
           "",
-
           "The good thing about following that path is that I learned a lot about economics, finance, geoeconomics, banking systems, hard money, fiduciary systems, commodities, markets and their laws, and much more!",
-
           "Shortly after, realizing that energy is the core of the value humans perceive as effort (J), I went to learn about photovoltaic systems and how to sell them. If there is something difficult in this life, it's door-to-door sales. I never imagined I would become an expert in communication along the way. After knocking on over 15,000 doors, I could read certain traits that seemed universal in humans. After being locked in a warehouse all day, in a 5x5 room doing trading all night with the volatility of the lockdown, I was grateful to have spoken to so many people.",
-
           "Then I returned to Mexico to start a business close to my family, and I started programming because I thought it was too easy :) Many of my close friends had studied computer systems or mechatronics, so they were my guides and provided all the knowledge on a silver platter. I am very grateful to them, especially to Axel, a great teacher.",
-
           "99% of what you see was self-taught. Nobody ever gave me a problem to solve or even a question to answer; my mind was the problem, and the questions came from there—from errors in the console, from hunger, and from concern. I keep going, I keep learning, I don't stop.",
-
           "Algorithm problems, pseudocode, and JS—thinking, thinking, and thinking. Funny how naturally it came to me. Then HTML, easy; CSS, not so much.",
-
           "React was the cherry on top. Intermittently, I tried NoSQL before SQL. It was challenging, but I learned the hard way. I also managed to grasp Django, Ruby on Rails, and Laravel. A friend who is an expert in data, noticing my rapid progress, invited me to one of his projects, where I even got to work with Flask for Python.",
-
           "At this moment, I have about 12 effective months programming. I’ve spoken to several graduates in computer science, and it seems as though I went to school with aliens (:",
-
           "I want to reach the next level of learning; I want to work in large teams, to learn from those who know, to surround myself with real experts and prove to myself through them that I am good at this. I may not have the best resume, but every line of this project is dedicated to proving I can be of service to you.",
-
           "I am also the co-founder of a solar energy company in Mexico. However, to fulfill the goal of allowing all Mexicans to buy a piece of a solar park, rather than foreign companies with their financing and interest over the Mexican people, I have to give them a great application.",
-
           "I am always willing to make sacrifices. The time has come, and a new chapter in my life begins."
         ]
       },
@@ -1782,11 +1732,15 @@
       }
     ],
     "personal_interests": {
-      "hobbies": ["Playing blues", "Video Games", "News", "Learning"],
+      "hobbies": [
+        "Playing blues",
+        "Video Games",
+        "News",
+        "Learning"
+      ],
       "values": "Honesty, Hard work, Honest work, Clean money, No nepotism, and definitely no corruption!",
       "unique_details": ""
     },
-
     "call_to_action": {
       "message": "Get in touch with me to collaborate on interesting projects.",
       "contact_methods": {
@@ -1800,12 +1754,10 @@
   "personal_interests": "Personal Interests",
   "hobbies": "Hobbies",
   "values": "Values",
-
   "get_in_touch": "Get in Touch",
   "email": "Email",
   "phone": "Phone",
   "unique_details": "I am self-taught, I never give up, and I always strive to give my best in every project I undertake.",
-
   "contact1": "Contact",
   "contact_intro1": "If you have any questions or need more information, feel free to send us a message.",
   "contact_name": "Name",
@@ -1815,15 +1767,12 @@
   "contact_sending": "Sending...",
   "contact_success_message": "Your message has been sent successfully. We will get in touch with you soon.",
   "contact_whatsapp": "Contact via WhatsApp",
-
   "portfolio_title": "Portfolio Project",
   "portfolio_short_description": "A personal portfolio showcasing various web development projects, skills, and experiences.",
-
   "arvedson_art_title": "Arvedson Art",
   "arvedson_art_short_description": "E-commerce platform for digital art with Stripe payment integration and user management.",
   "arvedson_art_hero_description": "A modern and elegant e-commerce platform designed for digital artists, with complete payment integration, user management, and product catalog.",
   "arvedson_art_overview": "Arvedson Art is an e-commerce platform specialized in digital art that combines modern design with advanced e-commerce functionality. Built with Next.js and TypeScript, it offers a smooth and secure user experience for buying and selling digital art.",
-
   "arvedson_art_feature_1_title": "Digital Art Gallery",
   "arvedson_art_feature_1_desc": "Elegant display of artworks with zoom, filters, and advanced categorization.",
   "arvedson_art_feature_2_title": "Smart Shopping Cart",
@@ -1836,80 +1785,60 @@
   "arvedson_art_feature_5_desc": "Optimized experience across all devices and screen sizes.",
   "arvedson_art_feature_6_title": "Automatic Deployment",
   "arvedson_art_feature_6_desc": "Continuous deployment with Vercel for instant updates.",
-
   "arvedson_art_cta_description": "Explore this modern e-commerce platform and discover how modern technologies can create exceptional shopping experiences.",
-
   "arvedson_art_overview_title": "Project Overview",
   "arvedson_art_architecture_title": "Project Architecture",
   "arvedson_art_architecture_description": "The Arvedson Art project is built with a modern architecture based on Next.js 14 with App Router, using TypeScript for static typing and Tailwind CSS for responsive design.",
   "arvedson_art_architecture_code": "// Complete Arvedson Art project structure (GitHub Repository)\narvedson-art/\n├── .eslintrc.json               // ESLint configuration\n├── .gitignore                   // Git ignored files\n├── .npmrc                       // npm configuration\n├── README.md                    // Project documentation\n├── next.config.ts               // Next.js configuration\n├── package-lock.json            // Dependencies lock file\n├── package.json                 // Dependencies and scripts\n├── postcss.config.mjs           // PostCSS configuration\n├── tailwind.config.ts           // Tailwind CSS configuration\n├── tsconfig.json                // TypeScript configuration\n├── prisma/                      // ORM and database\n│   ├── schema.prisma            // Database schema\n│   └── migrations/              // Prisma migrations\n├── public/                      // Static files\n│   ├── images/                  // Project images\n│   ├── icons/                   // SVG icons\n│   └── favicon.ico              // Favicon\n├── src/                         // Source code\n│   ├── app/                     // Next.js 14 App Router\n│   │   ├── globals.css          // Global styles\n│   │   ├── layout.tsx           // Main layout\n│   │   ├── page.tsx             // Home page\n│   │   ├── loading.tsx          // Loading component\n│   │   ├── error.tsx            // Error page\n│   │   ├── not-found.tsx        // 404 page\n│   │   ├── api/                 // API Routes\n│   │   │   ├── auth/            // Authentication routes\n│   │   │   ├── products/        // Product routes\n│   │   │   ├── stripe/          // Stripe routes\n│   │   │   │   ├── checkout/\n│   │   │   │   └── webhook/\n│   │   │   ├── cart/            // Cart routes\n│   │   │   ├── orders/          // Order routes\n│   │   │   └── users/           // User routes\n│   │   ├── (auth)/              // Authentication route group\n│   │   │   ├── signin/\n│   │   │   │   └── page.tsx\n│   │   │   ├── signup/\n│   │   │   │   └── page.tsx\n│   │   │   └── layout.tsx\n│   │   ├── (dashboard)/         // Dashboard route group\n│   │   │   ├── admin/\n│   │   │   │   ├── products/\n│   │   │   │   ├── orders/\n│   │   │   │   ├── users/\n│   │   │   │   └── analytics/\n│   │   │   └── layout.tsx\n│   │   ├── products/            // Product pages\n│   │   │   ├── page.tsx\n│   │   │   ├── [id]/\n│   │   │   │   └── page.tsx\n│   │   │   └── category/\n│   │   │       └── [category]/\n│   │   │           └── page.tsx\n│   │   ├── cart/                // Cart pages\n│   │   │   ├── page.tsx\n│   │   │   └── success/\n│   │   │       └── page.tsx\n│   │   ├── profile/             // Profile pages\n│   │   │   ├── page.tsx\n│   │   │   └── orders/\n│   │   │       └── page.tsx\n│   │   └── checkout/            // Checkout pages\n│   │       └── page.tsx\n│   ├── components/              // Reusable components\n│   │   ├── ui/                  // Base UI components\n│   │   │   ├── button.tsx\n│   │   │   ├── input.tsx\n│   │   │   ├── modal.tsx\n│   │   │   ├── card.tsx\n│   │   │   └── spinner.tsx\n│   │   ├── layout/              // Layout components\n│   │   │   ├── header.tsx\n│   │   │   ├── footer.tsx\n│   │   │   ├── navigation.tsx\n│   │   │   └── sidebar.tsx\n│   │   ├── product/             // Product components\n│   │   │   ├── product-card.tsx\n│   │   │   ├── product-grid.tsx\n│   │   │   ├── product-detail.tsx\n│   │   │   └── product-filter.tsx\n│   │   ├── cart/                // Cart components\n│   │   │   ├── cart-item.tsx\n│   │   │   ├── cart-summary.tsx\n│   │   │   └── cart-sidebar.tsx\n│   │   ├── auth/                // Authentication components\n│   │   │   ├── login-form.tsx\n│   │   │   ├── register-form.tsx\n│   │   │   └── auth-provider.tsx\n│   │   ├── checkout/            // Checkout components\n│   │   │   ├── checkout-form.tsx\n│   │   │   ├── payment-form.tsx\n│   │   │   └── order-summary.tsx\n│   │   └── admin/               // Admin components\n│   │       ├── product-form.tsx\n│   │       ├── order-table.tsx\n│   │       └── user-table.tsx\n│   ├── lib/                     // Utilities and configurations\n│   │   ├── prisma.ts            // Prisma client\n│   │   ├── stripe.ts            // Stripe configuration\n│   │   ├── auth.ts              // NextAuth configuration\n│   │   ├── utils.ts             // General utilities\n│   │   ├── validations.ts       // Zod validation schemas\n│   │   └── constants.ts         // Application constants\n│   ├── hooks/                   // Custom hooks\n│   │   ├── use-cart.ts\n│   │   ├── use-auth.ts\n│   │   ├── use-products.ts\n│   │   └── use-local-storage.ts\n│   ├── store/                   // Global state (Zustand)\n│   │   ├── cart-store.ts\n│   │   ├── auth-store.ts\n│   │   └── ui-store.ts\n│   ├── types/                   // TypeScript type definitions\n│   │   ├── index.ts\n│   │   ├── product.ts\n│   │   ├── user.ts\n│   │   ├── order.ts\n│   │   └── cart.ts\n│   └── middleware.ts            // Next.js middleware\n└── stripe/                      // Stripe configuration\n    └── webhooks/                // Stripe webhooks",
-
   "arvedson_art_database_title": "Database Configuration with Prisma",
   "arvedson_art_database_description": "We use Prisma as ORM to manage the PostgreSQL database, defining models for products, users, orders, and shopping carts.",
   "arvedson_art_database_schema": "// schema.prisma\nmodel Product {\n  id          String   @id @default(cuid())\n  name        String\n  description String?\n  price       Decimal  @db.Decimal(10, 2)\n  image       String?\n  category    String?\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n\nmodel Cart {\n  id        String   @id @default(cuid())\n  userId    String\n  productId String\n  quantity  Int\n  product   Product  @relation(fields: [productId], references: [id])\n  createdAt DateTime @default(now())\n}",
-
   "arvedson_art_stripe_title": "Complete Stripe Integration for Payments",
   "arvedson_art_stripe_description": "We implement a complete Stripe integration for secure payment processing, including checkout sessions, webhooks, error handling, and transaction confirmation. The integration supports multiple payment methods and currencies.",
   "arvedson_art_stripe_code": "// api/stripe/checkout/route.ts\nimport { NextRequest, NextResponse } from 'next/server';\nimport Stripe from 'stripe';\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);\n\nexport async function POST(req: NextRequest) {\n  const { items } = await req.json();\n  \n  const session = await stripe.checkout.sessions.create({\n    payment_method_types: ['card'],\n    line_items: items.map((item: any) => ({\n      price_data: {\n        currency: 'usd',\n        product_data: {\n          name: item.name,\n        },\n        unit_amount: item.price * 100,\n      },\n      quantity: item.quantity,\n    })),\n    mode: 'payment',\n    success_url: `${process.env.NEXT_PUBLIC_URL}/success`,\n    cancel_url: `${process.env.NEXT_PUBLIC_URL}/cart`,\n  });\n  \n  return NextResponse.json({ sessionId: session.id });\n}",
-
   "arvedson_art_stripe_webhook_title": "Stripe Webhooks",
   "arvedson_art_stripe_webhook_description": "We configure webhooks to handle Stripe events in real-time, ensuring synchronization between payment status and our database.",
   "arvedson_art_stripe_webhook_code": "// api/stripe/webhook/route.ts\nimport { NextRequest, NextResponse } from 'next/server';\nimport Stripe from 'stripe';\nimport { prisma } from '@/lib/prisma';\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);\nconst webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;\n\nexport async function POST(req: NextRequest) {\n  const body = await req.text();\n  const signature = req.headers.get('stripe-signature')!;\n\n  let event: Stripe.Event;\n\n  try {\n    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);\n  } catch (err) {\n    console.error('Webhook signature verification failed:', err);\n    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });\n  }\n\n  switch (event.type) {\n    case 'checkout.session.completed': {\n      const session = event.data.object as Stripe.Checkout.Session;\n      // Update order status in database\n      await prisma.order.update({\n        where: { stripeSessionId: session.id },\n        data: { status: 'PAID' }\n      });\n      break;\n    }\n    case 'payment_intent.payment_failed': {\n      const paymentIntent = event.data.object as Stripe.PaymentIntent;\n      // Handle failed payment\n      console.log('Payment failed:', paymentIntent.id);\n      break;\n    }\n  }\n\n  return NextResponse.json({ received: true });\n}",
-
   "arvedson_art_stripe_features_title": "Implemented Stripe Features",
   "arvedson_art_stripe_features_description": "The project includes multiple advanced Stripe features for a complete payment experience:",
   "arvedson_art_stripe_features": "• Checkout Sessions for secure payments\n• Webhooks for real-time synchronization\n• Multi-currency support (USD, EUR, etc.)\n• Credit and debit card support\n• Payment data validation\n• Error handling and retries\n• Automatic payment confirmation\n• Database integration for order tracking\n• Detailed logs for debugging\n• Conversion rate configuration",
-
   "arvedson_art_auth_title": "Authentication System",
   "arvedson_art_auth_description": "We implement secure authentication using NextAuth.js with OAuth providers like Google and GitHub, plus email and password authentication.",
   "arvedson_art_auth_code": "// lib/auth.ts\nimport NextAuth from 'next-auth';\nimport GoogleProvider from 'next-auth/providers/google';\nimport CredentialsProvider from 'next-auth/providers/credentials';\nimport { PrismaAdapter } from '@next-auth/prisma-adapter';\nimport { prisma } from './prisma';\n\nexport const authOptions = {\n  adapter: PrismaAdapter(prisma),\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_CLIENT_ID!,\n      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,\n    }),\n    CredentialsProvider({\n      name: 'credentials',\n      credentials: {\n        email: { label: 'Email', type: 'email' },\n        password: { label: 'Password', type: 'password' }\n      },\n      async authorize(credentials) {\n        // Custom authentication logic\n        return null;\n      }\n    })\n  ],\n  session: { strategy: 'jwt' },\n  pages: {\n    signIn: '/auth/signin',\n  },\n};",
-
   "arvedson_art_cart_title": "State Management and Shopping Cart",
   "arvedson_art_cart_description": "We developed a persistent shopping cart system that maintains state between sessions using localStorage and database synchronization.",
   "arvedson_art_cart_code": "// hooks/useCart.ts\nimport { create } from 'zustand';\nimport { persist } from 'zustand/middleware';\n\ninterface CartItem {\n  id: string;\n  name: string;\n  price: number;\n  quantity: number;\n  image?: string;\n}\n\ninterface CartStore {\n  items: CartItem[];\n  addItem: (item: CartItem) => void;\n  removeItem: (id: string) => void;\n  updateQuantity: (id: string, quantity: number) => void;\n  clearCart: () => void;\n  getTotalPrice: () => number;\n}\n\nexport const useCart = create<CartStore>()(\n  persist(\n    (set, get) => ({\n      items: [],\n      addItem: (item) => set((state) => {\n        const existingItem = state.items.find(i => i.id === item.id);\n        if (existingItem) {\n          return {\n            items: state.items.map(i =>\n              i.id === item.id\n                ? { ...i, quantity: i.quantity + item.quantity }\n                : i\n            )\n          };\n        }\n        return { items: [...state.items, item] };\n      }),\n      removeItem: (id) => set((state) => ({\n        items: state.items.filter(item => item.id !== id)\n      })),\n      updateQuantity: (id, quantity) => set((state) => ({\n        items: state.items.map(item =>\n          item.id === id ? { ...item, quantity } : item\n        ).filter(item => item.quantity > 0)\n      })),\n      clearCart: () => set({ items: [] }),\n      getTotalPrice: () => {\n        const { items } = get();\n        return items.reduce((total, item) => total + (item.price * item.quantity), 0);\n      },\n    }),\n    { name: 'cart-storage' }\n  )\n);",
-
   "arvedson_art_performance_title": "Image Optimization and Performance",
   "arvedson_art_performance_description": "We implement performance optimizations using Next.js Image for lazy loading, component memoization, and bundle optimization.",
   "arvedson_art_performance_code": "// components/ProductImage.tsx\nimport Image from 'next/image';\nimport { useState } from 'react';\n\ninterface ProductImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  className?: string;\n}\n\nexport default function ProductImage({ src, alt, width, height, className }: ProductImageProps) {\n  const [isLoading, setIsLoading] = useState(true);\n  \n  return (\n    <div className={`relative overflow-hidden ${className}`}>\n      <Image\n        src={src}\n        alt={alt}\n        width={width}\n        height={height}\n        className={`transition duration-300 ${\n          isLoading ? 'blur-sm scale-110' : 'blur-0 scale-100'\n        }`}\n        onLoad={() => setIsLoading(false)}\n        priority={false}\n        placeholder=\"blur\"\n        blurDataURL=\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=\"\n      />\n      {isLoading && (\n        <div className=\"absolute inset-0 bg-gray-200 animate-pulse\" />\n      )}\n    </div>\n  );\n}",
-
   "arvedson_art_responsive_title": "Responsive Design and UX",
   "arvedson_art_responsive_description": "The design is fully optimized for mobile, tablet, and desktop devices, using Tailwind CSS with responsive breakpoints and adaptive components that provide a consistent user experience across all devices.",
-
   "arvedson_art_deployment_title": "Deployment and CI/CD",
   "arvedson_art_deployment_description": "The project is deployed on Vercel with continuous integration, including automatic deployments from GitHub and production build optimizations.",
   "arvedson_art_deployment_config": "// vercel.json\n{\n  \"buildCommand\": \"npm run build\",\n  \"outputDirectory\": \".next\",\n  \"framework\": \"nextjs\",\n  \"env\": {\n    \"DATABASE_URL\": \"@database_url\",\n    \"STRIPE_SECRET_KEY\": \"@stripe_secret_key\",\n    \"NEXTAUTH_SECRET\": \"@nextauth_secret\",\n    \"NEXTAUTH_URL\": \"@nextauth_url\"\n  },\n  \"functions\": {\n    \"src/app/api/**/*.ts\": {\n      \"maxDuration\": 30\n    }\n  }\n}",
-
   "arvedson_art_technologies_title": "Technologies Used",
   "arvedson_art_technologies_description": "This project demonstrates the use of modern technologies for developing scalable and maintainable e-commerce applications. Below are all the implemented technologies:",
-
   "arvedson_art_tech_frontend_title": "Frontend and UI/UX",
   "arvedson_art_tech_frontend_description": "The frontend is built with modern technologies that guarantee an exceptional user experience:",
   "arvedson_art_tech_frontend_technologies": "• Next.js 14 with App Router for server-side rendering\n• React 18 with modern hooks and functional components\n• TypeScript for static typing and better development experience\n• Tailwind CSS for responsive design and CSS utilities\n• Framer Motion for fluid animations\n• React Hook Form for form handling\n• Zod for schema validation\n• Lucide React for consistent iconography",
-
   "arvedson_art_tech_backend_title": "Backend and APIs",
   "arvedson_art_tech_backend_description": "The backend uses a modern architecture with robust APIs:",
   "arvedson_art_tech_backend_technologies": "• Next.js API Routes for RESTful endpoints\n• Prisma ORM for database management\n• PostgreSQL as primary database\n• NextAuth.js for authentication and authorization\n• Stripe for payment processing\n• SendGrid for transactional email sending\n• Zod for input data validation\n• bcryptjs for password hashing",
-
   "arvedson_art_tech_state_title": "State Management and Data",
   "arvedson_art_tech_state_description": "Modern and efficient state management system:",
   "arvedson_art_tech_state_technologies": "• Zustand for global state management\n• React Query for caching and data synchronization\n• localStorage for local persistence\n• Prisma Client for database operations\n• SWR for real-time data revalidation",
-
   "arvedson_art_tech_deployment_title": "Deployment and DevOps",
   "arvedson_art_tech_deployment_description": "Modern infrastructure for deployment and monitoring:",
   "arvedson_art_tech_deployment_technologies": "• Vercel for deployment and hosting\n• GitHub Actions for CI/CD\n• Environment Variables for configuration\n• Vercel Analytics for performance metrics\n• Vercel Speed Insights for speed monitoring",
-
   "arvedson_art_tech_tools_title": "Development Tools",
   "arvedson_art_tech_tools_description": "Tool stack for efficient development:",
   "arvedson_art_tech_tools_technologies": "• ESLint for code analysis\n• Prettier for code formatting\n• TypeScript for type checking\n• Git for version control\n• npm for dependency management\n• VS Code with development extensions",
-
   "arvedson_art_conclusion_title": "Conclusion",
   "arvedson_art_conclusion_description": "Arvedson Art represents a complete example of a modern e-commerce application, demonstrating skills in full-stack development, third-party API integration, state management, performance optimization, and cloud deployment. The project shows competence in the most in-demand technologies in the current market.",
-
   "arvedson_art_card_title": "Explore the Project Code",
   "arvedson_art_card_description": "You can review the complete source code on GitHub and test the live application to see all implemented features.",
   "arvedson_art_github_button": "View on GitHub",
   "arvedson_art_demo_button": "Try Demo",
-
   "arvedson_art_technologies": {
     "items": {
       "Next.js 14": {
@@ -2014,7 +1943,6 @@
       }
     }
   },
-
   "view_live_demo": "View Live Demo",
   "view_source_code": "View Source Code",
   "project_overview": "Project Overview",
@@ -2030,10 +1958,8 @@
   "interested_in_this_project": "Interested in this project?",
   "visit_live_site": "Visit Live Site",
   "explore_code": "Explore Code",
-
   "contact2": "Contact",
   "contact_intro2": "Get in touch for project inquiries, collaborations, or any questions.",
-
   "portfolio": {
     "title": "Portfolio Project",
     "introduction": {
@@ -2194,7 +2120,6 @@
       }
     ]
   },
-
   "codeinvitesection": "Visit Component",
   "codeinvitesection2": "Visit custom Global CSS",
   "portfolio_technologies": {
@@ -2229,5 +2154,86 @@
       "usage": "Used alongside Tailwind for additional style customizations."
     }
   },
-  "use2": "Usage:"
+  "use2": "Usage:",
+  "bar_terrain_wgan": {
+    "introduccion": {
+      "title": "AI Terrain Engineering for Beyond All Reason",
+      "subtitle": "Procedural high-fidelity topography creation using Wasserstein GANs",
+      "description": "This advanced R&D project delves into generating multiplayer landscapes for the RTS game 'Beyond All Reason' (BAR). Powered by a custom WGAN-GP (Wasserstein GAN with Gradient Penalty) model, the network interprets spatial mechanics, mountain formations, and balancing strategies from countless community maps—synthesizing raw noise into breathtaking playable zones."
+    },
+    "arquitectura": {
+      "title": "AI Architecture and Training Pipeline",
+      "description": "The foundation heavily utilizes PyTorch deployed across multiple cloud architectures (Kaggle P100/T4 GPUs) to endure high-scale training buffers. The generator processes a random latent vector mapping it linearly onto topological spaces (Upsample + Convolution design), while a convolutional discriminator grades reality vs. static. Utilizing extreme penalty calculations under Wasserstein mathematical frameworks totally neutralized unpredictable collapse."
+    },
+    "caracteristicas_clave": {
+      "title": "Key Deep Learning Features",
+      "items": [
+        "16-bit Matrix Processing Output ready for heavy terrain engine parsing across the standard Spring RTS client.",
+        "Asynchronous Resilient Checkpoints overcoming strict 12hr Kaggle timeouts, wrapping optimizer deep parameters natively back into the timeline buffer.",
+        "Automated Ruggedness Computation dynamically calculating physics-ready mechanics (like RMS slope/curvature bounds) on every batch evaluation.",
+        "Bilateral Map Pass smoothing over raw gradients directly interacting within early generation stages, achieving uncompromised structural integrity."
+      ]
+    },
+    "desafios_y_soluciones": {
+      "title": "Hard Challenges and Technical Solutions",
+      "challenges": [
+        {
+          "problem": "Checkerboard High-Frequency Artifacts ('Nail spikes')",
+          "solution": "Primitive matrices exhibited razor-sharp non-playable elevations. This geometric disaster traced back to the usage of old-school Transposed Convolutions. Eradicated entirely by pivoting to robust 'Interpolated Upsampling + Conv2D' paired with extremely strict L2 Total Variation Loss calculations."
+        },
+        {
+          "problem": "Mode Collapse Across Generative Latency",
+          "solution": "Attempting conventional GAN learning consistently crashed due to loss of variance traits spanning across mountain generation. Mitigated directly utilizing WGAN-GP constraints. We uncoupled the learning rates heavily, creating an ultra-critic discriminator keeping the main generative stream on consistent feedback limits."
+        },
+        {
+          "problem": "Tensor Bleed Between Checkpoints (Kaggle Isolation)",
+          "solution": "Due to forceful environment termination under cloud rules, generating 200 epochs non-stop was statistically impossible. I engineered a cyclic, autonomous mounting state pipeline that hooks a '.pth' checkpoint loop matching step, epoch arrays, and Adam Optimizer hidden moments seamlessly."
+        }
+      ]
+    },
+    "snippets": {
+      "title": "Topological Control (Total Variation Regularization)",
+      "tv_loss": "def total_variation_loss(img, weight=1.0):\n    # L2 Total Variation regularization for landscape smoothing\n    # Reduces high-frequency geometry \"nail effect\" spikes.\n    tv_h = torch.mean((img[:, :, 1:, :] - img[:, :, :-1, :])**2)\n    tv_w = torch.mean((img[:, :, :, 1:] - img[:, :, :, :-1])**2)\n    return weight * (tv_h + tv_w)"
+    },
+    "technologies": {
+      "PyTorch": {
+        "description": "Primary Deep Learning Neural Framework.",
+        "usage": "Directing complex vectorial matrices, developing penalty scripts, and sustaining multi-dimensional network flows.",
+        "icon": "python-icon"
+      },
+      "Python": {
+        "description": "Native Execution Kernel.",
+        "usage": "Executing math structures, general pipeline bridging, computational handling, and graphic inspection via matplotlib.",
+        "icon": "python-icon"
+      },
+      "Kaggle": {
+        "description": "Cloud IA execution environment.",
+        "usage": "Leveraging on-demand heavyweight GPU architecture necessary to process thousands of massive map parameters quickly.",
+        "icon": "aws-icon"
+      }
+    },
+    "samples_gallery": {
+      "title": "Neural Synthesis Gallery",
+      "description": "Explore the diverse geological patterns synthesized by the WGAN-GP model. Each sample demonstrates the transition from raw topological data (X-Ray Preview) to the final textured visualization.",
+      "compare_label": "Compare Evolution",
+      "xray_label": "X-Ray Heightmap",
+      "result_label": "Engine Render",
+      "view_more": "Swipe to explore"
+    },
+    "cta": {
+      "title": "Experience the Generation",
+      "description": "Access the live web application to generate your own maps or explore the source code and training pipeline in the official repository.",
+      "visit_website": "Launch App",
+      "view_repo": "View Repository"
+    }
+  },
+  "bar_terrain_wgan_title": "BAR WGAN-GP Terrain Generator",
+  "bar_terrain_wgan_short_description": "Deep learning model (WGAN-GP) that procedurally synthesizes geologically coherent and playable heightmaps for Beyond All Reason.",
+  "kaggle_description": "Data science and machine learning platform providing free cloud-based GPUs.",
+  "colab_description": "Google's cloud-based interactive notebook environment for AI development.",
+  "pytorch_description": "Deep learning framework for building and training complex neural networks.",
+  "tensorboard_description": "Visualization toolkit for inspecting and understanding model training.",
+  "perlin_description": "Coherent noise algorithm used for realistic textures and terrain generation.",
+  "noisets_description": "TypeScript implementation of noise algorithms for procedural generation.",
+  "wgan_math_description": "Mathematical foundation for Wasserstein GANs with Gradient Penalty for improved stability."
 }
